@@ -120,6 +120,22 @@ public class Inmueble {
 	public void setLuminosidad(Luminosidad luminosidad) {
 		this.luminosidad = luminosidad;
 	}
+	
+	public boolean isExterior() {
+		return exterior;
+	}
+
+	public void setExterior(boolean exterior) {
+		this.exterior = exterior;
+	}
+	
+	public boolean isInterior() {
+		return interior;
+	}
+
+	public void setInterior(boolean interior) {
+		this.interior = interior;
+	}
 
 	public String getDistribucion() {
 		return distribucion;
