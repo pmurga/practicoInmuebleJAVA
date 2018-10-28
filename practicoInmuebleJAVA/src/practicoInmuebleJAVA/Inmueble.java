@@ -1,29 +1,47 @@
 package practicoInmuebleJAVA;
 
+
+
 public class Inmueble {
-	
+
+	public enum TipoOperacion {VENTA, ALQUILER;};
+	public enum Estado {HABITADO_PROPIETARIO, DESHABITADO, EN_CONSTRUCCION, HABITADO_INQUILINO};
+	public enum Luminosidad {ALTA, MEDIA, BAJA};
+	public enum Vigilancia {VEINTICUATRO_HS, DIURNO, NOCTURNO, NO_TIENE};
+	public enum EstadoConservacion {A_ESTRENAR, A_RECICLAR, IMPECABLE, BUENO, MUY_BUENO};
+	public enum TipoPropiedad {ESTUDIO, LOFT, DEPARTAMENTO, PISO, DUPLEX, TRIPLEX, CHALET, CASA, LOCAL, COCHERA, OFICINA, EDIFICIO};
+
+
 	private Propietario propietario;
 	private Agente agente;
+	
 	private String calle;
 	private int nro;
 	private int piso;
 	private String puerta;
-	private String tipoOperacion;
-	private String estado;
-	private String luminicidad;
+
+	private TipoOperacion tipoOperacion;
+	private Estado estado;
+	private Luminosidad luminosidad;
+	
+	private boolean exterior;
+	private boolean interior;
+	
+	
+	private Vigilancia vigilancia;
+	private EstadoConservacion estadoDeConservacion;
+	private TipoPropiedad tipoPropiedad;
+	
 	private String distribucion;
-	private double mtotales;
-	private double mcubiertos;
-	private double mdescubiertos;
+//	private double mtotales; //Es la suma de metroCubiertos + metrosDescubiertos??
+	private double metrosCubiertos;
+	private double metrosDescubiertos;
 	private int nroDormitorios;
 	private int nroBanos;
 	private int nroPlantas;
 	private int nroAscensores;
 	private String orientacion;
-	private String vigilancia;
-	private String estConservacion;
 	private boolean pileta;
-	private String tipoPropiedad;
 	private boolean balcon;
 	private boolean patio;
 	
@@ -79,28 +97,28 @@ public class Inmueble {
 		this.puerta = puerta;
 	}
 
-	public String getTipoOperacion() {
+	public TipoOperacion getTipoOperacion() {
 		return tipoOperacion;
 	}
 
-	public void setTipoOperacion(String tipoOperacion) {
+	public void setTipoOperacion(TipoOperacion tipoOperacion) {
 		this.tipoOperacion = tipoOperacion;
 	}
 
-	public String getEstado() {
+	public Estado getEstado() {
 		return estado;
 	}
 
-	public void setEstado(String estado) {
+	public void setEstado(Estado estado) {
 		this.estado = estado;
 	}
 
-	public String getLuminicidad() {
-		return luminicidad;
+	public Luminosidad getLuminosidad() {
+		return luminosidad;
 	}
 
-	public void setLuminicidad(String luminicidad) {
-		this.luminicidad = luminicidad;
+	public void setLuminosidad(Luminosidad luminosidad) {
+		this.luminosidad = luminosidad;
 	}
 
 	public String getDistribucion() {
@@ -111,28 +129,28 @@ public class Inmueble {
 		this.distribucion = distribucion;
 	}
 
-	public double getMtotales() {
-		return mtotales;
+	public double getMetrosTotales() {
+		return metrosCubiertos + metrosDescubiertos;
 	}
 
-	public void setMtotales(double mtotales) {
-		this.mtotales = mtotales;
-	}
+//	public void setMtotales(double mtotales) {
+//		this.mtotales = mtotales;
+//	}
 
 	public double getMcubiertos() {
-		return mcubiertos;
+		return metrosCubiertos;
 	}
 
-	public void setMcubiertos(double mcubiertos) {
-		this.mcubiertos = mcubiertos;
+	public void setMetrosCubiertos(double mcubiertos) {
+		this.metrosCubiertos = mcubiertos;
 	}
 
-	public double getMdescubiertos() {
-		return mdescubiertos;
+	public double getMetrosDescubiertos() {
+		return metrosDescubiertos;
 	}
 
-	public void setMdescubiertos(double mdescubiertos) {
-		this.mdescubiertos = mdescubiertos;
+	public void setMetrosDescubiertos(double mdescubiertos) {
+		this.metrosDescubiertos = mdescubiertos;
 	}
 
 	public int getNroDormitorios() {
@@ -175,20 +193,20 @@ public class Inmueble {
 		this.orientacion = orientacion;
 	}
 
-	public String getVigilancia() {
+	public Vigilancia getVigilancia() {
 		return vigilancia;
 	}
 
-	public void setVigilancia(String vigilancia) {
+	public void setVigilancia(Vigilancia vigilancia) {
 		this.vigilancia = vigilancia;
 	}
 
-	public String getEstConservacion() {
-		return estConservacion;
+	public EstadoConservacion getEstadoConservacion() {
+		return estadoDeConservacion;
 	}
 
-	public void setEstConservacion(String estConservacion) {
-		this.estConservacion = estConservacion;
+	public void setEstadoConservacion(EstadoConservacion estConservacion) {
+		this.estadoDeConservacion = estConservacion;
 	}
 
 	public boolean isPileta() {
@@ -199,15 +217,15 @@ public class Inmueble {
 		this.pileta = pileta;
 	}
 
-	public String getTipoPropiedad() {
+	public TipoPropiedad getTipoPropiedad() {
 		return tipoPropiedad;
 	}
 
-	public void setTipoPropiedad(String tipoPropiedad) {
+	public void setTipoPropiedad(TipoPropiedad tipoPropiedad) {
 		this.tipoPropiedad = tipoPropiedad;
 	}
 
-	public boolean isBalcon() {
+	public boolean hasBalcon() {
 		return balcon;
 	}
 
@@ -215,7 +233,7 @@ public class Inmueble {
 		this.balcon = balcon;
 	}
 
-	public boolean isPatio() {
+	public boolean hasPatio() {
 		return patio;
 	}
 
