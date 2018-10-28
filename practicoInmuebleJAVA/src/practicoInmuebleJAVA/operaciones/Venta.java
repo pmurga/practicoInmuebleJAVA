@@ -1,3 +1,5 @@
+package operaciones;
+
 public class Venta extends Operacion {
 	private float comision_comprador;
 	private float gastos_vendedor;

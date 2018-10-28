@@ -1,3 +1,5 @@
+package operaciones;
+
 public class Alquiler extends Operacion {
 	private boolean periodicidad_ajuste;
 	private float porcentaje_ajuste;
@@ -29,8 +31,8 @@ public class Alquiler extends Operacion {
 		float monto_actual = monto;
 		float acum_monto = monto * periodicidad;
 		for(int i = 0; i < cant_ajustes; i++) {
-			monto_actual = monto_actual * porcentaje_ajuste;
-			acum_monto += monto_actual;
+			monto_actual = monto_actual + ((monto_actual / 100) * porcentaje_ajuste);
+			acum_monto += monto_actual * periodicidad;
 		}
 		return acum_monto;
 	}

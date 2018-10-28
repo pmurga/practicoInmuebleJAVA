@@ -1,3 +1,5 @@
+package operaciones;
+
 public abstract class Operacion {
 	protected float monto;
 	protected float comision_inmobiliaria;
