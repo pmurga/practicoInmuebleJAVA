@@ -1,8 +1,9 @@
-package operaciones;
+package practicoInmuebleJAVA.operaciones;
 
 public abstract class Operacion {
 	protected float monto;
 	protected float comision_inmobiliaria;
+	private boolean completada;
 	
 	public Operacion(float monto, float comision) {
 		setMonto(monto);
@@ -21,4 +22,14 @@ public abstract class Operacion {
 		return monto;
 	}
 	public abstract float getComisionInmobiliaria();
+	
+	public boolean isCompletada() {
+		return completada;
+	}
+	public void setCompletada(boolean completada) {
+		this.completada = completada;
+		if (completada) { System.out.println("Transacción OK"); }
+	}
+		
+
 }

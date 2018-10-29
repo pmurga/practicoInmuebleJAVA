@@ -4,12 +4,12 @@ package practicoInmuebleJAVA;
 
 public class Inmueble {
 
-	public enum TipoOperacion {VENTA, ALQUILER;};
-	public enum Estado {HABITADO_PROPIETARIO, DESHABITADO, EN_CONSTRUCCION, HABITADO_INQUILINO};
-	public enum Luminosidad {ALTA, MEDIA, BAJA};
-	public enum Vigilancia {VEINTICUATRO_HS, DIURNO, NOCTURNO, NO_TIENE};
-	public enum EstadoConservacion {A_ESTRENAR, A_RECICLAR, IMPECABLE, BUENO, MUY_BUENO};
-	public enum TipoPropiedad {ESTUDIO, LOFT, DEPARTAMENTO, PISO, DUPLEX, TRIPLEX, CHALET, CASA, LOCAL, COCHERA, OFICINA, EDIFICIO};
+	private enum TipoOperacion {VENTA, ALQUILER;}; 
+	private enum Estado {HABITADO_PROPIETARIO, DESHABITADO, EN_CONSTRUCCION, HABITADO_INQUILINO};
+	private enum Luminosidad {ALTA, MEDIA, BAJA};
+	private enum Vigilancia {VEINTICUATRO_HS, DIURNO, NOCTURNO, NO_TIENE};
+	private enum EstadoConservacion {A_ESTRENAR, A_RECICLAR, IMPECABLE, BUENO, MUY_BUENO};
+	private enum TipoPropiedad {ESTUDIO, LOFT, DEPARTAMENTO, PISO, DUPLEX, TRIPLEX, CHALET, CASA, LOCAL, COCHERA, OFICINA, EDIFICIO};
 
 
 	private Propietario propietario;
@@ -20,7 +20,7 @@ public class Inmueble {
 	private int piso;
 	private String puerta;
 
-	private TipoOperacion tipoOperacion;
+	private TipoOperacion tipoOperacion; 
 	private Estado estado;
 	private Luminosidad luminosidad;
 	
@@ -32,8 +32,7 @@ public class Inmueble {
 	private EstadoConservacion estadoDeConservacion;
 	private TipoPropiedad tipoPropiedad;
 	
-	private String distribucion;
-//	private double mtotales; //Es la suma de metroCubiertos + metrosDescubiertos??
+///	private double mtotales; //Es la suma de metroCubiertos + metrosDescubiertos??
 	private double metrosCubiertos;
 	private double metrosDescubiertos;
 	private int nroDormitorios;
@@ -135,14 +134,6 @@ public class Inmueble {
 
 	public void setInterior(boolean interior) {
 		this.interior = interior;
-	}
-
-	public String getDistribucion() {
-		return distribucion;
-	}
-
-	public void setDistribucion(String distribucion) {
-		this.distribucion = distribucion;
 	}
 
 	public double getMetrosTotales() {

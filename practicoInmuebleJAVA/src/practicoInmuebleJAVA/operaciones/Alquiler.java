@@ -1,4 +1,4 @@
-package operaciones;
+package practicoInmuebleJAVA.operaciones;
 
 public class Alquiler extends Operacion {
 	private boolean periodicidad_ajuste;
@@ -20,7 +20,7 @@ public class Alquiler extends Operacion {
 		this.porcentaje_ajuste = porcentaje_ajuste;
 	}
 	public void setMesesAdelanto(int meses_adelanto) {
-		this.meses_adelanto = meses_adelanto;
+		this.setMeses_adelanto(meses_adelanto);
 	}
 	public void setMesesDuracion(int meses_duracion) {
 		this.meses_duracion = meses_duracion;
@@ -38,6 +38,13 @@ public class Alquiler extends Operacion {
 	}
 	public float getComisionInmobiliaria() {
 		float montoTotal = getMontoTotal();
+		// CONTROLAR LAS COMISIONES - solo puede ser 3%, 3,5%, 4% y 4,5%
 		return (montoTotal / 100) * comision_inmobiliaria;
+	}
+	public int getMeses_adelanto() {
+		return meses_adelanto;
+	}
+	public void setMeses_adelanto(int meses_adelanto) {
+		this.meses_adelanto = meses_adelanto;
 	}
 }

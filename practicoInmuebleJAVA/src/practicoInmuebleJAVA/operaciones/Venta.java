@@ -1,7 +1,8 @@
-package operaciones;
+package practicoInmuebleJAVA.operaciones;
 
 public class Venta extends Operacion {
 	private float comision_comprador;
+	// gastos vendedor y comprador podrían ser final
 	private float gastos_vendedor;
 	private float gastos_comprador;
 	
@@ -21,6 +22,7 @@ public class Venta extends Operacion {
 		this.gastos_vendedor = gastos_vendedor;
 	}
 	public float getComisionComprador() {
+		// CONTROLAR COMISIONES - 3%, 3,5% o 4%
 		return (monto / 100) * comision_comprador;
 	}
 	public float getGastosVendedor() {
@@ -30,6 +32,7 @@ public class Venta extends Operacion {
 		return (monto / 100) * gastos_comprador;
 	}
 	public float getComisionInmobiliaria() {
+		// CONTROLAR COMISIONES - solo puede ser 1%, 1,5% o 2%
 		return (monto / 100) * comision_inmobiliaria;
 	}
 }
