@@ -1,10 +1,12 @@
 package practicoInmuebleJAVA;
 
-
+import practicoInmuebleJAVA.operaciones.*;
 
 public class Inmueble {
 
-	private enum TipoOperacion {VENTA, ALQUILER;}; 
+	//private enum TipoOperacion {VENTA, ALQUILER;};  --> se maneja con clase t. operacion
+	private Operacion op;
+
 	private enum Estado {HABITADO_PROPIETARIO, DESHABITADO, EN_CONSTRUCCION, HABITADO_INQUILINO};
 	private enum Luminosidad {ALTA, MEDIA, BAJA};
 	private enum Vigilancia {VEINTICUATRO_HS, DIURNO, NOCTURNO, NO_TIENE};
@@ -20,7 +22,7 @@ public class Inmueble {
 	private int piso;
 	private String puerta;
 
-	private TipoOperacion tipoOperacion; 
+	// private TipoOperacion tipoOperacion; --> se maneja con clase t. operacion
 	private Estado estado;
 	private Luminosidad luminosidad;
 	
@@ -48,6 +50,19 @@ public class Inmueble {
 		super();
 	}
 
+	public void vender(float precio, float comision_comprador , float comision_inmobiliaria) {
+		
+		this.op = new Venta(precio , comision_comprador , comision_inmobiliaria);
+		
+	}
+	
+	public void alquilar(float alq_mensual, float comision_inmobiliaria, boolean es_anual , float porc_ajuste , int meses_adelanto,  int meses_duracion) {
+		
+		this.op = new Alquiler(alq_mensual , comision_inmobiliaria , es_anual, porc_ajuste, meses_adelanto, meses_duracion);
+		
+	}
+	
+	
 	public Propietario getPropietario() {
 		return propietario;
 	}
@@ -96,6 +111,7 @@ public class Inmueble {
 		this.puerta = puerta;
 	}
 
+/* --> se maneja con clase t. operacion
 	public TipoOperacion getTipoOperacion() {
 		return tipoOperacion;
 	}
@@ -103,7 +119,7 @@ public class Inmueble {
 	public void setTipoOperacion(TipoOperacion tipoOperacion) {
 		this.tipoOperacion = tipoOperacion;
 	}
-
+*/
 	public Estado getEstado() {
 		return estado;
 	}
@@ -246,6 +262,29 @@ public class Inmueble {
 
 	public void setPatio(boolean patio) {
 		this.patio = patio;
+	}
+	public EstadoConservacion getEstadoDeConservacion() {
+		return estadoDeConservacion;
+	}
+
+	public void setEstadoDeConservacion(EstadoConservacion estadoDeConservacion) {
+		this.estadoDeConservacion = estadoDeConservacion;
+	}
+
+	public Operacion getOp() {
+		return op;
+	}
+
+	public double getMetrosCubiertos() {
+		return metrosCubiertos;
+	}
+
+	public boolean isBalcon() {
+		return balcon;
+	}
+
+	public boolean isPatio() {
+		return patio;
 	}
 	
 	
