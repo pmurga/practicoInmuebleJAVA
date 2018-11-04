@@ -46,20 +46,18 @@ public class Inmueble {
 	
 	public Inmueble(){};
 	
-	public Inmueble(Operacion op, Agente agente, Propietario propietario, String calle,Integer  numero) {
+	public Inmueble(Propietario propietario, Agente agente,  String calle,Integer  numero) {
 		
-		this.op = op;
-		this.agente = agente;
 		this.propietario = propietario;
+		this.agente = agente;
 		this.calle = calle;
 		this.nro = numero;
 	};
 	
-	public Inmueble(Operacion op, Agente agente, Propietario propietario, String calle,int numero, int piso, String puerta ) {
+	public Inmueble(Propietario propietario, Agente agente, String calle,int numero, int piso, String puerta ) {
 		
-		this.op = op;
-		this.agente = agente;
 		this.propietario = propietario;
+		this.agente = agente;
 		this.calle = calle;
 		this.nro = numero;
 		this.piso = piso;
