@@ -4,9 +4,6 @@ import practicoInmuebleJAVA.operaciones.*;
 
 public class Inmueble {
 
-	//private enum TipoOperacion {VENTA, ALQUILER;};  --> se maneja con clase t. operacion
-	private Operacion op;
-
 	private enum Estado {HABITADO_PROPIETARIO, DESHABITADO, EN_CONSTRUCCION, HABITADO_INQUILINO};
 	private enum Luminosidad {ALTA, MEDIA, BAJA};
 	private enum Vigilancia {VEINTICUATRO_HS, DIURNO, NOCTURNO, NO_TIENE};
@@ -22,7 +19,8 @@ public class Inmueble {
 	private int piso;
 	private String puerta;
 
-	// private TipoOperacion tipoOperacion; --> se maneja con clase t. operacion
+
+	private Operacion op; 	// Tipo de la Operacion --> se maneja con clase Operacion
 	private Estado estado;
 	private Luminosidad luminosidad;
 	
@@ -34,7 +32,7 @@ public class Inmueble {
 	private EstadoConservacion estadoDeConservacion;
 	private TipoPropiedad tipoPropiedad;
 	
-///	private double mtotales; //Es la suma de metroCubiertos + metrosDescubiertos??
+//	private double metrosTotales; //Es la suma de metroCubiertos + metrosDescubiertos??
 	private double metrosCubiertos;
 	private double metrosDescubiertos;
 	private int nroDormitorios;
@@ -46,22 +44,29 @@ public class Inmueble {
 	private boolean balcon;
 	private boolean patio;
 	
-	public Inmueble() {
-		super();
-	}
+	public Inmueble(){};
+	
+	public Inmueble(Operacion op, Agente agente, Propietario propietario, String calle,Integer  numero) {
+		
+		this.op = op;
+		this.agente = agente;
+		this.propietario = propietario;
+		this.calle = calle;
+		this.nro = numero;
+	};
+	
+	public Inmueble(Operacion op, Agente agente, Propietario propietario, String calle,int numero, int piso, String puerta ) {
+		
+		this.op = op;
+		this.agente = agente;
+		this.propietario = propietario;
+		this.calle = calle;
+		this.nro = numero;
+		this.piso = piso;
+		this.puerta = puerta;
+	};
 
-	public void vender(float precio, float comision_comprador , float comision_inmobiliaria) {
-		
-		this.op = new Venta(precio , comision_comprador , comision_inmobiliaria);
-		
-	}
-	
-	public void alquilar(float alq_mensual, float comision_inmobiliaria, boolean es_anual , float porc_ajuste , int meses_adelanto,  int meses_duracion) {
-		
-		this.op = new Alquiler(alq_mensual , comision_inmobiliaria , es_anual, porc_ajuste, meses_adelanto, meses_duracion);
-		
-	}
-	
+
 	
 	public Propietario getPropietario() {
 		return propietario;
@@ -111,15 +116,14 @@ public class Inmueble {
 		this.puerta = puerta;
 	}
 
-/* --> se maneja con clase t. operacion
-	public TipoOperacion getTipoOperacion() {
-		return tipoOperacion;
+	public Operacion getOp() {
+		return op;
+	}
+	
+	public void setOp(Operacion operacion){
+		this.op = operacion;
 	}
 
-	public void setTipoOperacion(TipoOperacion tipoOperacion) {
-		this.tipoOperacion = tipoOperacion;
-	}
-*/
 	public Estado getEstado() {
 		return estado;
 	}
@@ -151,16 +155,43 @@ public class Inmueble {
 	public void setInterior(boolean interior) {
 		this.interior = interior;
 	}
+	
+
+	public Vigilancia getVigilancia() {
+		return vigilancia;
+	}
+
+	public void setVigilancia(Vigilancia vigilancia) {
+		this.vigilancia = vigilancia;
+	}
+
+	public EstadoConservacion getEstadoConservacion() {
+		return estadoDeConservacion;
+	}
+
+	public void setEstadoConservacion(EstadoConservacion estConservacion) {
+		this.estadoDeConservacion = estConservacion;
+	}
+	
+	public TipoPropiedad getTipoPropiedad() {
+		return tipoPropiedad;
+	}
+
+	public void setTipoPropiedad(TipoPropiedad tipoPropiedad) {
+		this.tipoPropiedad = tipoPropiedad;
+	}
+	
 
 	public double getMetrosTotales() {
 		return metrosCubiertos + metrosDescubiertos;
 	}
 
-//	public void setMtotales(double mtotales) {
-//		this.mtotales = mtotales;
+//	public void setMetrosTotales(double mTotales) {
+//		this.metrosTotales = mTotales;
 //	}
 
-	public double getMcubiertos() {
+	
+	public double getMetrosCubiertos() {
 		return metrosCubiertos;
 	}
 
@@ -172,8 +203,8 @@ public class Inmueble {
 		return metrosDescubiertos;
 	}
 
-	public void setMetrosDescubiertos(double mdescubiertos) {
-		this.metrosDescubiertos = mdescubiertos;
+	public void setMetrosDescubiertos(double mDescubiertos) {
+		this.metrosDescubiertos = mDescubiertos;
 	}
 
 	public int getNroDormitorios() {
@@ -216,22 +247,6 @@ public class Inmueble {
 		this.orientacion = orientacion;
 	}
 
-	public Vigilancia getVigilancia() {
-		return vigilancia;
-	}
-
-	public void setVigilancia(Vigilancia vigilancia) {
-		this.vigilancia = vigilancia;
-	}
-
-	public EstadoConservacion getEstadoConservacion() {
-		return estadoDeConservacion;
-	}
-
-	public void setEstadoConservacion(EstadoConservacion estConservacion) {
-		this.estadoDeConservacion = estConservacion;
-	}
-
 	public boolean isPileta() {
 		return pileta;
 	}
@@ -240,15 +255,8 @@ public class Inmueble {
 		this.pileta = pileta;
 	}
 
-	public TipoPropiedad getTipoPropiedad() {
-		return tipoPropiedad;
-	}
 
-	public void setTipoPropiedad(TipoPropiedad tipoPropiedad) {
-		this.tipoPropiedad = tipoPropiedad;
-	}
-
-	public boolean hasBalcon() {
+	public boolean isBalcon() {
 		return balcon;
 	}
 
@@ -256,35 +264,29 @@ public class Inmueble {
 		this.balcon = balcon;
 	}
 
-	public boolean hasPatio() {
+	public boolean isPatio() {
 		return patio;
 	}
 
 	public void setPatio(boolean patio) {
 		this.patio = patio;
 	}
-	public EstadoConservacion getEstadoDeConservacion() {
-		return estadoDeConservacion;
-	}
+	
 
-	public void setEstadoDeConservacion(EstadoConservacion estadoDeConservacion) {
-		this.estadoDeConservacion = estadoDeConservacion;
-	}
 
-	public Operacion getOp() {
-		return op;
+	
+	
+	
+	public void vender(float precio, float comision_comprador , float comision_inmobiliaria) {
+		
+		this.op = new Venta(precio , comision_comprador , comision_inmobiliaria);
+		
 	}
-
-	public double getMetrosCubiertos() {
-		return metrosCubiertos;
-	}
-
-	public boolean isBalcon() {
-		return balcon;
-	}
-
-	public boolean isPatio() {
-		return patio;
+	
+	public void alquilar(float alq_mensual, float comision_inmobiliaria, boolean es_anual , float porc_ajuste , int meses_adelanto,  int meses_duracion) {
+		
+		this.op = new Alquiler(alq_mensual , comision_inmobiliaria , es_anual, porc_ajuste, meses_adelanto, meses_duracion);
+		
 	}
 	
 	
