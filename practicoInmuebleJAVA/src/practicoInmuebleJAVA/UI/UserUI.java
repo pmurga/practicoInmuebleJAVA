@@ -36,7 +36,7 @@ public class UserUI {
 		Scanner entrada = new Scanner(System.in);
 		String tipoProp = null;
 		String estado = null;
-		String luminocidad = null;
+		String luminosidad = null;
 		String vigilancia = null;
 		String estConserva = null;
 		
@@ -44,10 +44,10 @@ public class UserUI {
 	
 	// Consulta al usuario por los inmubles que que desea encontrar.
 		
-		System.out.println("BIENVENIDOS A INMOVILIARIA CAECE 2018\n");
+		System.out.println("BIENVENIDOS A INMOBILIARIA CAECE 2018\n");
 		System.out.println("Que tipo de propiedad esta buscando?:\n");
-		System.out.println("Filtre por estas 5 principales caracteristicas:\n");
-		System.out.println("Las opcioens estan numeradas, por favor elIja el numero de la opcion que desee\n");
+		System.out.println("Filtre por estas 5 principales características:\n");
+		System.out.println("Las opciones están numeradas, por favor elija el número de la opción que desee\n");
 	
 		System.out.println("A - Tipo de propiedad:\n");   
 		System.out.println ( "1 - ESTUDIO");
@@ -92,7 +92,7 @@ public class UserUI {
 			}
 				
 		System.out.println("B - Estado:\n");   
-		System.out.println ( "1 - HABITAOD POR PROPIETARIO");
+		System.out.println ( "1 - HABITADO POR PROPIETARIO");
 		System.out.println ( "2 - HABITADO POR INQUILINO");
 		System.out.println ( "3 - DESHABITADO");
 		System.out.println ( "4 - EN CONSTRUCCION");
@@ -109,7 +109,7 @@ public class UserUI {
 				estado = "EN_CONTRUCCION"; break;
 			}
 					
-		System.out.println("C - Luminocidad:\n");   
+		System.out.println("C - Luminosidad:\n");   
 		System.out.println ( "1 - ALTA");
 		System.out.println ( "2 - MEDIA");
 		System.out.println ( "3 - BAJA");
@@ -117,11 +117,11 @@ public class UserUI {
 							
 			switch (valor) {
 			case "1":
-				luminocidad = "ALTA"; break;
+				luminosidad = "ALTA"; break;
 			case "2":
-				luminocidad = "MEDIA"; break;
+				luminosidad = "MEDIA"; break;
 			case "3":
-				luminocidad = "BAJA"; break;
+				luminosidad = "BAJA"; break;
 			}
 			
 				
@@ -143,7 +143,7 @@ public class UserUI {
 				vigilancia = "NO_TIENE"; break;			
 			}	
 				
-		System.out.println("D - Estdo de conservacion:\n");   
+		System.out.println("D - Estdo de conservación:\n");   
 		System.out.println ( "1 - A ESTRENAR");
 		System.out.println ( "2 - A RECICLAR");
 		System.out.println ( "3 - IMPECABLE");
@@ -155,26 +155,26 @@ public class UserUI {
 			case "1":
 				estConserva = "A_ESTRENAR"; break;
 			case "2":
-				estConserva = "A_ESTRENAR"; break;
+				estConserva = "A_RECICLAR"; break;
 			case "3":
 				estConserva = "IMPECABLE"; break;				
 			case "4":
-				estConserva = "BUENO"; break;				
+				estConserva = "MUY_BUENO"; break;				
 			case "5":
-				estConserva = "MUY_BUENO"; break;
+				estConserva = "BUENO"; break;
 			}
 				
 		//Impresion de los datos ingresados
 			
 		System.out.println("Tipo de propiedad:" + tipoProp);
 		System.out.println("Estado:" + estado);
-		System.out.println("Luminocidad:" + luminocidad);
+		System.out.println("Luminosidad:" + luminosidad);
 		System.out.println("Vigilancia:" + vigilancia);
-		System.out.println("Estado de conservaci�n:" + estConserva);
+		System.out.println("Estado de conservación:" + estConserva);
 			
 	//Ejecucion de busqueda de popiedad con los filtros configurados.
 		
-		//	caece.busqueda(estado, luminocidad, vigilancia, estConserva, tipoProp);
+		//	caece.busqueda(estado, luminosidad, vigilancia, estConserva, tipoProp);
 			
 	//Procedimiento para mostrar todas las popiedades encontradas numeras con todas sus propiedades para que el usuario elija la quedese
 		
