@@ -1,16 +1,27 @@
 package practicoInmuebleJAVA;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Inmobiliaria {
 	
 	private ArrayList<Inmueble> inmuebles;
-	private ArrayList<Agente> agentes;
+	private HashMap<Agente, Double> mapa_agentes;
 	
+	//Después modificar este constructor
+	public Inmobiliaria() {
+		this.inmuebles = new ArrayList<Inmueble>();
+		this.mapa_agentes = new HashMap<Agente, Double>();
+	}
+
 	public void addInmueble(Inmueble inmueble) { this.inmuebles.add(inmueble); }
 	
-	public void addAgente(Agente agente) { this.agentes.add(agente); }
+	public void addAgente(Agente agente, double d) { 	
+		Double D = new Double(d);
+		this.mapa_agentes.put(agente, D); 
+	}
+	
 	
 	public String filtro1() {
 		
