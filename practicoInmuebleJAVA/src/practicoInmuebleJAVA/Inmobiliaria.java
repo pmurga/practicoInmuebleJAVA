@@ -7,19 +7,25 @@ import java.util.Scanner;
 public class Inmobiliaria {
 	
 	private ArrayList<Inmueble> inmuebles;
-	private HashMap<Agente, Double> mapa_agentes;
+	private HashMap<int, Agente> agentes;
+	private HashMap<int, double> comisiones_agentes;
 	
 	//Después modificar este constructor
 	public Inmobiliaria() {
 		this.inmuebles = new ArrayList<Inmueble>();
-		this.mapa_agentes = new HashMap<Agente, Double>();
+		this.agentes = new HashMap<int, Agente>();
+		this.comisiones_agentes = new HashMap<int, double>();
 	}
 
 	public void addInmueble(Inmueble inmueble) { this.inmuebles.add(inmueble); }
 	
 	public void addAgente(Agente agente, double d) { 	
-		Double D = new Double(d);
-		this.mapa_agentes.put(agente, D); 
+		this.comisiones_agentes.put(agente.getNroagente(), (double) 0);
+		this.agentes.put(agente.getNroagente(), agente);
+	}
+
+	public double calcularSueldoAgente(int agente){
+		return (this.comisiones_agentes.get(agente) + this.agentes.get(agente).getSueldobasico());
 	}
 	
 	
