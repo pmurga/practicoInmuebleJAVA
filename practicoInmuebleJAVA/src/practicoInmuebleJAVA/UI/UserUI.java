@@ -32,36 +32,8 @@ public class UserUI {
 	Inmueble i7 = new Inmueble (p2, a3, "La Haya", 334);
 	Inmueble i8 = new Inmueble (p3, a3, "Dublin", 4322, 1, "A");
 	
-	// Creo las variables para ingreso de informacion por pantalla
-		Scanner entrada = new Scanner(System.in);
-		String tipoProp = null;
-		String estado = null;
-		String luminosidad = null;
-		String vigilancia = null;
-		String estConserva = null;
-		
-	// Bienvenida.
-	
-	// Consulta al usuario por los inmubles que que desea encontrar.
-		
-		System.out.println("BIENVENIDOS A INMOBILIARIA CAECE 2018\n");
-		System.out.println("Que tipo de propiedad esta buscando?:\n");
-		System.out.println("Filtre por estas 5 principales características:\n");
-		System.out.println("Las opciones están numeradas, por favor elija el número de la opción que desee\n");
-		
-		tipoProp = caece.filtro1();
-		estado = caece.filtro2();
-		luminosidad = caece.filtro3();
-		vigilancia = caece.filtro4();
-		estConserva = caece.filtro5();
-		
-		//Impresion de los datos ingresados
-		
-				System.out.println("Tipo de propiedad:" + tipoProp);
-				System.out.println("Estado:" + estado);
-				System.out.println("Luminosidad:" + luminosidad);
-				System.out.println("Vigilancia:" + vigilancia);
-				System.out.println("Estado de conservación:" + estConserva);
+	Menues menus = new Menues();
+	menus.Menu1();
 	
 
 	//Ejecucion de busqueda de popiedad con los filtros configurados.
