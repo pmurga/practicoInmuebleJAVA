@@ -1,6 +1,6 @@
 package practicoInmuebleJAVA;
 
-import java.util.ArrayList;
+import java.util.*;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -28,7 +28,7 @@ public class Inmobiliaria {
 		return (this.comisiones_agentes.get(agente) + this.agentes.get(agente).getSueldobasico());
 	}
 	
-	public String filtro1() {
+public String filtro1() {
 		
 		Scanner entrada = new Scanner(System.in);
 		String tipoProp = null;
@@ -55,38 +55,44 @@ public class Inmobiliaria {
 		System.out.println ( "12 - EDIFICIO");
 			
 		String valor = entrada.nextLine();
-			
-		if (numeros.contains(valor)) {
-			switch (valor) {
-			case "1":
-				tipoProp = "ESTUDIO"; break;
-			case "2":
-				tipoProp = "LOFT"; break;
-			case "3":
-				tipoProp = "DEPARTAMENTO"; break;
-			case "4":
-				tipoProp = "PISO"; break;
-			case "5":
-				tipoProp = "DUPLEX"; break;
-			case "6":
-				tipoProp = "TRIPLEX"; break;
-			case "7":
-				tipoProp = "CHALET"; break;
-			case "8":
-				tipoProp = "CASA"; break;
-			case "9":
-				tipoProp = "LOCAL"; break;
-			case "10":
-				tipoProp = "COCHERA"; break;
-			case "11":
-				tipoProp = "OFICINA"; break;
-			case "12":
-				tipoProp = "EDIFICIO"; break;
+		
+		try {
+			if (numeros.contains(valor)) {
+				switch (valor) {
+				case "1":
+					tipoProp = "ESTUDIO"; break;
+				case "2":
+					tipoProp = "LOFT"; break;
+				case "3":
+					tipoProp = "DEPARTAMENTO"; break;
+				case "4":
+					tipoProp = "PISO"; break;
+				case "5":
+					tipoProp = "DUPLEX"; break;
+				case "6":
+					tipoProp = "TRIPLEX"; break;
+				case "7":
+					tipoProp = "CHALET"; break;
+				case "8":
+					tipoProp = "CASA"; break;
+				case "9":
+					tipoProp = "LOCAL"; break;
+				case "10":
+					tipoProp = "COCHERA"; break;
+				case "11":
+					tipoProp = "OFICINA"; break;
+				case "12":
+					tipoProp = "EDIFICIO"; break;
+				}
+			}else {
+				throw new MiExcepcion ("Se ingreso un erroneo, elija el número correspondiente");
+				
 			}
-		}else {
-			System.out.println("Se ingreso un erroneo, elija el nuemro correspondiente"); 
+		}catch(MiExcepcion e) {
+			System.out.println(e.getMessage());
 			tipoProp = filtro1();
 		}
+		
 		return tipoProp;
 	}
 	
@@ -109,19 +115,24 @@ public class Inmobiliaria {
 		System.out.println ( "4 - EN CONSTRUCCION");
 			String valor = entrada.nextLine();
 			
-		if (numeros.contains(valor)) {
-			switch (valor) {
-			case "1":
-				estado = "HABITADO_PROPIETARIO"; break;
-			case "2":
-				estado = "HABITADO_INQUILINO"; break;
-			case "3":
-				estado = "DESHABITADO"; break;
-			case "4":
-				estado = "EN_CONTRUCCION"; break;
+		try {	
+			if (numeros.contains(valor)) {
+				switch (valor) {
+				case "1":
+					estado = "HABITADO_PROPIETARIO"; break;
+				case "2":
+					estado = "HABITADO_INQUILINO"; break;
+				case "3":
+					estado = "DESHABITADO"; break;
+				case "4":
+					estado = "EN_CONTRUCCION"; break;
+				}
+			}else {
+				throw new MiExcepcion ("Se ingreso un erroneo, elija el número correspondiente");
+				
 			}
-		}else {
-			System.out.println("Se ingreso un numero erroneo, elija por favor el correspondiente"); 
+		}catch(MiExcepcion e) {
+			System.out.println(e.getMessage());
 			estado = filtro2();
 		}
 		return estado;
@@ -145,19 +156,25 @@ public class Inmobiliaria {
 		System.out.println ( "3 - BAJA");
 			String valor = entrada.nextLine();
 			
-		if (numeros.contains(valor)) {
-			switch (valor) {
-			case "1":
-				luminosidad = "ALTA"; break;
-			case "2":
-				luminosidad = "MEDIA"; break;
-			case "3":
-				luminosidad = "BAJA"; break;
+		try {
+			if (numeros.contains(valor)) {
+				switch (valor) {
+				case "1":
+					luminosidad = "ALTA"; break;
+				case "2":
+					luminosidad = "MEDIA"; break;
+				case "3":
+					luminosidad = "BAJA"; break;
+				}
+			}else {
+				throw new MiExcepcion ("Se ingreso un erroneo, elija el número correspondiente");
 			}
-		}else {
-			System.out.println("Se ingreso un numero erroneo, elija por favor el correspondiente"); 
+		
+		}catch(MiExcepcion e) {
+			System.out.println(e.getMessage());
 			luminosidad = filtro3();
 		}
+		
 		return luminosidad;
 	}
 	
@@ -179,22 +196,28 @@ public String filtro4() {
 		System.out.println ( "3 - NOCTURNO");
 		System.out.println ( "4 - SIN VIGILANCIA");
 			String valor = entrada.nextLine();
-			
-		if (numeros.contains(valor)) {
-			switch (valor) {
-			case "1":
-				vigilancia = "VEINTICUATRO_HS"; break;
-			case "2":
-				vigilancia = "DIURNO"; break;
-			case "3":
-				vigilancia = "NOCTURNO"; break;				
-			case "4":
-				vigilancia = "NO_TIENE"; break;			
-			}	
-		}else {
-			System.out.println("Se ingreso un numero erroneo, elija por favor el correspondiente"); 
+		
+		try {
+			if (numeros.contains(valor)) {
+				switch (valor) {
+				case "1":
+					vigilancia = "VEINTICUATRO_HS"; break;
+				case "2":
+					vigilancia = "DIURNO"; break;
+				case "3":
+					vigilancia = "NOCTURNO"; break;				
+				case "4":
+					vigilancia = "NO_TIENE"; break;			
+				}	
+			}else {
+				throw new MiExcepcion ("Se ingreso un erroneo, elija el número correspondiente");
+				
+			}
+		}catch(MiExcepcion e) {
+			System.out.println(e.getMessage());
 			vigilancia = filtro4();
 		}
+		
 		return vigilancia;
 	}
 	
@@ -217,24 +240,30 @@ public String filtro5() {
 	System.out.println ( "4 - MUY BUENO");
 	System.out.println ( "5 - BUENO");
 		String valor = entrada.nextLine();
-		
-	if (numeros.contains(valor)) {
-		switch (valor) {
-		case "1":
-			estConserva = "A_ESTRENAR"; break;
-		case "2":
-			estConserva = "A_RECICLAR"; break;
-		case "3":
-			estConserva = "IMPECABLE"; break;				
-		case "4":
-			estConserva = "MUY_BUENO"; break;				
-		case "5":
-			estConserva = "BUENO"; break;
+	
+	try {
+		if (numeros.contains(valor)) {
+			switch (valor) {
+			case "1":
+				estConserva = "A_ESTRENAR"; break;
+			case "2":
+				estConserva = "A_RECICLAR"; break;
+			case "3":
+				estConserva = "IMPECABLE"; break;				
+			case "4":
+				estConserva = "MUY_BUENO"; break;				
+			case "5":
+				estConserva = "BUENO"; break;
+			}
+		}else {
+			throw new MiExcepcion ("Se ingreso un erroneo, elija el número correspondiente");
+			
 		}
-	}else {
-		System.out.println("Se ingreso un numero erroneo, elija por favor el correspondiente"); 
+	}catch(MiExcepcion e) {
+		System.out.println(e.getMessage());
 		estConserva = filtro5();
 	}
+	
 	return estConserva;
 }
 	/* --> revisar con profe
