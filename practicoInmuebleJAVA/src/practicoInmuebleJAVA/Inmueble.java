@@ -10,7 +10,6 @@ public class Inmueble {
 	private enum EstadoConservacion {A_ESTRENAR, A_RECICLAR, IMPECABLE, BUENO, MUY_BUENO};
 	private enum TipoPropiedad {ESTUDIO, LOFT, DEPARTAMENTO, PISO, DUPLEX, TRIPLEX, CHALET, CASA, LOCAL, COCHERA, OFICINA, EDIFICIO};
 
-
 	private Propietario propietario;
 	private Agente agente;
 	
@@ -270,10 +269,21 @@ public class Inmueble {
 		this.patio = patio;
 	}
 	
-
-
-	
-	
+	public String getNameTipoPropiedad() {
+		return this.tipoPropiedad.name();
+	}
+	public String getNameLuminosidad() {
+		return this.luminosidad.name();
+	}
+	public String getNameVigilancia() {
+		return this.vigilancia.name();
+	}
+	public String getNameEstadoConservacion() {
+		return this.estadoDeConservacion.name();
+	}
+	public String getNameEstado() {
+		return this.estado.name();
+	}
 	
 	public void vender(float precio, float comision_comprador , float comision_inmobiliaria) {
 		
