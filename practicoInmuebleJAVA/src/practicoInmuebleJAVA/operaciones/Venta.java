@@ -26,4 +26,18 @@ public class Venta extends Operacion {
 		// CONTROLAR COMISIONES - solo puede ser 1%, 1,5% o 2%
 		return (monto / 100) * comision_inmobiliaria;
 	}
+	
+	public void CalcularMontoOperacion() {
+	    float montovendedor;
+	    float montocomprador ;
+	    float montoinmo;
+	    
+	        montoinmo = getComisionComprador() + getComisionInmobiliaria();
+	        montovendedor = monto - getGastosVendedor() - getComisionInmobiliaria();
+	        montocomprador = monto + getGastosComprador() + getComisionComprador();
+	        
+	        System.out.printf("El importe a cobrar por la Inmobiliaria es :", montoinmo, "\n");
+	        System.out.printf("El importe a recibir por el Vendedor es :", montovendedor, "\n");
+	        System.out.printf("El importe a pagar por el Comprador es :", montocomprador, "\n");
+	}
 }

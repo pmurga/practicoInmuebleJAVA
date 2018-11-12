@@ -31,5 +31,6 @@ public abstract class Operacion {
 		if (completada) { System.out.println("Transacción OK"); }
 	}
 		
-
+	public abstract void CalcularMontoOperacion();
+	
 }

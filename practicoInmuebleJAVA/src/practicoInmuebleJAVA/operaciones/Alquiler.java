@@ -47,4 +47,18 @@ public class Alquiler extends Operacion {
 	public void setMeses_adelanto(int meses_adelanto) {
 		this.meses_adelanto = meses_adelanto;
 	}
+	
+	public void CalcularMontoOperacion() {
+		float montoinqui;
+	    float montoprop ;
+	    float montoinmo;
+	    
+	        montoinmo = getComisionInmobiliaria();
+	        montoinqui = getMontoTotal();
+	        montoprop = montoinqui - montoinmo;
+	        
+	        System.out.printf("El importe a cobrar por la Inmobiliaria es :", montoinmo, "\n");
+	        System.out.printf("El importe a recibir por el Propietario es :", montoprop, "\n");
+	        System.out.printf("El importe a pagar por el Inquilino es :", montoinqui, "\n");
+	}
 }
