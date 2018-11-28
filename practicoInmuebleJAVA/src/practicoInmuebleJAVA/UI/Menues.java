@@ -80,7 +80,7 @@ public class Menues {
 		System.out.println ( "2 - ELIMINAR UNA PROPIEDAD");
 		System.out.println ( "3 - AGREGAR UN AGENTE");
 		System.out.println ( "4 - ELIMINAR UN AGENTE");
-		System.out.println ( "5 - CALCLULAR SALARIOS DE AGENTE");
+		System.out.println ( "5 - CALCULAR SALARIOS DE AGENTE");
 			valor = entrada.nextLine();
 			
 		try {	
@@ -108,7 +108,7 @@ public class Menues {
 	}
 	
 	
-	//Menu para el proietario.
+	//Menu para el propietario.
 	
 	public void MenuProp () {
 			
@@ -121,7 +121,7 @@ public class Menues {
 			numeros.add(o);
 		}
 			
-		System.out.println("PROPIEDARIO:\n");   
+		System.out.println("PROPIETARIO:\n");   
 		System.out.println ( "1 - AGREGAR UNA PROPIEDAD");
 		System.out.println ( "2 - ELIMINAR UNA PROPIEDAD");
 		System.out.println ( "3 - CALCULAR COMISIONES");
@@ -161,7 +161,7 @@ public class Menues {
 		}
 			
 		System.out.println("AGENTE:\n");   
-		System.out.println ( "1 - CALCULAR SALRIO");
+		System.out.println ( "1 - CALCULAR SALARIO");
 		System.out.println ( "2 - CALCULAR COMISION");
 		System.out.println ( "3 - CALCULAR TODAS LAS COMISIONES DEL MES");
 			valor = entrada.nextLine();
@@ -200,7 +200,7 @@ public class Menues {
 		
 		
 		System.out.println("POSIBLE CLIENTE:\n");   
-		System.out.println ( "1 - BUSQUEDA DE PROPUEDAD");
+		System.out.println ( "1 - BUSQUEDA DE PROPIEDAD");
 				valor = entrada.nextLine();
 		
 		System.out.println("Que tipo de propiedad esta buscando?:\n");
@@ -218,7 +218,7 @@ public class Menues {
 					break;
 				}
 			}else {
-				throw new MiExcepcion ("Se ingreso un nro erroneo, elija el número correspondiente");
+				throw new MiExcepcion ("Se ingreso un nro erroneo, elija el nï¿½mero correspondiente");
 				
 			}
 		}catch(MiExcepcion e) {
@@ -440,7 +440,7 @@ public String filtro5() {
 		numeros.add(o);
 	}
 	
-	System.out.println("D - Estdo de conservacion:\n");   
+	System.out.println("E - Estado de conservacion:\n");   
 	System.out.println ( "1 - A ESTRENAR");
 	System.out.println ( "2 - A RECICLAR");
 	System.out.println ( "3 - IMPECABLE");

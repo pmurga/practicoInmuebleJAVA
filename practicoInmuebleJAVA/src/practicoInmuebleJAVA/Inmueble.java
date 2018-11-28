@@ -3,12 +3,16 @@ package practicoInmuebleJAVA;
 import practicoInmuebleJAVA.operaciones.*;
 
 public class Inmueble {
-
-	private enum Estado {HABITADO_PROPIETARIO, DESHABITADO, EN_CONSTRUCCION, HABITADO_INQUILINO};
-	private enum Luminosidad {ALTA, MEDIA, BAJA};
-	private enum Vigilancia {VEINTICUATRO_HS, DIURNO, NOCTURNO, NO_TIENE};
-	private enum EstadoConservacion {A_ESTRENAR, A_RECICLAR, IMPECABLE, BUENO, MUY_BUENO};
-	private enum TipoPropiedad {ESTUDIO, LOFT, DEPARTAMENTO, PISO, DUPLEX, TRIPLEX, CHALET, CASA, LOCAL, COCHERA, OFICINA, EDIFICIO};
+	
+	
+	//NO_DEFINIDO permite inicializar los enums con un valor default para que no sean null en caso de
+	//no estar seteados. De esta forma al realizar una búsqueda de propiedades todos los inmuebles
+	//no definidos se toman como un "wildcard"
+	private enum Estado {HABITADO_PROPIETARIO, DESHABITADO, EN_CONSTRUCCION, HABITADO_INQUILINO, NO_DEFINIDO};
+	private enum Luminosidad {ALTA, MEDIA, BAJA, NO_DEFINIDO};
+	private enum Vigilancia {VEINTICUATRO_HS, DIURNO, NOCTURNO, NO_TIENE, NO_DEFINIDO};
+	private enum EstadoConservacion {A_ESTRENAR, A_RECICLAR, IMPECABLE, BUENO, MUY_BUENO, NO_DEFINIDO};
+	private enum TipoPropiedad {ESTUDIO, LOFT, DEPARTAMENTO, PISO, DUPLEX, TRIPLEX, CHALET, CASA, LOCAL, COCHERA, OFICINA, EDIFICIO, NO_DEFINIDO};
 
 	private Propietario propietario;
 	private Agente agente;
@@ -45,15 +49,18 @@ public class Inmueble {
 	
 	public Inmueble(){};
 	
-	public Inmueble(Propietario propietario, Agente agente,  String calle,Integer  numero) {
+	public Inmueble(Propietario propietario, Agente agente,  String calle,Integer  numero , String tipoPropiedad) {
 		
 		this.propietario = propietario;
 		this.agente = agente;
 		this.calle = calle;
 		this.nro = numero;
+		this.piso = 0 ; // PB
+		setTipoPropiedad(tipoPropiedad);
+		setCriteriosDefault();
 	};
 	
-	public Inmueble(Propietario propietario, Agente agente, String calle,int numero, int piso, String puerta ) {
+	public Inmueble(Propietario propietario, Agente agente, String calle,int numero, int piso, String puerta, String tipoPropiedad ) {
 		
 		this.propietario = propietario;
 		this.agente = agente;
@@ -61,7 +68,18 @@ public class Inmueble {
 		this.nro = numero;
 		this.piso = piso;
 		this.puerta = puerta;
+		setTipoPropiedad(tipoPropiedad);
+		setCriteriosDefault();
 	};
+
+	
+	//inicializar criterios en su valor default para ser tomados por la búsqueda como un wildcard
+	private void setCriteriosDefault() {
+		this.estado = Estado.NO_DEFINIDO;
+		this.luminosidad = Luminosidad.NO_DEFINIDO;
+		this.vigilancia = Vigilancia.NO_DEFINIDO;
+		this.estadoDeConservacion = EstadoConservacion.NO_DEFINIDO;
+	}
 
 
 	
@@ -170,12 +188,58 @@ public class Inmueble {
 		this.estadoDeConservacion = estConservacion;
 	}
 	
-	public TipoPropiedad getTipoPropiedad() {
-		return tipoPropiedad;
+	public String getTipoPropiedad() {
+		
+		if (tipoPropiedad == tipoPropiedad.NO_DEFINIDO) {
+			return "El tipo de propiedad no está definido";
+		}
+		
+		return tipoPropiedad.name();
 	}
 
-	public void setTipoPropiedad(TipoPropiedad tipoPropiedad) {
-		this.tipoPropiedad = tipoPropiedad;
+	public void setTipoPropiedad(String tipoPropiedad) {
+		
+		if (tipoPropiedad == "ESTUDIO"){
+				this.tipoPropiedad = TipoPropiedad.ESTUDIO;
+		}
+		else if (tipoPropiedad == "LOFT"){
+			this.tipoPropiedad = TipoPropiedad.LOFT;
+		}
+		else if (tipoPropiedad == "DEPARTAMENTO"){
+			this.tipoPropiedad = TipoPropiedad.DEPARTAMENTO;
+		}
+		else if (tipoPropiedad == "PISO"){
+			this.tipoPropiedad = TipoPropiedad.PISO;
+		}
+		else if (tipoPropiedad == "DUPLEX"){
+			this.tipoPropiedad = TipoPropiedad.DUPLEX;
+		}		
+		else if (tipoPropiedad == "TRIPLEX"){
+			this.tipoPropiedad = TipoPropiedad.TRIPLEX;
+		}
+		else if (tipoPropiedad == "CHALET"){
+			this.tipoPropiedad = TipoPropiedad.CHALET;
+		}		
+		else if (tipoPropiedad == "CASA"){
+			this.tipoPropiedad = TipoPropiedad.CASA;
+		}
+		else if (tipoPropiedad == "LOCAL"){
+			this.tipoPropiedad = TipoPropiedad.LOCAL;
+		}
+		else if (tipoPropiedad == "COCHERA"){
+			this.tipoPropiedad = TipoPropiedad.COCHERA;
+		}		
+		else if (tipoPropiedad == "OFICINA"){
+			this.tipoPropiedad = TipoPropiedad.OFICINA;
+		}
+		else if (tipoPropiedad == "EDIFICIO"){
+			this.tipoPropiedad = TipoPropiedad.EDIFICIO;
+		}
+		//el tipo de propiedad que se ingresó no es válida y por lo tanto no está definida
+		else {
+			this.tipoPropiedad = this.tipoPropiedad.NO_DEFINIDO;
+		}
+		
 	}
 	
 
@@ -294,6 +358,18 @@ public class Inmueble {
 	public void alquilar(float alq_mensual, float comision_inmobiliaria, boolean es_anual , float porc_ajuste , int meses_adelanto,  int meses_duracion) {
 		
 		this.op = new Alquiler(alq_mensual , comision_inmobiliaria , es_anual, porc_ajuste, meses_adelanto, meses_duracion);
+		
+	}
+	
+	public String getOPDisponible() {
+		
+		if (this.op instanceof Alquiler) {
+			return "Alquiler";
+		}
+		if (this.op instanceof Venta) {
+			return "Venta";
+		}
+		return "Una Operación aún no ha sido seteada para este inmueble";
 		
 	}
 	

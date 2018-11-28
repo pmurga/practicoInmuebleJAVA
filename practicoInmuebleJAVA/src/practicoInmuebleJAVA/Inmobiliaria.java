@@ -51,7 +51,7 @@ public class Inmobiliaria {
 		//opciones soportadas --> tipoProp(0), estado(1), luminosidad(2), vigilancia(3), estConserva(4)
 		// dudas ? --> ver método Filtros de practicoInmuebleJAVA.UI.Menues
 		//filtro = null si el usuario no ingresó nada para esa opción (null = '*' en la busqueda)
-		if (filtro != null){
+		if (filtro != "VACIO"){
 			
 			if (i == 0) {evaluarTipoProp(filtro,resultados);}
 			if (i == 1) {evaluarEstado(filtro,resultados);}
@@ -109,6 +109,38 @@ public class Inmobiliaria {
 				resultados.remove(inmueble);
 			}	
 		}	
-	}	
+	}
+	
+	public void mostrarALLInmuebles() {
+		this.mostrarInmuebles(this.inmuebles);
+	}
+	
+	public void mostrarInmuebles (ArrayList <Inmueble> inmuebles) {
+		
+		int c = 1;
+		System.out.println("\n____________________________________________________");
+		System.out.println("\nLista de Inmuebles: ");
+		if (!inmuebles.isEmpty()) {
+			
+			for (Inmueble inmueble : inmuebles) {
+				System.out.println("\nInmueble: " + c);
+				
+				if (inmueble.getPiso() != 0) {
+					System.out.println("  - Domicilio: " + inmueble.getCalle() + " " + inmueble.getNro() + " Piso: " + inmueble.getPiso() + inmueble.getPuerta());
+				}else {
+					System.out.println("  - Domicilio: " + inmueble.getCalle() + " " + inmueble.getNro());					
+				}
+
+				System.out.println("  - Tipo de Propiedad: " + inmueble.getTipoPropiedad());
+				System.out.println("  - Disponible para: " + inmueble.getOPDisponible());
+				System.out.println("\n____________________________________________________");
+				
+				c += 1;
+			}
+		}else {
+			System.out.println("ERROR - No hay inmuebles disponibles en este momento.");
+		}
+		
+	}
 	
 }
