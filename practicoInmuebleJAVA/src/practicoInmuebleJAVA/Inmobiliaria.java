@@ -1,21 +1,25 @@
 package practicoInmuebleJAVA;
 
-import java.lang.reflect.Field;
-import java.util.*;
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Scanner;
 
-public class Inmobiliaria {
+import practicoInmuebleJAVA.operaciones.observer.ConfirmarOpObserver;
+
+public class Inmobiliaria implements ConfirmarOpObserver {
 	
 	private ArrayList<Inmueble> inmuebles;
 	private HashMap<Integer, Agente> agentes;
 	private HashMap<Integer, Double> comisiones_agentes;
+	
+	private static ArrayList<ConfirmarOpObserver> arrObservadores;
+	
 	
 	//Después modificar este constructor
 	public Inmobiliaria() {
 		this.inmuebles = new ArrayList<Inmueble>();
 		this.agentes = new HashMap<Integer, Agente>();
 		this.comisiones_agentes = new HashMap<Integer, Double>();
+		
 	}
 
 	public void addInmueble(Inmueble inmueble) { this.inmuebles.add(inmueble); }
@@ -28,6 +32,16 @@ public class Inmobiliaria {
 	public double calcularSueldoAgente(int agente){
 		return (this.comisiones_agentes.get(agente) + this.agentes.get(agente).getSueldobasico());
 	}
+	
+	@Override
+	public void updateComisiones(float monto, Agente agente){
+		Double comision_actual = this.comisiones_agentes.get(agente);
+		Float monto_comision = monto*2/100;
+		
+		this.comisiones_agentes.put(agente.getNroagente(), (double) comision_actual + monto_comision);
+		
+	};
+	
 	
 	public ArrayList<Inmueble> buscarInmueble (ArrayList<String> filtros){
 		

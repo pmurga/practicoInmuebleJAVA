@@ -349,9 +349,9 @@ public class Inmueble {
 		return this.estado.name();
 	}
 	
-	public void vender(float precio, float comision_comprador , float comision_inmobiliaria) {
+	public void vender(float precio, float comision_comprador , float comision_inmobiliaria, Agente agente) {
 		
-		this.op = new Venta(precio , comision_comprador , comision_inmobiliaria);
+		this.op = new Venta(precio , comision_comprador , comision_inmobiliaria, agente);
 		
 	}
 	

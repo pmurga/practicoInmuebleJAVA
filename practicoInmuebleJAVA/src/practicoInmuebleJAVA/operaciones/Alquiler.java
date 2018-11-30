@@ -1,10 +1,14 @@
 package practicoInmuebleJAVA.operaciones;
 
+import practicoInmuebleJAVA.Agente;
+import practicoInmuebleJAVA.operaciones.sujeto.ConfirmarOpSujeto;
+
 public class Alquiler extends Operacion {
 	private boolean periodicidad_ajuste;
 	private float porcentaje_ajuste;
 	private int meses_adelanto;
 	private int meses_duracion;
+	private Agente agente;
 	
 	public Alquiler(float monto, float comision_inmobiliaria, boolean periodicidad_ajuste, float porcentaje_ajuste, int meses_adelanto, int meses_duracion) {
 		super(monto, comision_inmobiliaria);
@@ -60,5 +64,18 @@ public class Alquiler extends Operacion {
 	        System.out.printf("El importe a cobrar por la Inmobiliaria es :", montoinmo, "\n");
 	        System.out.printf("El importe a recibir por el Propietario es :", montoprop, "\n");
 	        System.out.printf("El importe a pagar por el Inquilino es :", montoinqui, "\n");
+	}
+	
+	@Override
+	public void setCompletada(boolean completada) {
+		super.setCompletada(completada);
+		
+		if (completada) { 
+			
+			ConfirmarOpSujeto eventoOp = new ConfirmarOpSujeto(monto, agente);
+			eventoOp.notifyObservers();
+			System.out.println("Transacción OK"); 
+		
+		}
 	}
 }
