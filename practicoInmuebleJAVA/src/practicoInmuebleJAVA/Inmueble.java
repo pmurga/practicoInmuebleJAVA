@@ -139,20 +139,61 @@ public class Inmueble {
 		this.op = operacion;
 	}
 
-	public Estado getEstado() {
-		return estado;
+	public String getEstado() {
+
+		if (estado == Estado.NO_DEFINIDO) {
+			return "El tipo de estado no está definido";
+		}
+		
+		return estado.name();
+		
 	}
 
-	public void setEstado(Estado estado) {
-		this.estado = estado;
+	public void setEstado(String estado) {//HABITADO_PROPIETARIO, DESHABITADO, EN_CONSTRUCCION, HABITADO_INQUILINO, NO_DEFINIDO
+		
+		if (estado == "HABITADO_PROPIETARIO"){
+			this.estado = Estado.HABITADO_PROPIETARIO;
+		}
+		else if (estado == "DESHABITADO"){
+			this.estado = Estado.DESHABITADO;
+		}
+		else if (estado == "EN_CONSTRUCCION"){
+			this.estado = Estado.EN_CONSTRUCCION;
+		}
+		else if (estado == "HABITADO_INQUILINO"){
+			this.estado = Estado.HABITADO_INQUILINO;
+		}
+		//el tipo de estado que se ingresó no es válido y por lo tanto no está definido
+		else {
+			this.estado = Estado.NO_DEFINIDO;
+		}
+		
 	}
 
-	public Luminosidad getLuminosidad() {
-		return luminosidad;
+	public String getLuminosidad() {
+		
+		if (luminosidad == Luminosidad.NO_DEFINIDO) {
+			return "El tipo de luminosidad no está definido";
+		}
+		
+		return luminosidad.name();
 	}
 
-	public void setLuminosidad(Luminosidad luminosidad) {
-		this.luminosidad = luminosidad;
+	public void setLuminosidad(String luminosidad) {//ALTA, MEDIA, BAJA, NO_DEFINIDO
+		
+		if (luminosidad == "ALTA"){
+			this.luminosidad = Luminosidad.ALTA;
+		}
+		else if (luminosidad == "MEDIA"){
+			this.luminosidad = Luminosidad.MEDIA;
+		}
+		else if (luminosidad == "BAJA"){
+			this.luminosidad = Luminosidad.BAJA;
+		}
+		//el tipo de luminosidad que se ingresó no es válido y por lo tanto no está definido
+		else {
+			this.luminosidad = Luminosidad.NO_DEFINIDO;
+		}
 	}
 	
 	public boolean isExterior() {
@@ -172,25 +213,74 @@ public class Inmueble {
 	}
 	
 
-	public Vigilancia getVigilancia() {
-		return vigilancia;
+	public String getVigilancia() {
+		
+		if (vigilancia == Vigilancia.NO_DEFINIDO) {
+			return "El tipo de vigilancia no está definido";
+		}
+		
+		return vigilancia.name();
+		
 	}
 
-	public void setVigilancia(Vigilancia vigilancia) {
-		this.vigilancia = vigilancia;
+	public void setVigilancia(String vigilancia) {//VEINTICUATRO_HS, DIURNO, NOCTURNO, NO_TIENE, NO_DEFINIDO
+		
+		if (vigilancia == "VEINTICUATRO_HS"){
+			this.vigilancia = Vigilancia.VEINTICUATRO_HS;
+		}
+		else if (vigilancia == "DIURNO"){
+			this.vigilancia = Vigilancia.DIURNO;
+		}
+		else if (vigilancia == "NOCTURNO"){
+			this.vigilancia = Vigilancia.NOCTURNO;
+		}
+		else if (vigilancia == "NO_TIENE"){
+			this.vigilancia = Vigilancia.NO_TIENE;
+		}
+		//el tipo de vigilancia que se ingresó no es válida y por lo tanto no está definida
+		else {
+			this.vigilancia = Vigilancia.NO_DEFINIDO;
+		}
+		
 	}
 
-	public EstadoConservacion getEstadoConservacion() {
-		return estadoDeConservacion;
+	public String getEstadoConservacion() {
+		
+		if (estadoDeConservacion == EstadoConservacion.NO_DEFINIDO) {
+			return "El tipo de estado de conservacion no está definido";
+		}
+		
+		return estadoDeConservacion.name();
+		
 	}
 
-	public void setEstadoConservacion(EstadoConservacion estConservacion) {
-		this.estadoDeConservacion = estConservacion;
+	public void setEstadoConservacion(String estConservacion) {//A_ESTRENAR, A_RECICLAR, IMPECABLE, BUENO, MUY_BUENO, NO_DEFINIDO
+	
+		if (estConservacion == "A_ESTRENAR"){
+			this.estadoDeConservacion = EstadoConservacion.A_ESTRENAR;
+		}
+		else if (estConservacion == "A_RECICLAR"){
+			this.estadoDeConservacion = EstadoConservacion.A_RECICLAR;
+		}
+		else if (estConservacion == "IMPECABLE"){
+			this.estadoDeConservacion = EstadoConservacion.IMPECABLE;
+		}
+		else if (estConservacion == "BUENO"){
+			this.estadoDeConservacion = EstadoConservacion.BUENO;
+		}
+		else if (estConservacion == "MUY_BUENO"){
+			this.estadoDeConservacion = EstadoConservacion.MUY_BUENO;
+		}
+		//el tipo de estado de conservación que se ingresó no es válido y por lo tanto no está definido
+		else {
+			this.estadoDeConservacion = EstadoConservacion.NO_DEFINIDO;
+		}
+		
 	}
 	
 	public String getTipoPropiedad() {
 		
-		if (tipoPropiedad == tipoPropiedad.NO_DEFINIDO) {
+		if (tipoPropiedad == TipoPropiedad.NO_DEFINIDO) {
 			return "El tipo de propiedad no está definido";
 		}
 		
@@ -237,7 +327,7 @@ public class Inmueble {
 		}
 		//el tipo de propiedad que se ingresó no es válida y por lo tanto no está definida
 		else {
-			this.tipoPropiedad = this.tipoPropiedad.NO_DEFINIDO;
+			this.tipoPropiedad = TipoPropiedad.NO_DEFINIDO;
 		}
 		
 	}
