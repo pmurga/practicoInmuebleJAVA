@@ -29,8 +29,8 @@ public class Inmobiliaria implements ConfirmarOpObserver {
 	public void addInmueble(Inmueble inmueble) { this.inmuebles.add(inmueble); }
 	
 	public void addAgente(Agente agente) {
-		this.comisiones_agentes.put(agente.getNroagente(), (double) 0);
-		this.agentes.put(agente.getNroagente(), agente);
+		this.comisiones_agentes.put(((persona)agente).getDni(), (double) 0);
+		this.agentes.put(((persona)agente).getDni(), agente);
 	}
 
 	public double calcularSueldoAgente(int agente){
@@ -42,7 +42,7 @@ public class Inmobiliaria implements ConfirmarOpObserver {
 		Double comision_actual = this.comisiones_agentes.get(agente);
 		Float monto_comision = monto*2/100;
 		
-		this.comisiones_agentes.put(agente.getNroagente(), (double) comision_actual + monto_comision);
+		this.comisiones_agentes.put(((persona)agente).getDni(), (double) comision_actual + monto_comision);
 		
 	};
 	
