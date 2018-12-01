@@ -6,6 +6,7 @@ import java.util.InputMismatchException;
 import java.util.Map;
 import java.util.Scanner;
 
+import practicoInmuebleJAVA.UI.Menues;
 import practicoInmuebleJAVA.operaciones.observer.ConfirmarOpObserver;
 
 public class Inmobiliaria implements ConfirmarOpObserver {
@@ -216,32 +217,106 @@ public class Inmobiliaria implements ConfirmarOpObserver {
 			   }
 			}while(repetir);
 		
-		System.out.println("Ingrese el email:");
+		System.out.println("Ingrese el email: ");
 		propietario.setEmail(entrada.nextLine());
 		
-		System.out.println("Ingrese la direccion:");
+		System.out.println("Ingrese la direccion: ");
 		propietario.setDireccion(entrada.nextLine());
 		
 		System.out.println("Ingrese el codigo postal:");
 		propietario.setCodpostal(entrada.nextLine());
 		
-		System.out.println("Ingrese la localidad:");
+		System.out.println("Ingrese la localidad: ");
 		propietario.setLocalidad(entrada.nextLine());
 		
-		System.out.println("Ingrese comentarios:");
+		System.out.println("Ingrese comentarios: ");
 		propietario.setComentarios(entrada.nextLine());
 					
 		return propietario;
 	}
 	
-	public Agente BuscarAgente (int dni) {
-		Agente ag = new Agente ();
-		for (Map.Entry<Integer, Agente> ags: this.agentes.entrySet()) {
+	// Metodo para buscar un agente y devolverlo.
+	public Agente BuscarAgente (int dni, Inmobiliaria im) {
+		Agente ag = null;
+		for (Map.Entry<Integer, Agente> ags: im.agentes.entrySet()) {
 			if (ags.getValue().getDni() == dni) {
 				ag = ags.getValue(); 
 			}
 		}
 		return ag;
 	}
-
+	
+	// Metodo y menu para agregar un imueble en tiempo de ejecucion.
+	
+	public void MenuAgregarInmueble (Inmobiliaria im) {
+		
+		Scanner entrada = new Scanner(System.in);
+		Agente ag = new Agente();
+		int valor2 = 0;
+		String calle = null;
+		int nroCalle = 0;
+		String tipoProp = null;
+		
+		System.out.println("Datos a ingresar: Propietario, Agente, nombre de calle, nro de calle y tipo de propiedad: \n");
+		
+		//Datos propietario: 
+		
+		System.out.println("Ingrese los datos del propietario: \n");
+		Propietario pr = new Propietario();
+		pr = im.ConstruirProp();
+		
+		//Dato de Agente:
+		
+		boolean repetir = true;
+		
+		do{
+		   System.out.println("Introduce el dni de agente para buscarlo: ");
+		   try {
+			   		valor2= entrada.nextInt();
+			   		repetir = false;
+			   		ag = im.BuscarAgente(valor2, im);
+					if (ag == null) {
+						repetir = true;
+						System.out.println("Error, No se encontro ningun agente con este dni");
+					}else {
+						repetir = false;
+					}
+			   	}catch(InputMismatchException e){
+			       entrada.nextLine();
+			       System.out.println("Error, has introducido mal el dni");
+			    }
+			}while(repetir);
+		
+		// Dato de nombre de calle:
+		
+		System.out.println("Ingrese el nombre de la calle");
+		calle = entrada.nextLine();
+		
+		// Dato de nro de calle:
+		
+		repetir = true;
+		
+		do{
+		   System.out.println("Ingrese el numero de la calle: ");
+		   try {
+			   		nroCalle = entrada.nextInt();
+			   		repetir = false;
+			   	}catch(InputMismatchException e){
+			       entrada.nextLine();
+			       System.out.println("Error, has introducido mal el numero de calle");
+			   }
+			}while(repetir);
+		
+		//dato de tipo de propiedad
+		
+		Menues m = new Menues();
+		tipoProp = m.filtro1();
+		
+		Inmueble in = new Inmueble(pr, ag, calle, nroCalle, tipoProp);
+		im.addInmueble(in);
+		System.out.println("Se agrego con exito una propiedad en la inmobiliaria");
+		
+	}
 }
+
+

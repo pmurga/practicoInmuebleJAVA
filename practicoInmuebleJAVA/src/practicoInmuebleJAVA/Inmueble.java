@@ -3,7 +3,7 @@ package practicoInmuebleJAVA;
 import practicoInmuebleJAVA.operaciones.*;
 
 public class Inmueble {
-	
+
 	
 	//NO_DEFINIDO permite inicializar los enums con un valor default para que no sean null en caso de
 	//no estar seteados. De esta forma al realizar una búsqueda de propiedades todos los inmuebles

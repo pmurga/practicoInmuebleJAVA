@@ -16,10 +16,10 @@ public class Menues {
 	private String luminosidad = null;
 	private String vigilancia = null;
 	private String estConserva = null;
-	
+		
 	// Desarrollo de todos los menues del main.
 	
-	public void Menu1 () {
+	public void Menu1 (Inmobiliaria im) {
 		
 		System.out.println("BIENVENIDOS A INMOBILIARIA CAECE 2018\n");
 		System.out.println("Elija su perfil:\n");
@@ -37,13 +37,13 @@ public class Menues {
 			valor = entrada.nextLine();
 				switch (valor) {
 					case "1":
-						 this.MenuInmob(); break;
+						 this.MenuInmob(im); break;
 					case "2":
-						this.MenuAgente();; break;
+						this.MenuAgente(im);; break;
 					case "3":
-						this.MenuProp(); break;
+						this.MenuProp(im); break;
 					case "4":
-						this.MenuCliente(); break;
+						this.MenuCliente(im); break;
 					case "5":
 						System.exit(0);
 					default:
@@ -56,7 +56,7 @@ public class Menues {
 	
 	// Menu para el inmobiliario.
 	
-	public void MenuInmob () {
+	public void MenuInmob (Inmobiliaria im) {
 		
 		entrada = new Scanner(System.in);
 		
@@ -73,7 +73,7 @@ public class Menues {
 			valor = entrada.nextLine();
 				switch (valor) {
 					case "1":
-						System.out.println ( "Metodo para agregar una propiedad..."); break;
+						 im.MenuAgregarInmueble(im);break;
 					case "2":
 						System.out.println ( "Metodo para eliminar una propiedad..."); break;
 					case "3":
@@ -83,7 +83,7 @@ public class Menues {
 					case "5":
 						System.out.println ( "Metodo para calcular salario de agente..."); break;
 					case "6":
-						Menu1();
+						Menu1(im);
 					default:
 						System.out.println("Ud. ingreso un nro erroneo, intentelo de nuevo");
 				}
@@ -93,7 +93,7 @@ public class Menues {
 	
 	//Menu para el propietario.
 	
-	public void MenuProp () {
+	public void MenuProp (Inmobiliaria im) {
 			
 		entrada = new Scanner(System.in);
 		
@@ -107,13 +107,13 @@ public class Menues {
 			valor = entrada.nextLine();
 			switch (valor) {
 				case "1":
-					System.out.println ( "Metodo para agregar una propiedad..."); break;
+					im.MenuAgregarInmueble(im); break;
 				case "2":
 					System.out.println ( "Metodo para eliminar una propiedad..."); break;
 				case "3":
 					System.out.println ( "Metodo para calcular comisiones..."); break;
 				case "4":
-					Menu1();
+					Menu1(im);
 				default:
 					System.out.println("Ud. ingreso un nro erroneo, intentelo de nuevo");
 			}
@@ -122,7 +122,7 @@ public class Menues {
 	
 	//Menu para el Agente.
 	
-	public void MenuAgente () {
+	public void MenuAgente (Inmobiliaria im) {
 		
 		entrada = new Scanner(System.in);
 						
@@ -143,14 +143,14 @@ public class Menues {
 				case "3":
 					System.out.println ( "Metodo para calcular todas las comisiones del mes..."); break;
 				case "4":
-					Menu1();
+					Menu1(im);
 				default:
 					System.out.println("Ud. ingreso un nro erroneo, intentelo de nuevo");
 			}
 		}
 	}
 	
-	public void MenuCliente () {
+	public void MenuCliente (Inmobiliaria im) {
 		
 		entrada = new Scanner(System.in);
 		ArrayList<String> f = new ArrayList<String>();
@@ -175,7 +175,7 @@ public class Menues {
 					System.out.println ( "Operacion...");
 					break;
 				case "2":
-					Menu1();
+					Menu1(im);
 				default:
 					System.out.println("Ud. ingreso un nro erroneo, intentelo de nuevo");
 			}
@@ -399,35 +399,7 @@ public class Menues {
 		}
 	}
 	
-	// Menu pedir datos para agregar propiedad
 	
-	public void MenuAgregarInmueble(ArrayList<Propietario> prs, ArrayList<Agente> ags) {
-		
-		entrada = new Scanner(System.in);
-		Inmueble in = new Inmueble();
-		Inmobiliaria im = new Inmobiliaria();
-		
-		System.out.println("Datos a ingresar: Propietario, Agente, nombre de calle, nro de calle y tipo de propiedad: \n");
-		System.out.println("Ingrese los datos del propietario: \n");
-		Propietario pr = new Propietario();
-		pr = im.ConstruirProp();
-		
-		boolean repetir = true;
-
-		do{
-		   System.out.println("Introduce el dni: ");
-		   try {
-			   		valor2= entrada.nextInt();
-			   		repetir = false;
-			   		pr.setDni(valor2);
-			   }catch(InputMismatchException e){
-			       entrada.nextLine();
-			       System.out.println("Error, has introducido mal el dni");
-			   }
-			}while(repetir);
-		
-		
-	}
 	
 	
 }

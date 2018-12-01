@@ -70,7 +70,7 @@ public class UserUI {
 	
 	
 	Menues menus = new Menues();
-	menus.Menu1();
+	menus.Menu1(caece);
 	
 
 	//Ejecucion de busqueda de popiedad con los filtros configurados.
