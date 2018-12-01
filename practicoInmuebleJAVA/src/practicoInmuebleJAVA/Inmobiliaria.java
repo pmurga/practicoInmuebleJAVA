@@ -178,7 +178,7 @@ public class Inmobiliaria implements ConfirmarOpObserver {
 		boolean repetir = true;
 
 		do{
-		   System.out.println("Introduce el dni: ");
+		   System.out.println("Ingrese el dni: ");
 		   try {
 			   		valor2= entrada.nextInt();
 			   		repetir = false;
@@ -192,7 +192,7 @@ public class Inmobiliaria implements ConfirmarOpObserver {
 		repetir = true;
 		
 		do{
-		   System.out.println("Introduce el telefono: ");
+		   System.out.println("Ingrese el telefono: ");
 		   try {
 			   		valor2= entrada.nextInt();
 			   		repetir = false;
@@ -206,7 +206,7 @@ public class Inmobiliaria implements ConfirmarOpObserver {
 		repetir = true;
 		
 		do{
-		   System.out.println("Introduce el telefono movil: ");
+		   System.out.println("Ingrese el telefono movil: ");
 		   try {
 			   		valor2= entrada.nextInt();
 			   		repetir = false;

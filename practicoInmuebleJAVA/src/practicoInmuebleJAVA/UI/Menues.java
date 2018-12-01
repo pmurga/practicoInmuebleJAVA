@@ -81,7 +81,25 @@ public class Menues {
 					case "4":
 						System.out.println ( "Metodo para eliminar un agente..."); break;
 					case "5":
-						System.out.println ( "Metodo para calcular salario de agente..."); break;
+						double sueldo = 0;
+						boolean repetir = true;
+
+						do{
+						   System.out.println("Ingrese el dni del agente: ");
+						   try {
+							   		valor2= entrada.nextInt();
+							   		repetir = false;
+							   	}catch(InputMismatchException e){
+							       entrada.nextLine();
+							       System.out.println("Error, has introducido mal el dni");
+							   }
+							}while(repetir);
+							
+							//Metodo para calcular el sueldo del agente.
+							sueldo = im.calcularSueldoAgente(valor2);							
+							System.out.println("El sueldo del agente de dni:" + valor2 + "es: " + sueldo);
+							
+							break;
 					case "6":
 						Menu1(im);
 					default:
