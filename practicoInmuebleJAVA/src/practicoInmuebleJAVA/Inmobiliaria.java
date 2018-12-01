@@ -2,6 +2,9 @@ package practicoInmuebleJAVA;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.InputMismatchException;
+import java.util.Map;
+import java.util.Scanner;
 
 import practicoInmuebleJAVA.operaciones.observer.ConfirmarOpObserver;
 
@@ -156,5 +159,89 @@ public class Inmobiliaria implements ConfirmarOpObserver {
 		}
 		
 	}
+	// Metodo que genera un propietario en tiempo de ejecucion.
 	
+	public Propietario ConstruirProp () {
+		
+		int valor2;
+		Scanner entrada = new Scanner(System.in);
+		Propietario propietario = new Propietario();
+		
+		System.out.println("Ingrese el nombre:");
+		propietario.setNombre(entrada.nextLine());
+		
+		System.out.println("Ingrese el apellido:");
+		propietario.setApellido(entrada.nextLine());
+		
+		
+		boolean repetir = true;
+
+		do{
+		   System.out.println("Introduce el dni: ");
+		   try {
+			   		valor2= entrada.nextInt();
+			   		repetir = false;
+			   		propietario.setDni(valor2);
+			   }catch(InputMismatchException e){
+			       entrada.nextLine();
+			       System.out.println("Error, has introducido mal el dni");
+			   }
+			}while(repetir);
+		
+		repetir = true;
+		
+		do{
+		   System.out.println("Introduce el telefono: ");
+		   try {
+			   		valor2= entrada.nextInt();
+			   		repetir = false;
+			   		propietario.setTelefono(valor2);
+			   }catch(InputMismatchException e){
+			       entrada.nextLine();
+			       System.out.println("Error, has introducido mal el telefono");
+			   }
+			}while(repetir);
+		
+		repetir = true;
+		
+		do{
+		   System.out.println("Introduce el telefono movil: ");
+		   try {
+			   		valor2= entrada.nextInt();
+			   		repetir = false;
+			   		propietario.setTelMovil(valor2);
+			   }catch(InputMismatchException e){
+			       entrada.nextLine();
+			       System.out.println("Error, has introducido mal el telefono movil");
+			   }
+			}while(repetir);
+		
+		System.out.println("Ingrese el email:");
+		propietario.setEmail(entrada.nextLine());
+		
+		System.out.println("Ingrese la direccion:");
+		propietario.setDireccion(entrada.nextLine());
+		
+		System.out.println("Ingrese el codigo postal:");
+		propietario.setCodpostal(entrada.nextLine());
+		
+		System.out.println("Ingrese la localidad:");
+		propietario.setLocalidad(entrada.nextLine());
+		
+		System.out.println("Ingrese comentarios:");
+		propietario.setComentarios(entrada.nextLine());
+					
+		return propietario;
+	}
+	
+	public Agente BuscarAgente (int dni) {
+		Agente ag = new Agente ();
+		for (Map.Entry<Integer, Agente> ags: this.agentes.entrySet()) {
+			if (ags.getValue().getDni() == dni) {
+				ag = ags.getValue(); 
+			}
+		}
+		return ag;
+	}
+
 }

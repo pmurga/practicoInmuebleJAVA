@@ -20,6 +20,10 @@ public class Agente extends Persona {
 		this.sueldobasico = sueldobasico;
 	}
 
+	public Agente() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getNroagente() {
 		return nroagente;
 	}

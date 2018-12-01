@@ -26,7 +26,11 @@ public class Persona {
 	 * @param localidad
 	 * @param comentarios
 	 */
-	public Persona(String nombre, String apellido, int dni, int telefono, int telMovil, String email, String direccion,
+	
+    public Persona() {
+    	
+    }
+    public Persona(String nombre, String apellido, int dni, int telefono, int telMovil, String email, String direccion,
 			String codpostal, String localidad, String comentarios) {
 		this.nombre = nombre;
 		this.apellido = apellido;

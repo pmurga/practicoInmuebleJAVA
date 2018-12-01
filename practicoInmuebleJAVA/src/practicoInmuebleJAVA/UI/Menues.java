@@ -1,48 +1,41 @@
 package practicoInmuebleJAVA.UI;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import practicoInmuebleJAVA.Inmobiliaria;
-import practicoInmuebleJAVA.MiExcepcion;
+import practicoInmuebleJAVA.*;
 
 public class Menues {
 	
 	private Scanner entrada;
-	private String perfil = null;
 	private String valor = null;
+	private int valor2;
 	private String tipoProp = null;
 	private String estado = null;
 	private String luminosidad = null;
 	private String vigilancia = null;
 	private String estConserva = null;
-
+	
 	// Desarrollo de todos los menues del main.
+	
 	public void Menu1 () {
 		
 		System.out.println("BIENVENIDOS A INMOBILIARIA CAECE 2018\n");
 		System.out.println("Elija su perfil:\n");
+		entrada = new Scanner(System.in);
 		
-			entrada = new Scanner(System.in);
-			
-			
-			ArrayList<String> numeros = new ArrayList<String>();
-			String[] nros = {"1", "2", "3", "4"};
-			
-			for (String o: nros) {
-				numeros.add(o);
-			}
+		while (valor != "100"){
 			
 			System.out.println("PERFIL:\n");   
 			System.out.println ( "1 - INMOBILIARIO");
 			System.out.println ( "2 - AGENTE");
 			System.out.println ( "3 - PROPIETARIO");
 			System.out.println ( "4 - POSIBLE CLIENTE");
-				valor = entrada.nextLine();
+			System.out.println ( "5 - SALIR");
 				
-			try {	
-				if (numeros.contains(valor)) {
-					switch (valor) {
+			valor = entrada.nextLine();
+				switch (valor) {
 					case "1":
 						 this.MenuInmob(); break;
 					case "2":
@@ -51,59 +44,49 @@ public class Menues {
 						this.MenuProp(); break;
 					case "4":
 						this.MenuCliente(); break;
+					case "5":
+						System.exit(0);
+					default:
+						System.out.println("Ud. ingreso un dato erroneo, intentelo de nuevo"); break;
 					}
-				}else {
-					throw new MiExcepcion ("Se ingreso un nro erroneo, elija el correspondiente");
-					
-				}
-			}catch(MiExcepcion e) {
-				System.out.println(e.getMessage());
-				Menu1();
-			}
+								
 		}
+			
+	}
 	
 	// Menu para el inmobiliario.
 	
 	public void MenuInmob () {
 		
 		entrada = new Scanner(System.in);
-				
-		ArrayList<String> numeros = new ArrayList<String>();
-		String[] nros = {"1", "2", "3", "4", "5"};
 		
-		for (String o: nros) {
-			numeros.add(o);
-		}
-		
-		System.out.println("INMOBILIARIO:\n");   
-		System.out.println ( "1 - AGREGAR UNA PROPIEDAD");
-		System.out.println ( "2 - ELIMINAR UNA PROPIEDAD");
-		System.out.println ( "3 - AGREGAR UN AGENTE");
-		System.out.println ( "4 - ELIMINAR UN AGENTE");
-		System.out.println ( "5 - CALCULAR SALARIOS DE AGENTE");
-			valor = entrada.nextLine();
+		while (valor != "100") {
 			
-		try {	
-			if (numeros.contains(valor)) {
+			System.out.println("INMOBILIARIO:\n");   
+			System.out.println ( "1 - AGREGAR UNA PROPIEDAD");
+			System.out.println ( "2 - ELIMINAR UNA PROPIEDAD");
+			System.out.println ( "3 - AGREGAR UN AGENTE");
+			System.out.println ( "4 - ELIMINAR UN AGENTE");
+			System.out.println ( "5 - CALCULAR SALARIOS DE AGENTE");
+			System.out.println ( "6 - MENU ANTERIOR");
+						
+			valor = entrada.nextLine();
 				switch (valor) {
-				case "1":
-					System.out.println ( "Metodo para agregar una propiedad..."); break;
-				case "2":
-					System.out.println ( "Metodo para eliminar una propiedad..."); break;
-				case "3":
-					System.out.println ( "Metodo para agregar un agente..."); break;
-				case "4":
-					System.out.println ( "Metodo para eliminar un agente..."); break;
-				case "5":
-					System.out.println ( "Metodo para calcular salario de agente..."); break;
+					case "1":
+						System.out.println ( "Metodo para agregar una propiedad..."); break;
+					case "2":
+						System.out.println ( "Metodo para eliminar una propiedad..."); break;
+					case "3":
+						System.out.println ( "Metodo para agregar un agente..."); break;
+					case "4":
+						System.out.println ( "Metodo para eliminar un agente..."); break;
+					case "5":
+						System.out.println ( "Metodo para calcular salario de agente..."); break;
+					case "6":
+						Menu1();
+					default:
+						System.out.println("Ud. ingreso un nro erroneo, intentelo de nuevo");
 				}
-			}else {
-				throw new MiExcepcion ("Se ingreso un nro erroneo, elija el correspondiente");
-				
-			}
-		}catch(MiExcepcion e) {
-			System.out.println(e.getMessage());
-			MenuInmob();
 		}
 	}
 	
@@ -113,37 +96,27 @@ public class Menues {
 	public void MenuProp () {
 			
 		entrada = new Scanner(System.in);
-						
-		ArrayList<String> numeros = new ArrayList<String>();
-		String[] nros = {"1", "2", "3"};
+		
+		while (valor != "100") {
+			System.out.println("PROPIETARIO:\n");   
+			System.out.println ( "1 - AGREGAR UNA PROPIEDAD");
+			System.out.println ( "2 - ELIMINAR UNA PROPIEDAD");
+			System.out.println ( "3 - CALCULAR COMISIONES");
+			System.out.println ( "4 - MENU ANTERIOR");
 			
-		for (String o: nros) {
-			numeros.add(o);
-		}
-			
-		System.out.println("PROPIETARIO:\n");   
-		System.out.println ( "1 - AGREGAR UNA PROPIEDAD");
-		System.out.println ( "2 - ELIMINAR UNA PROPIEDAD");
-		System.out.println ( "3 - CALCULAR COMISIONES");
 			valor = entrada.nextLine();
-				
-		try {	
-			if (numeros.contains(valor)) {
-				switch (valor) {
+			switch (valor) {
 				case "1":
 					System.out.println ( "Metodo para agregar una propiedad..."); break;
 				case "2":
 					System.out.println ( "Metodo para eliminar una propiedad..."); break;
 				case "3":
 					System.out.println ( "Metodo para calcular comisiones..."); break;
-				}
-			}else {
-				throw new MiExcepcion ("Se ingreso un nro erroneo, elija el correspondiente");
-				
+				case "4":
+					Menu1();
+				default:
+					System.out.println("Ud. ingreso un nro erroneo, intentelo de nuevo");
 			}
-		}catch(MiExcepcion e) {
-			System.out.println(e.getMessage());
-			MenuProp();
 		}
 	}
 	
@@ -153,111 +126,88 @@ public class Menues {
 		
 		entrada = new Scanner(System.in);
 						
-		ArrayList<String> numeros = new ArrayList<String>();
-		String[] nros = {"1", "2", "3"};
+		while (valor != "100") {
 			
-		for (String o: nros) {
-			numeros.add(o);
-		}
-			
-		System.out.println("AGENTE:\n");   
-		System.out.println ( "1 - CALCULAR SALARIO");
-		System.out.println ( "2 - CALCULAR COMISION");
-		System.out.println ( "3 - CALCULAR TODAS LAS COMISIONES DEL MES");
-			valor = entrada.nextLine();
+			System.out.println("AGENTE:\n");   
+			System.out.println ( "1 - CALCULAR SALARIO");
+			System.out.println ( "2 - CALCULAR COMISION");
+			System.out.println ( "3 - CALCULAR TODAS LAS COMISIONES DEL MES");
+			System.out.println ( "4 - MENU ANTERIOR");
 				
-		try {	
-			if (numeros.contains(valor)) {
-				switch (valor) {
+			valor = entrada.nextLine();
+			switch (valor) {
 				case "1":
 					System.out.println ( "Metodo para calcular salario..."); break;
 				case "2":
 					System.out.println ( "Metodo para calcular comision de una operacion..."); break;
 				case "3":
 					System.out.println ( "Metodo para calcular todas las comisiones del mes..."); break;
-				}
-			}else {
-				throw new MiExcepcion ("Se ingreso un nro erroneo, elija el correspondiente");
-				
+				case "4":
+					Menu1();
+				default:
+					System.out.println("Ud. ingreso un nro erroneo, intentelo de nuevo");
 			}
-		}catch(MiExcepcion e) {
-			System.out.println(e.getMessage());
-			MenuProp();
 		}
 	}
 	
 	public void MenuCliente () {
 		
 		entrada = new Scanner(System.in);
+		ArrayList<String> f = new ArrayList<String>();
 		
-		ArrayList<String> f = new ArrayList<String>();				
-		ArrayList<String> numeros = new ArrayList<String>();
-		String[] nros = {"1", "2", "3"};
+		
+		while (valor != "100") {
 			
-		for (String o: nros) {
-			numeros.add(o);
-		}
-		
-		
-		System.out.println("POSIBLE CLIENTE:\n");   
-		System.out.println ( "1 - BUSQUEDA DE PROPIEDAD");
-				valor = entrada.nextLine();
-		
-		System.out.println("Que tipo de propiedad esta buscando?:\n");
-		System.out.println("Filtre por estas 5 principales caracteristicas:\n");
-		System.out.println("Las opciones estan numeradas, por favor elija el número de la opcion que desee\n");		
-		
-		try {	
-			if (numeros.contains(valor)) {
-				switch (valor) {
+			System.out.println("POSIBLE CLIENTE:\n");   
+			System.out.println ( "1 - BUSQUEDA DE PROPIEDAD");
+			System.out.println ( "2 - MENU ANTERIOR");
+			valor = entrada.nextLine();
+			
+			System.out.println("Que titpo de propiedad esta buscando?:\n");
+			System.out.println("Filtre por estas 5 principales caracteristicas:\n");
+			System.out.println("Las opciones estan numeradas, por favor elija el número de la opcion que desee\n");		
+			
+			switch (valor) {
 				case "1":
 					f = this.Filtros();
 					this.MostrarProp(f);
 					System.out.println ( "Menu para tipo de operacion...");
 					System.out.println ( "Operacion...");
 					break;
-				}
-			}else {
-				throw new MiExcepcion ("Se ingreso un nro erroneo, elija el n�mero correspondiente");
-				
+				case "2":
+					Menu1();
+				default:
+					System.out.println("Ud. ingreso un nro erroneo, intentelo de nuevo");
 			}
-		}catch(MiExcepcion e) {
-			System.out.println(e.getMessage());
-			MenuProp();
 		}
+					
 	}
 	
-public String filtro1() {
+	// Filtro para eleccion de tipo de propiedad.
+	
+	public String filtro1() {
 		
 		entrada = new Scanner(System.in);
-				
-		ArrayList<String> numeros = new ArrayList<String>();
-		String[] nros = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"};
 		
-		for (String o: nros) {
-			numeros.add(o);
-		}
-		
-		System.out.println("A - Tipo de propiedad:\n");   
-		System.out.println ( "1 - ESTUDIO");
-		System.out.println ( "2 - LOFT");
-		System.out.println ( "3 - DEPARTAMENTO");
-		System.out.println ( "4 - PISO");
-		System.out.println ( "5 - DUPLEX");
-		System.out.println ( "6 - TRIPLEX");
-		System.out.println ( "7 - CHALET");
-		System.out.println ( "8 - CASA");
-		System.out.println ( "9 - LOCAL");
-		System.out.println ( "10 - COCHERA");
-		System.out.println ( "11 - OFICINA");
-		System.out.println ( "12 - EDIFICIO");
-		System.out.println ( "13 - TODAS");
+		while (valor != "100") {
 			
-		valor = entrada.nextLine();
-		
-		try {
-			if (numeros.contains(valor)) {
-				switch (valor) {
+			System.out.println("A - Tipo de propiedad:\n");   
+			System.out.println ( "1 - ESTUDIO");
+			System.out.println ( "2 - LOFT");
+			System.out.println ( "3 - DEPARTAMENTO");
+			System.out.println ( "4 - PISO");
+			System.out.println ( "5 - DUPLEX");
+			System.out.println ( "6 - TRIPLEX");
+			System.out.println ( "7 - CHALET");
+			System.out.println ( "8 - CASA");
+			System.out.println ( "9 - LOCAL");
+			System.out.println ( "10 - COCHERA");
+			System.out.println ( "11 - OFICINA");
+			System.out.println ( "12 - EDIFICIO");
+			System.out.println ( "13 - TODAS");
+				
+			valor = entrada.nextLine();
+			switch (valor) {
 				case "1":
 					tipoProp = "ESTUDIO"; break;
 				case "2":
@@ -284,41 +234,28 @@ public String filtro1() {
 					tipoProp = "EDIFICIO"; break;
 				case "13":
 					tipoProp = "VACIO"; break;
-				}
-			}else {
-				throw new MiExcepcion ("Se ingreso un nro erroneo, elija el correspondiente");
-				
+				default:
+					System.out.println("Ud. ingreso un nro erroneo, intentelo de nuevo");
 			}
-		}catch(MiExcepcion e) {
-			System.out.println(e.getMessage());
-			tipoProp = filtro1();
 		}
-		
 		return tipoProp;
 	}
 	
 	public String filtro2() {
 		
 		entrada = new Scanner(System.in);
-				
-		ArrayList<String> numeros = new ArrayList<String>();
-		String[] nros = {"1", "2", "3", "4", "5"};
 		
-		for (String o: nros) {
-			numeros.add(o);
-		}
-		
-		System.out.println("B - Estado:\n");   
-		System.out.println ( "1 - HABITADO POR PROPIETARIO");
-		System.out.println ( "2 - HABITADO POR INQUILINO");
-		System.out.println ( "3 - DESHABITADO");
-		System.out.println ( "4 - EN CONSTRUCCION");
-		System.out.println ( "5 - TODAS");
-			valor = entrada.nextLine();
+		while (valor != "100") {
 			
-		try {	
-			if (numeros.contains(valor)) {
-				switch (valor) {
+			System.out.println("B - Estado:\n");   
+			System.out.println ( "1 - HABITADO POR PROPIETARIO");
+			System.out.println ( "2 - HABITADO POR INQUILINO");
+			System.out.println ( "3 - DESHABITADO");
+			System.out.println ( "4 - EN CONSTRUCCION");
+			System.out.println ( "5 - TODAS");
+						
+			valor = entrada.nextLine();
+			switch (valor) {
 				case "1":
 					estado = "HABITADO_PROPIETARIO"; break;
 				case "2":
@@ -329,15 +266,9 @@ public String filtro1() {
 					estado = "EN_CONTRUCCION"; break;
 				case "5":
 					estado = "VACIO"; break;
-				}
-			}else {
-				
-				throw new MiExcepcion ("Se ingreso un nro erroneo, elija el correspondiente");
-				
+				default:
+					System.out.println("Ud. ingreso un nro erroneo, intentelo de nuevo");
 			}
-		}catch(MiExcepcion e) {
-			System.out.println(e.getMessage());
-			estado = filtro2();
 		}
 		return estado;
 	}
@@ -346,23 +277,16 @@ public String filtro1() {
 		
 		entrada = new Scanner(System.in);
 		
-		ArrayList<String> numeros = new ArrayList<String>();
-		String[] nros = {"1", "2", "3", "4"};
-		
-		for (String o: nros) {
-			numeros.add(o);
-		}
-		
-		System.out.println("C - Luminosidad:\n");   
-		System.out.println ( "1 - ALTA");
-		System.out.println ( "2 - MEDIA");
-		System.out.println ( "3 - BAJA");
-		System.out.println ( "4 - TODAS");
-			valor = entrada.nextLine();
+		while (valor != "100") {
 			
-		try {
-			if (numeros.contains(valor)) {
-				switch (valor) {
+			System.out.println("C - Luminosidad:\n");   
+			System.out.println ( "1 - ALTA");
+			System.out.println ( "2 - MEDIA");
+			System.out.println ( "3 - BAJA");
+			System.out.println ( "4 - TODAS");
+				
+			valor = entrada.nextLine();
+			switch (valor) {
 				case "1":
 					luminosidad = "ALTA"; break;
 				case "2":
@@ -371,41 +295,28 @@ public String filtro1() {
 					luminosidad = "BAJA"; break;
 				case "4":
 					luminosidad = "VACIO"; break;
-				}
-			}else {
-				throw new MiExcepcion ("Se ingreso un nro erroneo, elija el correspondiente");
+				default:
+					System.out.println("Ud. ingreso un nro erroneo, intentelo de nuevo");
 			}
-		
-		}catch(MiExcepcion e) {
-			System.out.println(e.getMessage());
-			luminosidad = filtro3();
 		}
-		
 		return luminosidad;
 	}
 	
-public String filtro4() {
+	public String filtro4() {
 		
 		entrada = new Scanner(System.in);
 				
-		ArrayList<String> numeros = new ArrayList<String>();
-		String[] nros = {"1", "2", "3", "4", "5"};
-		
-		for (String o: nros) {
-			numeros.add(o);
-		}
-		
-		System.out.println("D - Vigilancia:\n");   
-		System.out.println ( "1 - 24 HS");
-		System.out.println ( "2 - DIURNO");
-		System.out.println ( "3 - NOCTURNO");
-		System.out.println ( "4 - SIN VIGILANCIA");
-		System.out.println ( "5 - TODAS");
+		while (valor != "100") {
+			
+			System.out.println("D - Vigilancia:\n");   
+			System.out.println ( "1 - 24 HS");
+			System.out.println ( "2 - DIURNO");
+			System.out.println ( "3 - NOCTURNO");
+			System.out.println ( "4 - SIN VIGILANCIA");
+			System.out.println ( "5 - TODAS");
+				
 			valor = entrada.nextLine();
-		
-		try {
-			if (numeros.contains(valor)) {
-				switch (valor) {
+			switch (valor) {
 				case "1":
 					vigilancia = "VEINTICUATRO_HS"; break;
 				case "2":
@@ -416,66 +327,47 @@ public String filtro4() {
 					vigilancia = "NO_TIENE"; break;	
 				case "5":
 					vigilancia = "VACIO"; break;	
-				}	
-			}else {
-				throw new MiExcepcion ("Se ingreso un nro erroneo, elija el correspondiente");
-				
+				default:
+					System.out.println("Ud. ingreso un nro erroneo, intentelo de nuevo");
 			}
-		}catch(MiExcepcion e) {
-			System.out.println(e.getMessage());
-			vigilancia = filtro4();
 		}
-		
 		return vigilancia;
 	}
 	
-public String filtro5() {
+	public String filtro5() {
 	
-	entrada = new Scanner(System.in);
-		
-	ArrayList<String> numeros = new ArrayList<String>();
-	String[] nros = {"1", "2", "3", "4", "5", "6"};
-	
-	for (String o: nros) {
-		numeros.add(o);
-	}
-	
-	System.out.println("E - Estado de conservacion:\n");   
-	System.out.println ( "1 - A ESTRENAR");
-	System.out.println ( "2 - A RECICLAR");
-	System.out.println ( "3 - IMPECABLE");
-	System.out.println ( "4 - MUY BUENO");
-	System.out.println ( "5 - BUENO");
-	System.out.println ( "6 - TODAS");
-		valor = entrada.nextLine();
-	
-	try {
-		if (numeros.contains(valor)) {
-			switch (valor) {
-			case "1":
-				estConserva = "A_ESTRENAR"; break;
-			case "2":
-				estConserva = "A_RECICLAR"; break;
-			case "3":
-				estConserva = "IMPECABLE"; break;				
-			case "4":
-				estConserva = "MUY_BUENO"; break;				
-			case "5":
-				estConserva = "BUENO"; break;
-			case "6":
-				estConserva = "VACIO"; break;
-			}
-		}else {
-			throw new MiExcepcion ("Se ingreso un nro erroneo, elija el correspondiente");
+		entrada = new Scanner(System.in);
 			
-		}
-	}catch(MiExcepcion e) {
-		System.out.println(e.getMessage());
-		estConserva = filtro5();
+		while (valor != "100") {
+			
+			System.out.println("E - Estado de conservacion:\n");   
+			System.out.println ( "1 - A ESTRENAR");
+			System.out.println ( "2 - A RECICLAR");
+			System.out.println ( "3 - IMPECABLE");
+			System.out.println ( "4 - MUY BUENO");
+			System.out.println ( "5 - BUENO");
+			System.out.println ( "6 - TODAS");
+				
+			valor = entrada.nextLine();
+			switch (valor) {
+				case "1":
+					estConserva = "A_ESTRENAR"; break;
+				case "2":
+					estConserva = "A_RECICLAR"; break;
+				case "3":
+					estConserva = "IMPECABLE"; break;				
+				case "4":
+					estConserva = "MUY_BUENO"; break;				
+				case "5":
+					estConserva = "BUENO"; break;
+				case "6":
+					estConserva = "VACIO"; break;
+				default:
+					System.out.println("Ud. ingreso un nro erroneo, intentelo de nuevo");
+			}
+		}	
+		return estConserva;
 	}
-	
-	return estConserva;
-}
 	
 	public ArrayList<String> Filtros () {
 		
@@ -506,6 +398,39 @@ public String filtro5() {
 			System.out.println(i);
 		}
 	}
+	
+	// Menu pedir datos para agregar propiedad
+	
+	public void MenuAgregarInmueble(ArrayList<Propietario> prs, ArrayList<Agente> ags) {
+		
+		entrada = new Scanner(System.in);
+		Inmueble in = new Inmueble();
+		Inmobiliaria im = new Inmobiliaria();
+		
+		System.out.println("Datos a ingresar: Propietario, Agente, nombre de calle, nro de calle y tipo de propiedad: \n");
+		System.out.println("Ingrese los datos del propietario: \n");
+		Propietario pr = new Propietario();
+		pr = im.ConstruirProp();
+		
+		boolean repetir = true;
+
+		do{
+		   System.out.println("Introduce el dni: ");
+		   try {
+			   		valor2= entrada.nextInt();
+			   		repetir = false;
+			   		pr.setDni(valor2);
+			   }catch(InputMismatchException e){
+			       entrada.nextLine();
+			       System.out.println("Error, has introducido mal el dni");
+			   }
+			}while(repetir);
+		
+		
+	}
+	
+	
 }
+
 	
 
