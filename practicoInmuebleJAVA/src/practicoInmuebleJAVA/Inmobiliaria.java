@@ -165,6 +165,7 @@ public class Inmobiliaria implements ConfirmarOpObserver {
 	public Propietario ConstruirProp () {
 		
 		int valor2;
+		boolean repetir = true;
 		Scanner entrada = new Scanner(System.in);
 		Propietario propietario = new Propietario();
 		
@@ -174,9 +175,6 @@ public class Inmobiliaria implements ConfirmarOpObserver {
 		System.out.println("Ingrese el apellido:");
 		propietario.setApellido(entrada.nextLine());
 		
-		
-		boolean repetir = true;
-
 		do{
 		   System.out.println("Ingrese el dni: ");
 		   try {
@@ -238,11 +236,7 @@ public class Inmobiliaria implements ConfirmarOpObserver {
 	// Metodo para buscar un agente y devolverlo.
 	public Agente BuscarAgente (int dni, Inmobiliaria im) {
 		Agente ag = null;
-		for (Map.Entry<Integer, Agente> ags: im.agentes.entrySet()) {
-			if (ags.getValue().getDni() == dni) {
-				ag = ags.getValue(); 
-			}
-		}
+		ag = im.agentes.get(dni);
 		return ag;
 	}
 	

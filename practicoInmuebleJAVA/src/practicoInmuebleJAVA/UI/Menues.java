@@ -30,9 +30,8 @@ public class Menues {
 			System.out.println("PERFIL:\n");   
 			System.out.println ( "1 - INMOBILIARIO");
 			System.out.println ( "2 - AGENTE");
-			System.out.println ( "3 - PROPIETARIO");
-			System.out.println ( "4 - POSIBLE CLIENTE");
-			System.out.println ( "5 - SALIR");
+			System.out.println ( "3 - POSIBLE CLIENTE");
+			System.out.println ( "4 - SALIR");
 				
 			valor = entrada.nextLine();
 				switch (valor) {
@@ -41,10 +40,8 @@ public class Menues {
 					case "2":
 						this.MenuAgente(im);; break;
 					case "3":
-						this.MenuProp(im); break;
-					case "4":
 						this.MenuCliente(im); break;
-					case "5":
+					case "4":
 						System.exit(0);
 					default:
 						System.out.println("Ud. ingreso un dato erroneo, intentelo de nuevo"); break;
@@ -108,36 +105,6 @@ public class Menues {
 		}
 	}
 	
-	
-	//Menu para el propietario.
-	
-	public void MenuProp (Inmobiliaria im) {
-			
-		entrada = new Scanner(System.in);
-		
-		while (valor != "100") {
-			System.out.println("PROPIETARIO:\n");   
-			System.out.println ( "1 - AGREGAR UNA PROPIEDAD");
-			System.out.println ( "2 - ELIMINAR UNA PROPIEDAD");
-			System.out.println ( "3 - CALCULAR COMISIONES");
-			System.out.println ( "4 - MENU ANTERIOR");
-			
-			valor = entrada.nextLine();
-			switch (valor) {
-				case "1":
-					im.MenuAgregarInmueble(im); break;
-				case "2":
-					System.out.println ( "Metodo para eliminar una propiedad..."); break;
-				case "3":
-					System.out.println ( "Metodo para calcular comisiones..."); break;
-				case "4":
-					Menu1(im);
-				default:
-					System.out.println("Ud. ingreso un nro erroneo, intentelo de nuevo");
-			}
-		}
-	}
-	
 	//Menu para el Agente.
 	
 	public void MenuAgente (Inmobiliaria im) {
@@ -155,7 +122,25 @@ public class Menues {
 			valor = entrada.nextLine();
 			switch (valor) {
 				case "1":
-					System.out.println ( "Metodo para calcular salario..."); break;
+					double sueldo = 0;
+					boolean repetir = true;
+
+					do{
+					   System.out.println("Ingrese el dni del agente: ");
+					   try {
+						   		valor2= entrada.nextInt();
+						   		repetir = false;
+						   	}catch(InputMismatchException e){
+						       entrada.nextLine();
+						       System.out.println("Error, has introducido mal el dni");
+						   }
+						}while(repetir);
+						
+						//Metodo para calcular el sueldo del agente.
+						sueldo = im.calcularSueldoAgente(valor2);							
+						System.out.println("El sueldo del agente de dni:" + valor2 + "es: " + sueldo);
+						
+						break;
 				case "2":
 					System.out.println ( "Metodo para calcular comision de una operacion..."); break;
 				case "3":
