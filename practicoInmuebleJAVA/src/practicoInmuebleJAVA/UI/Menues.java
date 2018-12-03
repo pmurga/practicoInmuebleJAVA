@@ -25,39 +25,34 @@ public class Menues {
 		System.out.println("Elija su perfil:\n");
 		entrada = new Scanner(System.in);
 		
-		while (valor != "100"){
+		while (!valor.equals(3)){
 			
 			System.out.println("PERFIL:\n");   
 			System.out.println ( "1 - INMOBILIARIO");
-			System.out.println ( "2 - AGENTE");
-			System.out.println ( "3 - POSIBLE CLIENTE");
-			System.out.println ( "4 - SALIR");
+			System.out.println ( "2 - POSIBLE CLIENTE");
+			System.out.println ( "3 - SALIR");
 				
 			valor = entrada.nextLine();
 				switch (valor) {
 					case "1":
 						 this.MenuInmob(im); break;
 					case "2":
-						this.MenuAgente(im);; break;
-					case "3":
 						this.MenuCliente(im); break;
-					case "4":
-						System.exit(0);
+					case "3":
+						break;
 					default:
 						System.out.println("Ud. ingreso un dato erroneo, intentelo de nuevo"); break;
 					}
-								
 		}
-			
 	}
-	
+
 	// Menu para el inmobiliario.
 	
 	public void MenuInmob (Inmobiliaria im) {
 		
 		entrada = new Scanner(System.in);
 		
-		while (valor != "100") {
+		while (!valor.equals(6)) {
 			
 			System.out.println("INMOBILIARIO:\n");   
 			System.out.println ( "1 - AGREGAR UNA PROPIEDAD");
@@ -80,76 +75,21 @@ public class Menues {
 					case "5":
 						double sueldo = 0;
 						boolean repetir = true;
-
-						do{
-						   System.out.println("Ingrese el dni del agente: ");
-						   try {
-							   		valor2= entrada.nextInt();
-							   		repetir = false;
-							   	}catch(InputMismatchException e){
-							       entrada.nextLine();
-							       System.out.println("Error, has introducido mal el dni");
-							   }
-							}while(repetir);
-							
-							//Metodo para calcular el sueldo del agente.
-							sueldo = im.calcularSueldoAgente(valor2);							
-							System.out.println("El sueldo del agente de dni:" + valor2 + "es: " + sueldo);
-							
-							break;
-					case "6":
-						Menu1(im);
-					default:
-						System.out.println("Ud. ingreso un nro erroneo, intentelo de nuevo");
-				}
-		}
-	}
-	
-	//Menu para el Agente.
-	
-	public void MenuAgente (Inmobiliaria im) {
-		
-		entrada = new Scanner(System.in);
-						
-		while (valor != "100") {
-			
-			System.out.println("AGENTE:\n");   
-			System.out.println ( "1 - CALCULAR SALARIO");
-			System.out.println ( "2 - CALCULAR COMISION");
-			System.out.println ( "3 - CALCULAR TODAS LAS COMISIONES DEL MES");
-			System.out.println ( "4 - MENU ANTERIOR");
-				
-			valor = entrada.nextLine();
-			switch (valor) {
-				case "1":
-					double sueldo = 0;
-					boolean repetir = true;
-
-					do{
-					   System.out.println("Ingrese el dni del agente: ");
-					   try {
-						   		valor2= entrada.nextInt();
-						   		repetir = false;
-						   	}catch(InputMismatchException e){
-						       entrada.nextLine();
-						       System.out.println("Error, has introducido mal el dni");
-						   }
-						}while(repetir);
-						
+   						System.out.println("Ingrese el dni del agente: ");
+						try {
+							valor2= entrada.nextInt();
+						}catch(InputMismatchException e){
+							System.out.println("Error, has introducido mal el dni");
+						}
 						//Metodo para calcular el sueldo del agente.
 						sueldo = im.calcularSueldoAgente(valor2);							
 						System.out.println("El sueldo del agente de dni:" + valor2 + "es: " + sueldo);
-						
 						break;
-				case "2":
-					System.out.println ( "Metodo para calcular comision de una operacion..."); break;
-				case "3":
-					System.out.println ( "Metodo para calcular todas las comisiones del mes..."); break;
-				case "4":
-					Menu1(im);
-				default:
-					System.out.println("Ud. ingreso un nro erroneo, intentelo de nuevo");
-			}
+					case "6":
+						break;
+					default:
+						System.out.println("Ud. ingreso un nro erroneo, intentelo de nuevo");
+				}
 		}
 	}
 	
@@ -158,17 +98,12 @@ public class Menues {
 		entrada = new Scanner(System.in);
 		ArrayList<String> f = new ArrayList<String>();
 		
-		
-		while (valor != "100") {
+		while (!valor.equals(2)) {
 			
 			System.out.println("POSIBLE CLIENTE:\n");   
 			System.out.println ( "1 - BUSQUEDA DE PROPIEDAD");
 			System.out.println ( "2 - MENU ANTERIOR");
 			valor = entrada.nextLine();
-			
-			System.out.println("Que titpo de propiedad esta buscando?:\n");
-			System.out.println("Filtre por estas 5 principales caracteristicas:\n");
-			System.out.println("Las opciones estan numeradas, por favor elija el número de la opcion que desee\n");		
 			
 			switch (valor) {
 				case "1":
@@ -178,7 +113,7 @@ public class Menues {
 					System.out.println ( "Operacion...");
 					break;
 				case "2":
-					Menu1(im);
+					break;
 				default:
 					System.out.println("Ud. ingreso un nro erroneo, intentelo de nuevo");
 			}
@@ -192,7 +127,7 @@ public class Menues {
 		
 		entrada = new Scanner(System.in);
 		
-		while (valor != "100") {
+		while (true) {
 			
 			System.out.println("A - Tipo de propiedad:\n");   
 			System.out.println ( "1 - ESTUDIO");
@@ -248,7 +183,7 @@ public class Menues {
 		
 		entrada = new Scanner(System.in);
 		
-		while (valor != "100") {
+		while (true) {
 			
 			System.out.println("B - Estado:\n");   
 			System.out.println ( "1 - HABITADO POR PROPIETARIO");
@@ -280,7 +215,7 @@ public class Menues {
 		
 		entrada = new Scanner(System.in);
 		
-		while (valor != "100") {
+		while (true) {
 			
 			System.out.println("C - Luminosidad:\n");   
 			System.out.println ( "1 - ALTA");
@@ -309,7 +244,7 @@ public class Menues {
 		
 		entrada = new Scanner(System.in);
 				
-		while (valor != "100") {
+		while (true) {
 			
 			System.out.println("D - Vigilancia:\n");   
 			System.out.println ( "1 - 24 HS");
@@ -341,7 +276,7 @@ public class Menues {
 	
 		entrada = new Scanner(System.in);
 			
-		while (valor != "100") {
+		while (true) {
 			
 			System.out.println("E - Estado de conservacion:\n");   
 			System.out.println ( "1 - A ESTRENAR");
