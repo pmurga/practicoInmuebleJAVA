@@ -80,9 +80,19 @@ public class Inmueble {
 		this.vigilancia = Vigilancia.NO_DEFINIDO;
 		this.estadoDeConservacion = EstadoConservacion.NO_DEFINIDO;
 	}
-
-
 	
+	public boolean isDefLuminosidad() {
+		return (this.luminosidad == Luminosidad.NO_DEFINIDO);
+	}
+	public boolean isDefEstado() {
+		return (this.estado == Estado.NO_DEFINIDO);
+	}	
+	public boolean isDefVigilancia() {
+		return (this.vigilancia == Vigilancia.NO_DEFINIDO);
+	}	
+	public boolean isDefEstadoConservacion() {
+		return (this.estadoDeConservacion == EstadoConservacion.NO_DEFINIDO);
+	}
 	public Propietario getPropietario() {
 		return propietario;
 	}

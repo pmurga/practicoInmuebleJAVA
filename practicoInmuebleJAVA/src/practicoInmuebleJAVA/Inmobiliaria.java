@@ -3,6 +3,7 @@ package practicoInmuebleJAVA;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -46,41 +47,52 @@ public class Inmobiliaria implements ConfirmarOpObserver {
 		
 	};
 	
-	
-	public ArrayList<Inmueble> buscarInmueble (ArrayList<String> filtros){
+	private ArrayList<Inmueble> copiarArray(ArrayList<Inmueble> array) {
 		
-		ArrayList<Inmueble> resultados = new ArrayList<Inmueble>();
+		ArrayList <Inmueble> respuesta = new ArrayList<Inmueble>();
+		
+		for (Inmueble elem : array) {	
+			respuesta.add(elem);
+		}
+		
+		return respuesta;
+		
+	}
+	
+	public List<Inmueble> buscarInmueble (ArrayList<String> filtros){
 		
 		//copiar contenidos de la lista de inmuebles a lista de resultados para trabajar con auxiliar
-		for (Inmueble inmueble : this.inmuebles) {	
-			resultados.add(inmueble);
-		}
+		List<Inmueble> resultados = new ArrayList<Inmueble>(this.inmuebles);
+		//resultados = copiarArray(this.inmuebles);
+		
 		//evaluar filtro según opciones soportadas 
-		for (int i=0; i<=filtros.size() ; i++) {
-			
-			evaluarFiltro(i, filtros.get(i),resultados);
+		for (int i=0; i<filtros.size() ; i++) {
+			System.out.println(i);
+			System.out.println("filtros get: " + filtros.get(i));
+			evaluarFiltro(i, filtros.get(i), resultados);
+			System.out.println("Vuelta: " + i);
 			
 		}
 		return resultados;
 	}
 	
-	private void evaluarFiltro(int i, String filtro, ArrayList<Inmueble> resultados) {
+	private void evaluarFiltro(int i, String filtro, List<Inmueble> resultados) {
 		
 		//opciones soportadas --> tipoProp(0), estado(1), luminosidad(2), vigilancia(3), estConserva(4)
 		// dudas ? --> ver método Filtros de practicoInmuebleJAVA.UI.Menues
-		//filtro = null si el usuario no ingresó nada para esa opción (null = '*' en la busqueda)
-		if (filtro != "VACIO"){
-			
+		//filtro = VACIO si el usuario no ingresó nada para esa opción (VACIO = '*' en la busqueda)
+		
+		System.out.println("filtro evaluar filtro: " + filtro);
+		if (!filtro.equals("VACIO")){
 			if (i == 0) {evaluarTipoProp(filtro,resultados);}
 			if (i == 1) {evaluarEstado(filtro,resultados);}
 			if (i == 2) {evaluarLuminosidad(filtro,resultados);}
 			if (i == 3) {evaluarVigilancia(filtro,resultados);}
 			if (i == 4) {evaluarEstConserva(filtro,resultados);}
-
 		}
 	}
 	
-	/* CRITERIOS OBTENIDOS DE CLASE INMUBLE
+	/* CRITERIOS OBTENIDOS DE CLASE INMUEBLE
 	private enum Estado {HABITADO_PROPIETARIO, DESHABITADO, EN_CONSTRUCCION, HABITADO_INQUILINO};
 	private enum Luminosidad {ALTA, MEDIA, BAJA};
 	private enum Vigilancia {VEINTICUATRO_HS, DIURNO, NOCTURNO, NO_TIENE};
@@ -88,52 +100,84 @@ public class Inmobiliaria implements ConfirmarOpObserver {
 	private enum TipoPropiedad {ESTUDIO, LOFT, DEPARTAMENTO, PISO, DUPLEX, TRIPLEX, CHALET, CASA, LOCAL, COCHERA, OFICINA, EDIFICIO};
 	*/
 	
-	private void evaluarTipoProp(String filtro, ArrayList<Inmueble> resultados) {
+	private void evaluarTipoProp(String filtro, List<Inmueble> resultados) {
 		
-		for (Inmueble inmueble : resultados) {
-			if (!filtro.equalsIgnoreCase(inmueble.getNameTipoPropiedad())) {
-				resultados.remove(inmueble);
+		ArrayList<Inmueble> encontrados = new ArrayList<Inmueble>();
+		for (Inmueble resultado : resultados) {
+			if (!filtro.equalsIgnoreCase(resultado.getNameTipoPropiedad())) {
+				encontrados.add(resultado);
 			}	
-		}	
+		}
+		if (!encontrados.isEmpty()){
+			for (Inmueble encontrado : encontrados) {
+				System.out.println(encontrado.getCalle() + encontrado.getNro());
+				resultados.remove(encontrado);
+			}
+			for (Inmueble resultado : resultados) {
+				System.out.println(resultado.getTipoPropiedad() + resultado.getCalle() + resultado.getNro());
+			}
+		}
 	}
-	private void evaluarEstado(String filtro, ArrayList<Inmueble> resultados) {
-		
+	private void evaluarEstado(String filtro, List<Inmueble> resultados) {
+		ArrayList<Inmueble> encontrados = new ArrayList<Inmueble>();	
 		for (Inmueble inmueble : resultados) {
-			if (!filtro.equalsIgnoreCase(inmueble.getNameTipoPropiedad())) {
-				resultados.remove(inmueble);
+			if (inmueble.isDefEstado()){			
+				if (!filtro.equalsIgnoreCase(inmueble.getNameEstado())) {
+					encontrados.add(inmueble);
+				}
 			}	
-		}	
+		}
+		if (!encontrados.isEmpty()){
+			//resultados.removeAll(encontrados);
+		}
 	}	
-	private void evaluarLuminosidad(String filtro, ArrayList<Inmueble> resultados) {
-		
+	private void evaluarLuminosidad(String filtro, List<Inmueble> resultados) {
+		ArrayList<Inmueble> encontrados = new ArrayList<Inmueble>();	
 		for (Inmueble inmueble : resultados) {
-			if (!filtro.equalsIgnoreCase(inmueble.getNameTipoPropiedad())) {
-				resultados.remove(inmueble);
-			}	
-		}	
+			if (inmueble.isDefLuminosidad()) {
+				if (!filtro.equalsIgnoreCase(inmueble.getNameLuminosidad())) {
+					encontrados.add(inmueble);
+				}	
+			}
+		}
+		if (!encontrados.isEmpty()){
+			//resultados.removeAll(encontrados);
+		}
 	}	
-	private void evaluarVigilancia(String filtro, ArrayList<Inmueble> resultados) {
-		
+	private void evaluarVigilancia(String filtro, List<Inmueble> resultados) {
+		ArrayList<Inmueble> encontrados = new ArrayList<Inmueble>();			
 		for (Inmueble inmueble : resultados) {
-			if (!filtro.equalsIgnoreCase(inmueble.getNameTipoPropiedad())) {
-				resultados.remove(inmueble);
+			if (inmueble.isDefVigilancia()) {
+				if (!filtro.equalsIgnoreCase(inmueble.getNameVigilancia())) {
+					encontrados.add(inmueble);
+				}
 			}	
-		}	
+		}
+		if (!encontrados.isEmpty()){
+			//resultados.removeAll(encontrados);
+		}
 	}
-	private void evaluarEstConserva(String filtro, ArrayList<Inmueble> resultados) {
-		
+	private void evaluarEstConserva(String filtro, List<Inmueble> resultados) {
+		ArrayList<Inmueble> encontrados = new ArrayList<Inmueble>();					
 		for (Inmueble inmueble : resultados) {
-			if (!filtro.equalsIgnoreCase(inmueble.getNameTipoPropiedad())) {
-				resultados.remove(inmueble);
-			}	
-		}	
+			if (inmueble.isDefEstadoConservacion()) {
+				if (!filtro.equalsIgnoreCase(inmueble.getNameEstadoConservacion())) {
+					System.out.println(inmueble);
+					encontrados.add(inmueble);
+				}
+			}
+				
+		}
+		if (!encontrados.isEmpty()){
+			// resultados.removeAll(encontrados);
+		}
 	}
 	
 	public void mostrarALLInmuebles() {
 		this.mostrarInmuebles(this.inmuebles);
 	}
 	
-	public void mostrarInmuebles (ArrayList <Inmueble> inmuebles) {
+	public void mostrarInmuebles (List <Inmueble> inmuebles) {
 		
 		int c = 1;
 		System.out.println("\n____________________________________________________");

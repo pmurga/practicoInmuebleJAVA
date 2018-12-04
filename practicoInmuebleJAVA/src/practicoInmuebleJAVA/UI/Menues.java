@@ -9,7 +9,7 @@ import practicoInmuebleJAVA.*;
 public class Menues {
 	
 	private Scanner entrada;
-	private String valor = null;
+	private String valor = "0";
 	private int valor2;
 	private String tipoProp = null;
 	private String estado = null;
@@ -43,6 +43,11 @@ public class Menues {
 					default:
 						System.out.println("Ud. ingreso un dato erroneo, intentelo de nuevo"); break;
 					}
+				//para salir
+				if (valor.equals("3")) {
+					System.out.println("Gracias, vuelva pronto!");
+					break;
+				}
 		}
 	}
 
@@ -90,6 +95,9 @@ public class Menues {
 					default:
 						System.out.println("Ud. ingreso un nro erroneo, intentelo de nuevo");
 				}
+				if (valor.equals("6")) {
+					break;
+				}
 		}
 	}
 	
@@ -108,17 +116,34 @@ public class Menues {
 			switch (valor) {
 				case "1":
 					f = this.Filtros();
-					this.MostrarProp(f);
-					System.out.println ( "Menu para tipo de operacion...");
-					System.out.println ( "Operacion...");
+					//this.MostrarProp(f);
+					im.mostrarInmuebles(im.buscarInmueble(f));
 					break;
 				case "2":
 					break;
 				default:
 					System.out.println("Ud. ingreso un nro erroneo, intentelo de nuevo");
 			}
+			//para volver al menu anterior cuando se sale de bloque switch
+			if (valor.equals("2")) {
+				break;
+			}
 		}
 					
+	}
+	
+	private boolean esEntradaValida (int min , int max , String entrada){
+		
+		try {
+			
+			return ((!(Integer.parseInt(valor) < min || Integer.parseInt(valor) > max)) && !	entrada.isEmpty() && entrada != null);
+			
+		}catch (NumberFormatException e){
+			e.getStackTrace();
+			return false;
+		}
+		
+		
 	}
 	
 	// Filtro para eleccion de tipo de propiedad.
@@ -127,8 +152,7 @@ public class Menues {
 		
 		entrada = new Scanner(System.in);
 		
-		while (true) {
-			
+		while (!(valor.equals(1) || valor.equals(2) || valor.equals(3) || valor.equals(4) || valor.equals(5) || valor.equals(6) || valor.equals(7) || valor.equals(8) || valor.equals(9) || valor.equals(10) || valor.equals(11) || valor.equals(12) || valor.equals(13))) {
 			System.out.println("A - Tipo de propiedad:\n");   
 			System.out.println ( "1 - ESTUDIO");
 			System.out.println ( "2 - LOFT");
@@ -175,6 +199,9 @@ public class Menues {
 				default:
 					System.out.println("Ud. ingreso un nro erroneo, intentelo de nuevo");
 			}
+			
+			if (esEntradaValida(1, 13, tipoProp)) { break; }
+
 		}
 		return tipoProp;
 	}
@@ -182,8 +209,9 @@ public class Menues {
 	public String filtro2() {
 		
 		entrada = new Scanner(System.in);
+
 		
-		while (true) {
+		while (!(valor.equals(1) || valor.equals(2) || valor.equals(3) || valor.equals(4) || valor.equals(5))) {
 			
 			System.out.println("B - Estado:\n");   
 			System.out.println ( "1 - HABITADO POR PROPIETARIO");
@@ -207,6 +235,8 @@ public class Menues {
 				default:
 					System.out.println("Ud. ingreso un nro erroneo, intentelo de nuevo");
 			}
+			if (esEntradaValida(1, 5, estado)) { break; }
+
 		}
 		return estado;
 	}
@@ -215,7 +245,7 @@ public class Menues {
 		
 		entrada = new Scanner(System.in);
 		
-		while (true) {
+		while (!(valor.equals(1) || valor.equals(2) || valor.equals(3) || valor.equals(4))) {
 			
 			System.out.println("C - Luminosidad:\n");   
 			System.out.println ( "1 - ALTA");
@@ -236,6 +266,8 @@ public class Menues {
 				default:
 					System.out.println("Ud. ingreso un nro erroneo, intentelo de nuevo");
 			}
+			if (esEntradaValida(1, 4, luminosidad)) { break; }
+
 		}
 		return luminosidad;
 	}
@@ -243,8 +275,8 @@ public class Menues {
 	public String filtro4() {
 		
 		entrada = new Scanner(System.in);
-				
-		while (true) {
+		
+		while (!(valor.equals(1) || valor.equals(2) || valor.equals(3) || valor.equals(4) || valor.equals(5))) {
 			
 			System.out.println("D - Vigilancia:\n");   
 			System.out.println ( "1 - 24 HS");
@@ -268,6 +300,8 @@ public class Menues {
 				default:
 					System.out.println("Ud. ingreso un nro erroneo, intentelo de nuevo");
 			}
+			if (esEntradaValida(1, 5, vigilancia)) { break; }
+
 		}
 		return vigilancia;
 	}
@@ -276,8 +310,10 @@ public class Menues {
 	
 		entrada = new Scanner(System.in);
 			
-		while (true) {
-			
+		int min = 1;
+		int max = 6;
+		
+		while (!(Integer.parseInt(valor) < min || Integer.parseInt(valor) > max))  {				
 			System.out.println("E - Estado de conservacion:\n");   
 			System.out.println ( "1 - A ESTRENAR");
 			System.out.println ( "2 - A RECICLAR");
@@ -303,6 +339,8 @@ public class Menues {
 				default:
 					System.out.println("Ud. ingreso un nro erroneo, intentelo de nuevo");
 			}
+			if (esEntradaValida(1, 6, estConserva)) { break; }
+
 		}	
 		return estConserva;
 	}
