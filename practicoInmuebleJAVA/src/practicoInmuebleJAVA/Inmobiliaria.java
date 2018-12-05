@@ -355,6 +355,14 @@ public class Inmobiliaria implements ConfirmarOpObserver {
 		System.out.println("Se agrego con exito una propiedad en la inmobiliaria");
 		
 	}
+
+	public void operar(int id){
+		for(Inmueble im : this.inmuebles){
+			if(im.getId() == id){
+				System.out.println("HAY QUE OPERAR!!");
+			}
+		}
+	}
 }
 
 

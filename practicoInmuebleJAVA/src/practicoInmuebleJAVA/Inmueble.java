@@ -4,7 +4,10 @@ import practicoInmuebleJAVA.operaciones.*;
 
 public class Inmueble {
 
+	private static int idInmueble = 1;
 	
+	private int id;
+
 	//NO_DEFINIDO permite inicializar los enums con un valor default para que no sean null en caso de
 	//no estar seteados. De esta forma al realizar una búsqueda de propiedades todos los inmuebles
 	//no definidos se toman como un "wildcard"
@@ -50,7 +53,8 @@ public class Inmueble {
 	public Inmueble(){};
 	
 	public Inmueble(Propietario propietario, Agente agente,  String calle,Integer  numero , String tipoPropiedad) {
-		
+		this.id = idInmueble;
+		idInmueble++;
 		this.propietario = propietario;
 		this.agente = agente;
 		this.calle = calle;
@@ -61,7 +65,8 @@ public class Inmueble {
 	};
 	
 	public Inmueble(Propietario propietario, Agente agente, String calle,int numero, int piso, String puerta, String tipoPropiedad ) {
-		
+		this.id = idInmueble;
+		idInmueble++;
 		this.propietario = propietario;
 		this.agente = agente;
 		this.calle = calle;
@@ -99,6 +104,10 @@ public class Inmueble {
 
 	public void setPropietario(Propietario propietario) {
 		this.propietario = propietario;
+	}
+
+	public int getId() {
+		return this.id;
 	}
 
 	public Agente getAgente() {
