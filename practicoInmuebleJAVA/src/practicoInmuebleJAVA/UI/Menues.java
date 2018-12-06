@@ -119,14 +119,12 @@ public class Menues {
 					List <Inmueble> inmuebles = im.buscarInmueble(f);
 					im.mostrarInmuebles(inmuebles);
 					if(inmuebles.size() > 0) {
-						System.out.println("ELIJA EL INMUEBLE CON EL QUE DESEA OPERAR O 0 PARA VOLVER");
-						Scanner seleccionado = new Scanner(System.in);
-						String indice = seleccionado.nextLine();
-						if(!indice.equals("") && Integer.parseInt(indice) >= 1 && Integer.parseInt(indice) < inmuebles.size())
+						System.out.println("\nElija el número de inmueble sobre el cuál desea confirmar la operación o presione 0 para volver atrás:");
+						String indice = entrada.nextLine();
+						if(esIndiceOpValido(indice, inmuebles))
 							im.operar(inmuebles.get(Integer.parseInt(indice) -1).getId());
 						else
-							System.out.println("La propiedad seleccionada no existe");
-						seleccionado.close();
+							System.out.println("\nLa propiedad seleccionada no existe. Por favor realice una nueva búsqueda.");
 						break;
 					}
 				case "2":
@@ -140,6 +138,22 @@ public class Menues {
 			}
 		}
 					
+	}
+	
+	private boolean esIndiceOpValido(String indice, List<Inmueble> inmuebles) {
+		
+		try {
+			
+			return (!indice.equals("") && Integer.parseInt(indice) >= 1 && Integer.parseInt(indice) <= inmuebles.size());
+			
+		}catch (NumberFormatException e){
+
+			System.out.println(
+					"ERROR - inmueble seleccionado inválido: " + e.getStackTrace() 
+					);
+			
+			return false;
+		}
 	}
 	
 	// Filtro para eleccion de tipo de propiedad.
