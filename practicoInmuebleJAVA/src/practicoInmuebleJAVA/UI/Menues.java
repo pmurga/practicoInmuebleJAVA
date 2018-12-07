@@ -399,10 +399,17 @@ public class Menues {
 			Scanner entrada = new Scanner(System.in);
 			String option = entrada.nextLine();
 			switch (option) {
+				case "s":
+						inmueble.getOp().setCompletada(true) ; 
+						break;
 				case "S":
 						inmueble.getOp().setCompletada(true) ; 
 						break;
 				case "N":
+						System.out.println("\nLa operación NO ha sido confirmada");
+						System.out.println("\nVolviendo al menú anterior..");
+						break;
+				case "n":
 						System.out.println("\nLa operación NO ha sido confirmada");
 						System.out.println("\nVolviendo al menú anterior..");
 						break;
