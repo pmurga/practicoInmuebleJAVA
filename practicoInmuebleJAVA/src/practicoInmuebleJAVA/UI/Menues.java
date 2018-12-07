@@ -514,7 +514,8 @@ public class Menues {
 		boolean repetir = true;
 		
 		do{
-		   System.out.println("Introduce el dni de agente para buscarlo: ");
+			im.mostrarAgentes();
+			System.out.println("Introduce el dni de agente para buscarlo: ");
 		   try {
 			   		valor2= entrada.nextInt();
 			   		repetir = false;
@@ -598,7 +599,7 @@ public class Menues {
 		boolean repetir = true;
 		
 		do{
-		   System.out.println("Ingrese el número de DNI del agente:");
+			System.out.println("Ingrese el número de DNI del agente:");
 		   try {//Chequear si existe ya el agente
 		   		valor2 = entrada.nextInt();
 		   		Agente agaux = im.buscarAgente(valor2);
