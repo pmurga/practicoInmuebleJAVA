@@ -61,9 +61,9 @@ public class Alquiler extends Operacion {
 	        montoinqui = getMontoTotal();
 	        montoprop = montoinqui - montoinmo;
 	        
-	        System.out.printf("El importe a cobrar por la Inmobiliaria es :", montoinmo, "\n");
-	        System.out.printf("El importe a recibir por el Propietario es :", montoprop, "\n");
-	        System.out.printf("El importe a pagar por el Inquilino es :", montoinqui, "\n");
+	        System.out.printf("\nEl importe a cobrar por la Inmobiliaria es: $" + montoinmo);
+	        System.out.printf("\nEl importe a recibir por el Propietario es: $" + montoprop);
+	        System.out.printf("\nEl importe a pagar por el Inquilino es: $" + montoinqui);
 	}
 	
 	@Override
@@ -74,7 +74,7 @@ public class Alquiler extends Operacion {
 			
 			ConfirmarOpSujeto eventoOp = new ConfirmarOpSujeto(monto, agente);
 			eventoOp.notifyObservers();
-			System.out.println("Transacción OK"); 
+			System.out.println("\n *** Transacción OK ***"); 
 		
 		}
 	}

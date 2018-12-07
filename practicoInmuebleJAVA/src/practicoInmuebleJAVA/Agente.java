@@ -48,5 +48,13 @@ public class Agente extends Persona {
 		this.sueldobasico = sueldobasico;
 	}
 	
+	public void mostrarAgente() {
+		
+		System.out.println("  - Nombre: " + this.getNombre());
+		System.out.println("  - Apellido: " + this.getApellido());
+		System.out.println("  - DNI: " + this.getDni());
+		
+	}
+	
 	
 }

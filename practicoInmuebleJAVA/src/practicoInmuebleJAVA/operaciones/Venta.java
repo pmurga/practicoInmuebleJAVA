@@ -39,10 +39,10 @@ public class Venta extends Operacion {
 	        montoinmo = getComisionComprador() + getComisionInmobiliaria();
 	        montovendedor = monto - getGastosVendedor() - getComisionInmobiliaria();
 	        montocomprador = monto + getGastosComprador() + getComisionComprador();
-	        
-	        System.out.printf("El importe a cobrar por la Inmobiliaria es :", montoinmo, "\n");
-	        System.out.printf("El importe a recibir por el Vendedor es :", montovendedor, "\n");
-	        System.out.printf("El importe a pagar por el Comprador es :", montocomprador, "\n");
+	        	        
+	        System.out.printf("\nEl importe a cobrar por la Inmobiliaria es: $" + montoinmo );
+	        System.out.printf("\nEl importe a recibir por el Vendedor es: $" + montovendedor );
+	        System.out.printf("\nEl importe a pagar por el Comprador es: $" + montocomprador );
 	}
 	
 	@Override
@@ -53,7 +53,7 @@ public class Venta extends Operacion {
 			
 			ConfirmarOpSujeto eventoOp = new ConfirmarOpSujeto(monto, agente);
 			eventoOp.notifyObservers();
-			System.out.println("Transacción OK"); 
+			System.out.println("\n *** Transacción OK ***"); 
 		
 		}
 	}

@@ -27,19 +27,19 @@ public class UserUI {
 	Inmueble i1 = new Inmueble (p1, a1, "Berna", 234, "CASA");
 	i1.alquilar(9500, 10, true, 30, 1, 24);
 	Inmueble i2 = new Inmueble (p2, a1, "Londres", 2145, "CASA");
-	//i2.vender(2250000, 5, 10);
+	i2.vender(2200000, 4, 15, a1);
 	Inmueble i3 = new Inmueble (p3, a1, "Ginebra", 1343, 3, "C", "DEPARTAMENTO");
 	i3.alquilar(10500, 15, true, 25.5f, 1, 24);
 	Inmueble i4 = new Inmueble (p4, a2, "Berlin", 456, "TRIPLEX");
 	i4.alquilar(15000, 12, false, 34.5f, 2, 12);
 	Inmueble i5 = new Inmueble (p5, a2, "Gandara", 3423, "DUPLEX");
-	//i5.vender(1865790, 4, 15);
+	i5.vender(1865790, 4, 13, a3);
 	Inmueble i6 = new Inmueble (p1, a2, "Liverpool", 1254, 2, "B", "DEPARTAMENTO");
 	i6.alquilar(8500, 15, false, 12.5f, 1, 24);
 	Inmueble i7 = new Inmueble (p2, a3, "La Haya", 334, "LOCAL");
 	i7.alquilar(15500, 10, false, 10.5f, 1, 12);
 	Inmueble i8 = new Inmueble (p3, a3, "Dublin", 4322, 1, "A", "DEPARTAMENTO");
-	//i8.vender(1250000, 5, 10);
+	i8.vender(1250000, 5, 10, a2);
 	
 	
 	//para inicializar el programa con una base de datos
@@ -71,21 +71,7 @@ public class UserUI {
 	
 	Menues menus = new Menues();
 	menus.Menu1(caece);
-	
 
-	//Ejecucion de busqueda de popiedad con los filtros configurados.
-		
-		//	caece.busqueda(estado, luminosidad, vigilancia, estConserva, tipoProp);
-			
-	//Procedimiento para mostrar todas las popiedades encontradas numeras con todas sus propiedades para que el usuario elija la quedese
-		
-	//Eleccion de tipo de operacion
-		
-	// Operacion
-		
-	//Operaciones postOperacion solicitadas
-		
-		
 			
 	}
 	

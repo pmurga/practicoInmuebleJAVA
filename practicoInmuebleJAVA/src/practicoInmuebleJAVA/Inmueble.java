@@ -482,5 +482,17 @@ public class Inmueble {
 		
 	}
 	
+	public void mostrarInmueble() {
+		
+		if (this.getPiso() != 0) {
+			System.out.println("  - Domicilio: " + this.getCalle() + " " + this.getNro() + " Piso: " + this.getPiso() + this.getPuerta());
+		}else {
+			System.out.println("  - Domicilio: " + this.getCalle() + " " + this.getNro());					
+		}
+
+		System.out.println("  - Tipo de Propiedad: " + this.getTipoPropiedad());
+		System.out.println("  - Disponible para: " + this.getOPDisponible());
+		System.out.println("\n____________________________________________________");
+	}
 	
 }
