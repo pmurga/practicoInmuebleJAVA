@@ -159,7 +159,7 @@ public class Menues {
 		}catch (NumberFormatException e){
 
 			System.out.println(
-					"ERROR - inmueble seleccionado inválido: " + e.getStackTrace() 
+					"ERROR - inmueble seleccionado inválido" 
 					);
 			
 			return false;
@@ -565,11 +565,16 @@ public class Menues {
 		//dato de tipo de propiedad
 		
 		Menues m = new Menues();
-		tipoProp = m.filtro1();
+		tipoProp = m.filtro_construir_inmueble();		
 		
 		Inmueble in = new Inmueble(pr, ag, calle, nroCalle, tipoProp);
-		im.addInmueble(in);
-		System.out.println("Se agrego con exito una propiedad en la inmobiliaria");
+		
+		//FALTA AGREGAR ACÁ UN MENU PARA SETTEAR SI EL INMUEBLE ESTA PARA ALQUILAR O PARA VENDER
+		//un case con "A" y "V"
+		//si es "A" entonces pedirle los datos que necesitas para construir alquiler y luego in.alquilar( ... )
+		//si es "V" entonces pedirle los datos que necesitas para construir venta y luego in.vender( ... )
+		
+		System.out.println("\nSe agrego con exito una propiedad en la inmobiliaria\n");
 		
 	}
 	public void MenuAgregarAgente (Inmobiliaria im) {//Permite agregar un agente en tiempo de ejecución
@@ -730,6 +735,7 @@ public class Menues {
 		int valor2 = 0;
 		
 		boolean repetir = true;
+		im.mostrarAgentes();
 		
 		do{
 			System.out.println("Ingrese el dni del agente a eliminar: \n");
@@ -750,7 +756,7 @@ public class Menues {
 		    }
 		}while(repetir);
 		
-		System.out.println("Se eliminó con exito el agente en la inmobiliaria");
+		System.out.println("\nSe eliminó con exito el agente en la inmobiliaria");
 		
 	}
 	
@@ -809,9 +815,61 @@ public class Menues {
 			//fix para volver al menu anterior
 			entrada.nextLine();
 		}while(repetir);
-		
-
 
 	}
+	//filtro para forzar al usuario a elegir uno de los tipos de propiedad válidos
+	public String filtro_construir_inmueble() {
+		String valor = "0";
+		entrada = new Scanner(System.in);
+		
+		while (!(valor.equals("1") || valor.equals("2") || valor.equals("3") || valor.equals("4") || valor.equals("5") || valor.equals("6") || valor.equals("7") || valor.equals("8") || valor.equals("9") || valor.equals("10") || valor.equals("11") || valor.equals("12") || valor.equals("13"))) {
+			System.out.println("A - Tipo de propiedad:\n");   
+			System.out.println ( "1 - ESTUDIO");
+			System.out.println ( "2 - LOFT");
+			System.out.println ( "3 - DEPARTAMENTO");
+			System.out.println ( "4 - PISO");
+			System.out.println ( "5 - DUPLEX");
+			System.out.println ( "6 - TRIPLEX");
+			System.out.println ( "7 - CHALET");
+			System.out.println ( "8 - CASA");
+			System.out.println ( "9 - LOCAL");
+			System.out.println ( "10 - COCHERA");
+			System.out.println ( "11 - OFICINA");
+			System.out.println ( "12 - EDIFICIO");
+				
+			valor = entrada.nextLine();
+			switch (valor) {
+				case "1":
+					tipoProp = "ESTUDIO"; break;
+				case "2":
+					tipoProp = "LOFT"; break;
+				case "3":
+					tipoProp = "DEPARTAMENTO"; break;
+				case "4":
+					tipoProp = "PISO"; break;
+				case "5":
+					tipoProp = "DUPLEX"; break;
+				case "6":
+					tipoProp = "TRIPLEX"; break;
+				case "7":
+					tipoProp = "CHALET"; break;
+				case "8":
+					tipoProp = "CASA"; break;
+				case "9":
+					tipoProp = "LOCAL"; break;
+				case "10":
+					tipoProp = "COCHERA"; break;
+				case "11":
+					tipoProp = "OFICINA"; break;
+				case "12":
+					tipoProp = "EDIFICIO"; break;
+				default:
+					System.out.println("Ud. ingreso un nro erroneo, intentelo de nuevo");
+			}
+		}
+		return tipoProp;
+	}
+
+	
 	
 }
