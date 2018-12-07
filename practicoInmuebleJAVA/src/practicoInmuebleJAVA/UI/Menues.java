@@ -79,25 +79,7 @@ public class Menues {
 					case "2":
 						im.mostrarALLInmuebles();
 						ArrayList <Inmueble> all_inmuebles = im.getInmuebles();
-						if(all_inmuebles.size() > 0) {
-							System.out.println("\nSeleccione el número de inmueble que quiere eliminar o presione 0 para volver atrás: ");
-							String indice = entrada.nextLine();
-							
-							if(esIndiceOpValido(indice, all_inmuebles)) {
-								try {
-									
-									//si el índice del inmueble ingresado es correcto y corresponde 
-									//a algun inmueble de la base de datos
-									//lo puedo eliminar
-									im.delInmueble(all_inmuebles.get(Integer.parseInt(indice) -1).getId());
-									
-								}catch (Exception e) {
-									System.out.println("\nERROR - no se pudo operar con el inmueble. Intente nuevamente");
-								}
-							}else {
-								break;
-							}	
-						}
+						delInmueble(all_inmuebles, im);
 						break;
 						
 					case "3":
@@ -105,44 +87,11 @@ public class Menues {
 					case "4":
 						MenuEliminarAgente(im);break;
 					case "5":
-						double sueldo;
-						im.mostrarAgentes();
-						boolean repetir = true;
-				
-							System.out.println("\nIngrese el DNI del agente sobre el cuál calcular el salario: ");
-							try {
-								int dni = entrada.nextInt();
-								if (im.getAgentes() != null) {
-									
-									if (esDNIValido(dni)) {
-										try {
-											Agente agaux = im.buscarAgente(dni);
-											sueldo = im.calcularSueldoAgente(dni);
-											System.out.println("\n____________________________________________________");
-											
-											System.out.println("\nAgente: ");
-											agaux.mostrarAgente();
-											System.out.println("\nEl sueldo del agente de dni es: " + sueldo);
-											System.out.println("\n____________________________________________________");
-											repetir = false;
-										}catch(NullPointerException e){
-											System.out.println("\nERROR - no existe un agente con ese DNI. Intente nuevamente..\n");
-										}
-										
-									}
-								}
-							}catch(InputMismatchException e) {
-								System.out.println("\nERROR - debe ingresar un número entero");
-								break;
-							}
-							
+						menuCalcularSueldoAgente(im);break;	
 					case "6":
 						break;
 					default:
 						System.out.println("Ud. ingreso un nro erroneo, intentelo de nuevo");
-				}
-				if (valor.equals("6")) {
-					break;
 				}
 		}
 	}
@@ -797,5 +746,64 @@ public class Menues {
 		
 	}
 	
+	public void delInmueble(ArrayList <Inmueble> all_inmuebles, Inmobiliaria im) {
+		if(all_inmuebles.size() > 0) {
+			System.out.println("\nSeleccione el número de inmueble que quiere eliminar o presione 0 para volver atrás: ");
+			String indice = entrada.nextLine();
+			
+			if(esIndiceOpValido(indice, all_inmuebles)) {
+				try {
+					
+					//si el índice del inmueble ingresado es correcto y corresponde 
+					//a algun inmueble de la base de datos
+					//lo puedo eliminar
+					im.delInmueble(all_inmuebles.get(Integer.parseInt(indice) -1).getId());
+					
+				}catch (Exception e) {
+					System.out.println("\nERROR - no se pudo operar con el inmueble. Intente nuevamente");
+				}
+			
+			}	
+		}
+	}
+	
+	public void menuCalcularSueldoAgente(Inmobiliaria im) {
+		double sueldo;
+		im.mostrarAgentes();
+		boolean repetir = true;
+		
+		do {
+			System.out.println("\nIngrese el DNI del agente sobre el cuál calcular el salario: ");
+			try {
+				int dni = entrada.nextInt();
+				if (im.getAgentes() != null) {
+					
+					if (esDNIValido(dni)) {
+						try {
+							Agente agaux = im.buscarAgente(dni);
+							sueldo = im.calcularSueldoAgente(dni);
+							System.out.println("\n____________________________________________________");
+							
+							System.out.println("\nAgente: ");
+							agaux.mostrarAgente();
+							System.out.println("\nEl sueldo del agente es: " + sueldo);
+							System.out.println("\n____________________________________________________");
+							repetir = false;
+						}catch(NullPointerException e){
+							System.out.println("\nERROR - no existe un agente con ese DNI. Intente nuevamente..\n");
+						}
+						
+					}
+				}
+			}catch(InputMismatchException e) {
+				System.out.println("\nERROR - debe ingresar un número entero");
+			}
+			//fix para volver al menu anterior
+			entrada.nextLine();
+		}while(repetir);
+		
+
+
+	}
 	
 }
