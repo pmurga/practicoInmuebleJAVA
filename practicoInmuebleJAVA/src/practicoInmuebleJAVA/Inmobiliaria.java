@@ -243,12 +243,13 @@ public class Inmobiliaria implements ConfirmarOpObserver  {
 		
 	}
 	
-	public void mostrarAgentes () {
+	public boolean mostrarAgentes () {
 		
 		int c = 1;
+		boolean hayAgentes = false;
 		System.out.println("\n____________________________________________________");
 		System.out.println("\nLista de Agentes: ");
-		if (!inmuebles.isEmpty()) {
+		if (!agentes.isEmpty()) {
 			
 			for (Agente agente : agentes.values()) {
 				System.out.println("\nAgente: " + c);
@@ -260,11 +261,15 @@ public class Inmobiliaria implements ConfirmarOpObserver  {
 				
 				c += 1;
 			}
+			hayAgentes = true;
 		}else {
 			System.out.println("\nERROR - No hay agentes en la inmobiliaria en este momento.");
 			System.out.println("\n____________________________________________________");
+			hayAgentes = false;
 
 		}
+		
+		return hayAgentes;
 		
 	}
 	

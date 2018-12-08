@@ -756,29 +756,29 @@ public class Menues {
 		int valor2 = 0;
 		
 		boolean repetir = true;
-		im.mostrarAgentes();
+		if(im.mostrarAgentes()){
 		
-		do{
-			System.out.println("Ingrese el dni del agente a eliminar: \n");
-			try {//Chequear si existe el agente
-		   		valor2 = entrada.nextInt();
-		   		Agente agaux = im.buscarAgente(valor2);
-				if (agaux != null) {
-					dni = valor2;
-					repetir = false;
-					im.delAgente(agaux);
-				}else {
-					System.out.println("Error: No existe un agente con este dni en la inmobiliaria");
-					repetir = true;
-				}
-		   	}catch(InputMismatchException e){
-		       entrada.nextLine();
-		       System.out.println("Error, has introducido mal el dni");
-		    }
-		}while(repetir);
-		
-		System.out.println("\nSe eliminó con exito el agente en la inmobiliaria");
-		
+			do{
+				System.out.println("Ingrese el dni del agente a eliminar: \n");
+				try {//Chequear si existe el agente
+			   		valor2 = entrada.nextInt();
+			   		Agente agaux = im.buscarAgente(valor2);
+					if (agaux != null) {
+						dni = valor2;
+						repetir = false;
+						im.delAgente(agaux);
+					}else {
+						System.out.println("Error: No existe un agente con este dni en la inmobiliaria");
+						repetir = true;
+					}
+			   	}catch(InputMismatchException e){
+			       entrada.nextLine();
+			       System.out.println("Error, has introducido mal el dni");
+			    }
+			}while(repetir);
+			
+			System.out.println("\nSe eliminó con exito el agente en la inmobiliaria");
+		}
 	}
 	
 	public void delInmueble(ArrayList <Inmueble> all_inmuebles, Inmobiliaria im) {
