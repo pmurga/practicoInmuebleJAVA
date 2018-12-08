@@ -4,8 +4,7 @@ import practicoInmuebleJAVA.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Scanner;
-import javax.swing.*;
+
 
 
 public class UserUI {
@@ -39,7 +38,7 @@ public class UserUI {
 	Inmueble i7 = new Inmueble (p2, a3, "La Haya", 334, "LOCAL");
 	i7.alquilar(15500, 10, false, 10.5f, 1, 12,a3);
 	Inmueble i8 = new Inmueble (p3, a3, "Dublin", 4322, 1, "A", "DEPARTAMENTO");
-	i8.vender(1250000, 5, 10, a2);
+	i8.vender(1250000, 5, 10, a3);
 	
 	
 	//para inicializar el programa con una base de datos

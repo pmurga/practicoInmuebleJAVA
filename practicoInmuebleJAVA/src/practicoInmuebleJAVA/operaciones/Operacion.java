@@ -1,21 +1,32 @@
 package practicoInmuebleJAVA.operaciones;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import practicoInmuebleJAVA.Agente;
 import practicoInmuebleJAVA.operaciones.observer.ConfirmarOpObserver;
-import practicoInmuebleJAVA.operaciones.sujeto.ConfirmarOpSujeto;
 
 public abstract class Operacion {
 	protected float monto;
 	protected float comision_inmobiliaria;
 	protected Agente agente;
 	private boolean completada;
-	ConfirmarOpSujeto monitor = new ConfirmarOpSujeto(monto, agente);
+	private List<ConfirmarOpObserver> observadores;
 	
 	public Operacion(float monto, float comision, Agente agente) {
+		this.observadores = new ArrayList<>();
 		setMonto(monto);
 		setComisionInmobiliaria(comision);
 		setAgenteOp(agente);
-		monitor.attach(new ConfirmarOpObserver());
+	}
+	public void agregarObservador(ConfirmarOpObserver obs) {
+		this.observadores.add(obs);
+	}
+	
+	public void notificarObservadores() {
+		for(ConfirmarOpObserver obs : this.observadores) {
+			obs.updateComisiones(this.monto, this.agente);
+		}
 	}
 	public void setMonto(float monto) {
 		this.monto = monto;

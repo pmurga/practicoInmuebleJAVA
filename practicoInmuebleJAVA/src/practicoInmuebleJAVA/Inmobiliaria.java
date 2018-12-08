@@ -6,30 +6,28 @@ import java.util.List;
 
 import practicoInmuebleJAVA.UI.Menues;
 import practicoInmuebleJAVA.operaciones.observer.ConfirmarOpObserver;
-import practicoInmuebleJAVA.operaciones.observer.Observer;
 
-public class Inmobiliaria  {
+public class Inmobiliaria implements ConfirmarOpObserver  {
 	
 	private ArrayList<Inmueble> inmuebles;
 	private HashMap<Integer, Agente> agentes;
 	private HashMap<Integer, Double> comisiones_agentes;
-	
-	private static ArrayList<ConfirmarOpObserver> arrObservadores;
-	
 	
 	//Después modificar este constructor
 	public Inmobiliaria() {
 		this.inmuebles = new ArrayList<Inmueble>();
 		this.agentes = new HashMap<Integer, Agente>();
 		this.comisiones_agentes = new HashMap<Integer, Double>();
-		
 	}
 
 	public ArrayList<Inmueble> getInmuebles() {
 		return inmuebles;
 	}
 
-	public void addInmueble(Inmueble inmueble) { this.inmuebles.add(inmueble); }
+	public void addInmueble(Inmueble inmueble) { 
+		inmueble.getOp().agregarObservador(this);
+		this.inmuebles.add(inmueble);
+	}
 
 	public void delInmueble(Inmueble inmueble) { this.inmuebles.remove(inmueble); }
 
@@ -49,11 +47,9 @@ public class Inmobiliaria  {
 	
 	
 	public void updateComisiones(float monto, Agente agente){
-		Double comision_actual = this.comisiones_agentes.get(agente);
+		Double comision_actual = this.comisiones_agentes.get(agente.getDni());
 		Float monto_comision = monto*2/100;
-		
 		this.comisiones_agentes.put(((Persona)agente).getDni(), (double) comision_actual + monto_comision);
-		
 	};
 	
 	//eliminar de la lista de resultados todos los inmuebles cuya op. ya haya sido confirmada

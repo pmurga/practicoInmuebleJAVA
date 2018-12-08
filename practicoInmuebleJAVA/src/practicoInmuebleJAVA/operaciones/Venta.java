@@ -1,7 +1,6 @@
 package practicoInmuebleJAVA.operaciones;
 
 import practicoInmuebleJAVA.Agente;
-import practicoInmuebleJAVA.operaciones.sujeto.ConfirmarOpSujeto;
 
 public class Venta extends Operacion {
 	private float comision_comprador;
@@ -50,10 +49,8 @@ public class Venta extends Operacion {
 	public void setCompletada(boolean completada) {
 		super.setCompletada(completada);
 		
-		if (completada) { 
-			
-			ConfirmarOpSujeto eventoOp = new ConfirmarOpSujeto(monto, agente);
-			eventoOp.notifyObservers();
+		if (completada) {
+			this.notificarObservadores();
 			System.out.println("\n *** Transacción OK ***"); 
 		
 		}
