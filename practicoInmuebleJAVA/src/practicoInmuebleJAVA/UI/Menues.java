@@ -96,7 +96,7 @@ public class Menues {
 	
 	private boolean esDNIValido(int dni) {
 				
-		//min nÃºmero de DNI permitido
+		//min número de DNI permitido
 		return( dni >= 1 ) ;
 	}
 	
@@ -118,19 +118,19 @@ public class Menues {
 					List <Inmueble> inmuebles = im.buscarInmueble(f);
 					im.mostrarInmuebles(inmuebles);
 					if(inmuebles.size() > 0) {
-						System.out.println("\nElija el nÃºmero de inmueble sobre el cuÃ¡l desea confirmar la operaciÃ³n o presione 0 para volver atrÃ¡s:");
+						System.out.println("\nElija el número de inmueble sobre el cuál desea confirmar la operación o presione 0 para volver atrás:");
 						String indice = entrada.nextLine();
 						if(esIndiceOpValido(indice, inmuebles)) {
 							
 								
-								//si el Ã­ndice del inmueble ingresado es correcto y corresponde 
-								//al Ã­ndice de un inmueble encontrado por la bÃºsqueda
+								//si el Índice del inmueble ingresado es correcto y corresponde 
+								//al Índice de un inmueble encontrado por la bÃºsqueda
 								//opero con el mismo a travÃ©s del menÃº para operar
 								im.Operar(inmuebles.get(Integer.parseInt(indice) -1).getId());
 								
 							break;
 						}else {
-							System.out.println("ERROR - inmueble seleccionado invÃ¡lido");
+							System.out.println("ERROR - inmueble seleccionado inválido");
 							break;
 						}
 					}
@@ -382,12 +382,12 @@ public class Menues {
 			}
 			
 		}catch (NullPointerException e){
-			System.out.println("\nEl inmueble con el que desea operar es invÃ¡lido");
+			System.out.println("\nEl inmueble con el que desea operar es inválido");
 			error = true;
 		}
 		if (!error) {
 			System.out.println("\n");
-			System.out.println("\nConfirma la operaciÃ³n * " + inmueble.getOPDisponible() + " * ? S/N:" );
+			System.out.println("\nConfirma la operación * " + inmueble.getOPDisponible() + " * ? S/N:" );
 			
 			Scanner entrada = new Scanner(System.in);
 			String option = entrada.nextLine();
@@ -399,15 +399,15 @@ public class Menues {
 						inmueble.getOp().setCompletada(true) ; 
 						break;
 				case "N":
-						System.out.println("\nLa operaciÃ³n NO ha sido confirmada");
-						System.out.println("\nVolviendo al menÃº anterior..");
+						System.out.println("\nLa operación NO ha sido confirmada");
+						System.out.println("\nVolviendo al menú anterior..");
 						break;
 				case "n":
-						System.out.println("\nLa operaciÃ³n NO ha sido confirmada");
-						System.out.println("\nVolviendo al menÃº anterior..");
+						System.out.println("\nLa operación NO ha sido confirmada");
+						System.out.println("\nVolviendo al menú anterior..");
 						break;
 				default:
-					System.out.println("\nUd. ingreso una opciÃ³n erronea, intentelo nuevamente");
+					System.out.println("\nUd. ingreso una opción erronea, intentelo nuevamente");
 			}
 		}
 	}
@@ -500,6 +500,7 @@ public class Menues {
 		String calle = null;
 		int nroCalle = 0;
 		String tipoProp = null;
+		String op = null;
 		
 		System.out.println("Datos a ingresar: Propietario, Agente, nombre de calle, nro de calle y tipo de propiedad: \n");
 		
@@ -554,6 +555,7 @@ public class Menues {
 			       System.out.println("Error, has introducido mal el numero de calle");
 			   }
 			}while(repetir);
+		entrada.nextLine();
 		
 		//dato de tipo de propiedad
 		
@@ -566,6 +568,26 @@ public class Menues {
 		//un case con "A" y "V"
 		//si es "A" entonces pedirle los datos que necesitas para construir alquiler y luego in.alquilar( ... )
 		//si es "V" entonces pedirle los datos que necesitas para construir venta y luego in.vender( ... )
+		
+		System.out.println("\nIntroduzca A si el inmueble es para ALQUILER ó V si el inmueble es para VENTA: * ? A/V:" );
+		
+		op = entrada.nextLine();
+		switch (op) {
+			case "a":
+					menuAgregarAlquiler(in, ag) ; 
+					break;
+			case "A":
+					menuAgregarAlquiler(in, ag) ; 
+					break;
+			case "v":
+					menuAgregarVenta(in, ag) ;
+					break;
+			case "V":
+					menuAgregarVenta(in, ag) ;
+					break;
+			default:
+				System.out.println("\nUd. ingreso una opción erronea, intentelo nuevamente");
+		}
 		
 		im.addInmueble(in);
 		System.out.println("\nSe agrego con exito una propiedad en la inmobiliaria\n");
@@ -589,7 +611,7 @@ public class Menues {
 		int cuil = 0;
 		double sueldobasico = 0;
 		
-		System.out.println("Datos a ingresar: Nombre, Apellido, DNI, TelÃ©fono, Celular, Email, DirecciÃ³n, CÃ³digo Postal, Localidad, Comentarios, NÃºmero de Agente y Sueldo BÃ¡sico: \n");
+		System.out.println("Datos a ingresar: Nombre, Apellido, DNI, teléfono, Celular, Email, dirección, código Postal, Localidad, Comentarios, número de Agente y Sueldo básico: \n");
 		
 		//Datos del agente 
 		System.out.println("Ingrese los datos del agente \n");
@@ -601,11 +623,11 @@ public class Menues {
 		System.out.println("Ingrese el apellido: ");
 		apellido = entrada.nextLine();
 
-		// Dato nÃºmero de dni:
+		// Dato número de dni:
 		boolean repetir = true;
 		
 		do{
-			System.out.println("Ingrese el nÃºmero de DNI del agente:");
+			System.out.println("Ingrese el número de DNI del agente:");
 		   try {//Chequear si existe ya el agente
 		   		valor2 = entrada.nextInt();
 		   		Agente agaux = im.buscarAgente(valor2);
@@ -629,12 +651,12 @@ public class Menues {
 		System.out.println("\n");
 		email = entrada.nextLine();
 								
-		// Dato de direcciÃ³n:
-		System.out.println("Ingrese la direcciÃ³n:");
+		// Dato de dirección:
+		System.out.println("Ingrese la dirección:");
 		direccion = entrada.nextLine();
 		
-		// Dato de cÃ³digo postal:
-		System.out.println("Ingrese el cÃ³digo postal:");
+		// Dato de código postal:
+		System.out.println("Ingrese el código postal:");
 		codpostal = entrada.nextLine();
 		
 		// Dato de localidad:
@@ -642,20 +664,20 @@ public class Menues {
 		localidad = entrada.nextLine();
 		
 		// Dato de comentario:
-		System.out.println("Ingrese algÃºn comentario:");
+		System.out.println("Ingrese algún comentario:");
 		comentarios = entrada.nextLine();
 		
-		// Dato de nro de telÃ©fono:
+		// Dato de nro de teléfono:
 		repetir = true;
 		
 		do{
-		   System.out.println("Ingrese el nÃºmero telefonico: ");
+		   System.out.println("Ingrese el número telefonico: ");
 		   try {
 			   		telefono = entrada.nextInt();
 			   		repetir = false;
 			   	}catch(InputMismatchException e){
 			       entrada.nextLine();
-			       System.out.println("Error, has introducido mal el nÃºmero de telÃ©fono");
+			       System.out.println("Error, has introducido mal el número de teléfono");
 			   }
 			}while(repetir);
 
@@ -664,13 +686,13 @@ public class Menues {
 		repetir = true;
 		
 		do{
-		   System.out.println("Ingrese el nÃºmero de celular: ");
+		   System.out.println("Ingrese el número de celular: ");
 		   try {
 			   		telMovil = entrada.nextInt();
 			   		repetir = false;
 			   	}catch(InputMismatchException e){
 			       entrada.nextLine();
-			       System.out.println("Error, has introducido mal el nÃºmero de celular");
+			       System.out.println("Error, has introducido mal el número de celular");
 			   }
 			}while(repetir);
 		
@@ -678,13 +700,13 @@ public class Menues {
 		repetir = true;
 		
 		do{
-		   System.out.println("Ingrese el nÃºmero de agente: ");
+		   System.out.println("Ingrese el número de agente: ");
 		   try {
 			   		nroagente = entrada.nextInt();
 			   		repetir = false;
 			   	}catch(InputMismatchException e){
 			       entrada.nextLine();
-			       System.out.println("Error, has introducido mal el nÃºmero de agente");
+			       System.out.println("Error, has introducido mal el número de agente");
 			   }
 			}while(repetir);
 		
@@ -693,21 +715,21 @@ public class Menues {
 		repetir = true;
 		
 		do{
-		   System.out.println("Ingrese el nÃºmero de cuil del agente: ");
+		   System.out.println("Ingrese el número de cuil del agente: ");
 		   try {
 			   		cuil = entrada.nextInt();
 			   		repetir = false;
 			   	}catch(InputMismatchException e){
 			       entrada.nextLine();
-			       System.out.println("Error, has introducido mal el nÃºmero de cuil");
+			       System.out.println("Error, has introducido mal el número de cuil");
 			   }
 			}while(repetir);
 		
-		// Dato de sueldo bÃ¡sico:
+		// Dato de sueldo básico:
 		repetir = true;
 		
 		do{
-		   System.out.println("Ingrese el sueldo bÃ¡sico del agente: ");
+		   System.out.println("Ingrese el sueldo básico del agente: ");
 		   try {
 			   		sueldobasico = entrada.nextInt();
 			   		repetir = false;
@@ -750,28 +772,30 @@ public class Menues {
 		    }
 		}while(repetir);
 		
-		System.out.println("\nSe eliminÃ³ con exito el agente en la inmobiliaria");
+		System.out.println("\nSe eliminó con exito el agente en la inmobiliaria");
 		
 	}
 	
 	public void delInmueble(ArrayList <Inmueble> all_inmuebles, Inmobiliaria im) {
 		if(all_inmuebles.size() > 0) {
-			System.out.println("\nSeleccione el nÃºmero de inmueble que quiere eliminar o presione 0 para volver atrÃ¡s: ");
+			System.out.println("\nSeleccione el número de inmueble que quiere eliminar o presione 0 para volver atrás: ");
 			String indice = entrada.nextLine();
 			
-			if(esIndiceOpValido(indice, all_inmuebles)) {
-				try {
-					
-					//si el Ã­ndice del inmueble ingresado es correcto y corresponde 
-					//a algun inmueble de la base de datos
-					//lo puedo eliminar
-					im.delInmueble(all_inmuebles.get(Integer.parseInt(indice) -1).getId());
-					
-				}catch (Exception e) {
-					System.out.println("\nERROR - no se pudo operar con el inmueble. Intente nuevamente");
-				}
 			
-			}	
+				if(esIndiceOpValido(indice, all_inmuebles)) {
+					try {
+						
+						//si el Índice del inmueble ingresado es correcto y corresponde 
+						//a algun inmueble de la base de datos
+						//lo puedo eliminar
+						im.delInmueble(all_inmuebles.get(Integer.parseInt(indice) -1).getId());
+						
+					}catch (Exception e) {
+						System.out.println("\nERROR - no se pudo operar con el inmueble. Intente nuevamente");
+					}
+				
+				}	
+
 		}
 	}
 	
@@ -781,7 +805,7 @@ public class Menues {
 		boolean repetir = true;
 		
 		do {
-			System.out.println("\nIngrese el DNI del agente sobre el cuÃ¡l calcular el salario: ");
+			System.out.println("\nIngrese el DNI del agente sobre el cuál calcular el salario: ");
 			try {
 				int dni = entrada.nextInt();
 				if (im.getAgentes() != null) {
@@ -804,13 +828,179 @@ public class Menues {
 					}
 				}
 			}catch(InputMismatchException e) {
-				System.out.println("\nERROR - debe ingresar un nÃºmero entero");
+				System.out.println("\nERROR - debe ingresar un número entero");
 			}
 			//fix para volver al menu anterior
 			entrada.nextLine();
 		}while(repetir);
 
 	}
+	
+	public void menuAgregarVenta(Inmueble in, Agente ag) {
+		System.out.println("\nIngrese los datos para la venta");
+		float precio = 0;
+		float comision_comprador = 0;
+		float comision_inmobiliaria = 0;
+		Boolean repetir;
+		Scanner entrada = new Scanner(System.in);
+		
+		// Dato de precio de la propiedad:
+		repetir = true;
+		
+		do{
+		   System.out.println("Ingrese el precio de venta: ");
+		   try {
+			   		precio = entrada.nextInt();
+			   		repetir = false;
+			   	}catch(InputMismatchException e){
+			       entrada.nextLine();
+			       System.out.println("Error, has introducido un valor incorrecto");
+			   }
+			}while(repetir);
+		
+		// Dato de comision comprador:
+		repetir = true;
+		
+		do{
+		   System.out.println("Ingrese la comision para el comprador: ");
+		   try {
+			   		comision_comprador = entrada.nextInt();
+			   		repetir = false;
+			   	}catch(InputMismatchException e){
+			       entrada.nextLine();
+			       System.out.println("Error, has introducido un valor incorrecto");
+			   }
+			}while(repetir);
+		
+		// Dato de comision inmobiliaria:
+		repetir = true;
+		
+		do{
+		   System.out.println("Ingrese la comision de la inmobiliaria: ");
+		   try {
+			   		comision_inmobiliaria = entrada.nextInt();
+			   		repetir = false;
+			   	}catch(InputMismatchException e){
+			       entrada.nextLine();
+			       System.out.println("Error, has introducido un valor incorrecto");
+			   }
+			}while(repetir);
+		
+		in.vender(precio, comision_comprador, comision_inmobiliaria, ag);
+		
+	}
+	
+	public void menuAgregarAlquiler(Inmueble in, Agente ag) {
+		System.out.println("\nIngrese los datos para el alquiler");
+		float alq_mensual = 0; 
+		float comision_inmobiliaria = 0;
+		boolean es_anual = false;
+		float porc_ajuste = 0; 
+		int meses_adelanto = 0;
+		int meses_duracion = 0; 
+		Boolean repetir;
+		
+		Scanner entrada = new Scanner(System.in);
+		
+		
+		// Dato de monto de alquiler mensual:
+		repetir = true;
+		
+		do{
+		   System.out.println("Ingrese el monto de alquiler mensual: ");
+		   try {
+			   		alq_mensual = entrada.nextInt();
+			   		repetir = false;
+			   	}catch(InputMismatchException e){
+			       entrada.nextLine();
+			       System.out.println("Error, has introducido un valor incorrecto");
+			   }
+			}while(repetir);
+		
+		// Dato de comision_inmobiliaria:
+		repetir = true;
+		
+		do{
+		   System.out.println("Ingrese comision de la inmobiliaria: ");
+		   try {
+			   		comision_inmobiliaria = entrada.nextInt();
+			   		repetir = false;
+			   	}catch(InputMismatchException e){
+			       entrada.nextLine();
+			       System.out.println("Error, has introducido un valor incorrecto");
+			   }
+			}while(repetir);
+		entrada.nextLine();
+		
+
+		// Dato de ajuste:
+		System.out.println("El tipo de ajuste es anual? S/N ");
+		String opcion = entrada.nextLine();
+		switch (opcion) {
+		case "s":
+				es_anual = true; 
+				break;
+		case "S":
+				es_anual = true; 
+				break;
+		case "n":
+				es_anual = false;
+				break;
+		case "N":
+				es_anual = false;
+				break;
+		default:
+			System.out.println("\nUd. ingreso una opción erronea, intentelo nuevamente");
+		}
+				
+		
+		// Dato de porcentaje ajuste:
+		repetir = true;
+		
+		do{
+		   System.out.println("Ingrese el porcentaje de ajuste: ");
+		   try {
+			   		porc_ajuste = entrada.nextInt();
+			   		repetir = false;
+			   	}catch(InputMismatchException e){
+			       entrada.nextLine();
+			       System.out.println("Error, has introducido un valor incorrecto");
+			   }
+			}while(repetir);
+		
+		// Dato de mes adelanto:
+		repetir = true;
+		
+		do{
+		   System.out.println("Ingrese la cantidad de meses de adelanto: ");
+		   try {
+			   		meses_adelanto = entrada.nextInt();
+			   		repetir = false;
+			   	}catch(InputMismatchException e){
+			       entrada.nextLine();
+			       System.out.println("Error, has introducido un valor incorrecto");
+			   }
+			}while(repetir);
+		
+		// Dato de mes duracion:
+		repetir = true;
+		
+		do{
+		   System.out.println("Ingrese la cantidad de meses de duracion del contrato: ");
+		   try {
+			   		meses_duracion = entrada.nextInt();
+			   		repetir = false;
+			   	}catch(InputMismatchException e){
+			       entrada.nextLine();
+			       System.out.println("Error, has introducido un valor incorrecto");
+			   }
+			}while(repetir);
+		
+		in.alquilar(alq_mensual, comision_inmobiliaria, es_anual, porc_ajuste, meses_adelanto, meses_duracion, ag);
+	
+	}
+	
+	
 	//filtro para forzar al usuario a elegir uno de los tipos de propiedad vÃ¡lidos
 	public String filtro_construir_inmueble() {
 		String valor = "0";
