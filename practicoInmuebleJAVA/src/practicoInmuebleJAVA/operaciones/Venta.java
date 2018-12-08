@@ -1,6 +1,7 @@
 package practicoInmuebleJAVA.operaciones;
 
 import practicoInmuebleJAVA.Agente;
+import practicoInmuebleJAVA.operaciones.observer.ConfirmarOpObserver;
 
 public class Venta extends Operacion {
 	private float comision_comprador;
@@ -30,6 +31,11 @@ public class Venta extends Operacion {
 		return (monto / 100) * comision_inmobiliaria;
 	}
 	
+	public void notificarObservadores() {
+		for(ConfirmarOpObserver obs : this.observadores) {
+			obs.updateComisiones(this.monto, this.agente);
+		}
+	}
 	
 	public void CalcularMontoOperacion() {
 	    float montovendedor;

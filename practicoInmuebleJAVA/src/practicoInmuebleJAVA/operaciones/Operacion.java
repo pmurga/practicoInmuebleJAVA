@@ -11,7 +11,7 @@ public abstract class Operacion {
 	protected float comision_inmobiliaria;
 	protected Agente agente;
 	private boolean completada;
-	private List<ConfirmarOpObserver> observadores;
+	protected List<ConfirmarOpObserver> observadores;
 	
 	public Operacion(float monto, float comision, Agente agente) {
 		this.observadores = new ArrayList<>();
@@ -23,11 +23,8 @@ public abstract class Operacion {
 		this.observadores.add(obs);
 	}
 	
-	public void notificarObservadores() {
-		for(ConfirmarOpObserver obs : this.observadores) {
-			obs.updateComisiones(this.monto, this.agente);
-		}
-	}
+	public abstract void notificarObservadores();
+	
 	public void setMonto(float monto) {
 		this.monto = monto;
 	}

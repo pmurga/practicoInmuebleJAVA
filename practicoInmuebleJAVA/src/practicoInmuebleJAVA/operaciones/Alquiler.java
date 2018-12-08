@@ -1,6 +1,7 @@
 package practicoInmuebleJAVA.operaciones;
 
 import practicoInmuebleJAVA.Agente;
+import practicoInmuebleJAVA.operaciones.observer.ConfirmarOpObserver;
 
 public class Alquiler extends Operacion {
 	private boolean periodicidad_ajuste;
@@ -49,6 +50,12 @@ public class Alquiler extends Operacion {
 	}
 	public void setMeses_adelanto(int meses_adelanto) {
 		this.meses_adelanto = meses_adelanto;
+	}
+	
+	public void notificarObservadores() {
+		for(ConfirmarOpObserver obs : this.observadores) {
+			obs.updateComisiones(this.getMontoTotal(), this.agente);
+		}
 	}
 	
 	public void CalcularMontoOperacion() {
