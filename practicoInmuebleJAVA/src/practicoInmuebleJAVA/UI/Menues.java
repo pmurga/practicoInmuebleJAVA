@@ -858,7 +858,7 @@ public class Menues {
 		
 		   float comision = 0;
 			
-		   System.out.println("\nIngrese comisión de la inmobiliaria: ");
+		   System.out.println("\n Elija entre las siguientes opciones de comisión de la inmobiliaria: ");
 		   System.out.println("1) 1%");
 		   System.out.println("2) 1.5%");
 		   System.out.println("3) 2%");
@@ -893,7 +893,7 @@ public class Menues {
 		
 		   float comision = 0;
 			
-		   System.out.println("\nIngrese comision para el comprador: ");
+		   System.out.println("\nElija entre las siguientes opciones de comision para el comprador: ");
 		   System.out.println("1) 3%");
 		   System.out.println("2) 3.5%");
 		   System.out.println("3) 4%");
@@ -980,7 +980,7 @@ public class Menues {
 		
 		   float comision = 0;
 		
-		   System.out.println("\nIngrese comisión de la inmobiliaria: ");
+		   System.out.println("\nElija entre las siguientes opciones de comisión de la inmobiliaria: ");
 		   System.out.println("1) 3%");
 		   System.out.println("2) 3.5%");
 		   System.out.println("3) 4%");
