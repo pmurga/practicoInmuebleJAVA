@@ -574,6 +574,7 @@ public class Menues {
 		//si es "A" entonces pedirle los datos que necesitas para construir alquiler y luego in.alquilar( ... )
 		//si es "V" entonces pedirle los datos que necesitas para construir venta y luego in.vender( ... )
 		
+		im.addInmueble(in);
 		System.out.println("\nSe agrego con exito una propiedad en la inmobiliaria\n");
 		
 	}
