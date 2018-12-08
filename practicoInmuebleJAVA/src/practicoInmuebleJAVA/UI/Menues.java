@@ -862,21 +862,28 @@ public class Menues {
 		   System.out.println("1) 1%");
 		   System.out.println("2) 1.5%");
 		   System.out.println("3) 2%");
+		   boolean repetir = true;
+		   
+		   do {
 			
 			String opcion = entrada.nextLine();
 			switch (opcion) {
 			case "1":
 					comision = 3; 
+					repetir = false;
 					break;
 			case "2":
 					comision = 3.5f; 
+					repetir = false;
 					break;
 			case "3":
 					comision = 4;
+					repetir = false;
 					break;
 			default:
 				System.out.println("\nUd. ingreso una opción erronea, intentelo nuevamente");
 			}
+		   }while(repetir);
 		
 		return comision;
 		
@@ -890,21 +897,26 @@ public class Menues {
 		   System.out.println("1) 3%");
 		   System.out.println("2) 3.5%");
 		   System.out.println("3) 4%");
-			
+		   boolean repetir = true;
+		  do {
 			String opcion = entrada.nextLine();
 			switch (opcion) {
 			case "1":
 					comision = 3; 
+					repetir = false;
 					break;
 			case "2":
 					comision = 3.5f; 
+					repetir = false;
 					break;
 			case "3":
 					comision = 4;
+					repetir = false;
 					break;
 			default:
 				System.out.println("\nUd. ingreso una opción erronea, intentelo nuevamente");
 			}
+		  }while(repetir);		
 		
 		return comision;
 		
@@ -975,26 +987,30 @@ public class Menues {
 		   System.out.println("2) 3.5%");
 		   System.out.println("3) 4%");
 		   System.out.println("4) 4.5%");
-
-			
+		   boolean repetir = true;
+		do {
 			String opcion = entrada.nextLine();
 			switch (opcion) {
 			case "1":
 					comision = 3; 
+					repetir = false;
 					break;
 			case "2":
-					comision = 3.5f; 
+					comision = 3.5f;
+					repetir = false;
 					break;
 			case "3":
 					comision = 4;
+					repetir = false;
 					break;
 			case "4":
 					comision = 4.5f;
+					repetir = false;
 					break;
 			default:
 				System.out.println("\nUd. ingreso una opción erronea, intentelo nuevamente");
 			}
-		
+		}while(repetir);
 		return comision;
 	}
 	
