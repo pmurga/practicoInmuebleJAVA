@@ -42,6 +42,7 @@ public class Menues {
 					case "2":
 						this.MenuCliente(im); break;
 					case "3":
+						entrada.close();
 						break;
 					default:
 						System.out.println("Ud. ingreso un dato erroneo, intentelo de nuevo"); break;
@@ -52,7 +53,6 @@ public class Menues {
 					break;
 				}
 		}
-		entrada.close();
 	}
 
 	// Menu para el inmobiliario.
@@ -93,7 +93,7 @@ public class Menues {
 						System.out.println("Ud. ingreso un nro erroneo, intentelo de nuevo");
 				}
 		}
-		entrada.close();
+		
 	}
 	
 	private boolean esDNIValido(int dni) {
@@ -152,7 +152,7 @@ public class Menues {
 			}
 		}
 					
-		entrada.close();
+
 	}
 	
 	private boolean esIndiceOpValido(String indice, List<Inmueble> inmuebles) {
@@ -221,7 +221,7 @@ public class Menues {
 					System.out.println("Ud. ingreso un nro erroneo, intentelo de nuevo");
 			}
 		}
-		entrada.close();
+
 		return tipoProp;
 	}
 	
@@ -255,7 +255,7 @@ public class Menues {
 					System.out.println("Ud. ingreso un nro erroneo, intentelo de nuevo");
 			}
 		}
-		entrada.close();
+
 		return estado;
 	}
 	
@@ -285,7 +285,7 @@ public class Menues {
 					System.out.println("Ud. ingreso un nro erroneo, intentelo de nuevo");
 			}
 		}
-		entrada.close();
+
 		return luminosidad;
 	}
 	
@@ -318,7 +318,7 @@ public class Menues {
 					System.out.println("Ud. ingreso un nro erroneo, intentelo de nuevo");
 			}
 		}
-		entrada.close();
+
 		return vigilancia;
 	}
 	
@@ -353,7 +353,7 @@ public class Menues {
 					System.out.println("Ud. ingreso un nro erroneo, intentelo de nuevo");
 			}
 		}	
-		entrada.close();
+
 		return estConserva;
 	}
 	
@@ -423,7 +423,7 @@ public class Menues {
 					System.out.println("\nUd. ingreso una opción erronea, intentelo nuevamente");
 			}
 		}
-		entrada.close();
+
 	}
 
 	// Metodo que genera un propietario en tiempo de ejecucion.
@@ -500,7 +500,7 @@ public class Menues {
 		System.out.println("Ingrese comentarios: ");
 		propietario.setComentarios(entrada.nextLine());
 					
-		entrada.close();
+
 		return propietario;
 	}
 	
@@ -606,7 +606,7 @@ public class Menues {
 		
 		im.addInmueble(in);
 		System.out.println("\nSe agrego con éxito una propiedad en la inmobiliaria\n");
-		entrada.close();
+
 		
 	}
 	
@@ -760,7 +760,7 @@ public class Menues {
 		Agente ag = new Agente(nombre, apellido, dni, telefono, telMovil, email, direccion, codpostal, localidad, comentarios, nroagente, cuil, sueldobasico);
 		im.addAgente(ag);
 		System.out.println("Se agrego con exito el agente en la inmobiliaria");
-		entrada.close();
+
 	}
 
 	public void MenuEliminarAgente(Inmobiliaria im) {
@@ -792,7 +792,7 @@ public class Menues {
 			
 			System.out.println("\nSe eliminó con exito el agente en la inmobiliaria");
 		}
-		entrada.close();
+
 	}
 	
 	public void delInmueble(ArrayList <Inmueble> all_inmuebles, Inmobiliaria im) {
@@ -910,7 +910,7 @@ public class Menues {
 			}while(repetir);
 		
 		in.vender(precio, comision_comprador, comision_inmobiliaria, ag);
-		entrada.close();
+
 	}
 	
 	public void menuAgregarAlquiler(Inmueble in, Agente ag) {
@@ -1020,7 +1020,7 @@ public class Menues {
 			}while(repetir);
 		
 		in.alquilar(alq_mensual, comision_inmobiliaria, es_anual, porc_ajuste, meses_adelanto, meses_duracion, ag);
-		entrada.close();
+
 	
 	}
 	
@@ -1075,7 +1075,7 @@ public class Menues {
 					System.out.println("Ud. ingreso un nro erroneo, intentelo de nuevo");
 			}
 		}
-		entrada.close();
+
 		return tipoProp;
 	}
 
