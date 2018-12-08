@@ -853,6 +853,64 @@ public class Menues {
 		}while(repetir);
 
 	}
+	//	comisión para la inmobiliaria (que puede ser 1%, 1,5% o 2%)
+	public float menuElegirComisionesInmoVenta() {
+		
+		   float comision = 0;
+			
+		   System.out.println("\nIngrese comision de la inmobiliaria: ");
+		   System.out.println("1) 1%");
+		   System.out.println("2) 1.5%");
+		   System.out.println("3) 2%");
+			
+			String opcion = entrada.nextLine();
+			switch (opcion) {
+			case "1":
+					comision = 3; 
+					break;
+			case "2":
+					comision = 3.5f; 
+					break;
+			case "3":
+					comision = 4;
+					break;
+			default:
+				System.out.println("\nUd. ingreso una opción erronea, intentelo nuevamente");
+			}
+		
+		return comision;
+		
+	}
+	// comisión para el 	comprador (que puede ser 3%, 3,5% o 4%)
+	public float menuElegirComisionesCompVenta() {
+		
+		   float comision = 0;
+			
+		   System.out.println("\nIngrese comision de la inmobiliaria: ");
+		   System.out.println("1) 3%");
+		   System.out.println("2) 3.5%");
+		   System.out.println("3) 4%");
+			
+			String opcion = entrada.nextLine();
+			switch (opcion) {
+			case "1":
+					comision = 3; 
+					break;
+			case "2":
+					comision = 3.5f; 
+					break;
+			case "3":
+					comision = 4;
+					break;
+			default:
+				System.out.println("\nUd. ingreso una opción erronea, intentelo nuevamente");
+			}
+		
+		return comision;
+		
+		
+		
+	}
 	
 	public void menuAgregarVenta(Inmueble in, Agente ag) {
 		System.out.println("\nIngrese los datos para la venta");
@@ -882,7 +940,7 @@ public class Menues {
 		do{
 		   System.out.println("Ingrese la comision para el comprador: ");
 		   try {
-			   		comision_comprador = entrada.nextFloat();
+			   		comision_comprador = menuElegirComisionesCompVenta();
 			   		repetir = false;
 			   	}catch(InputMismatchException e){
 			       entrada.nextLine();
@@ -896,7 +954,7 @@ public class Menues {
 		do{
 		   System.out.println("Ingrese la comision de la inmobiliaria: ");
 		   try {
-			   		comision_inmobiliaria = entrada.nextFloat();
+			   		comision_inmobiliaria = menuElegirComisionesInmoVenta();
 			   		repetir = false;
 			   	}catch(InputMismatchException e){
 			       entrada.nextLine();
@@ -906,6 +964,38 @@ public class Menues {
 		
 		in.vender(precio, comision_comprador, comision_inmobiliaria, ag);
 
+	}
+	
+	public float menuElegirComisionesAlquiler(){
+		
+		   float comision = 0;
+		
+		   System.out.println("\nIngrese comision de la inmobiliaria: ");
+		   System.out.println("1) 3%");
+		   System.out.println("2) 3.5%");
+		   System.out.println("3) 4%");
+		   System.out.println("4) 4.5%");
+
+			
+			String opcion = entrada.nextLine();
+			switch (opcion) {
+			case "1":
+					comision = 3; 
+					break;
+			case "2":
+					comision = 3.5f; 
+					break;
+			case "3":
+					comision = 4;
+					break;
+			case "4":
+					comision = 4.5f;
+					break;
+			default:
+				System.out.println("\nUd. ingreso una opción erronea, intentelo nuevamente");
+			}
+		
+		return comision;
 	}
 	
 	public void menuAgregarAlquiler(Inmueble in, Agente ag) {
@@ -939,10 +1029,9 @@ public class Menues {
 		repetir = true;
 		
 		do{
-		   System.out.println("Ingrese comision de la inmobiliaria: ");
-		   try {
-			   		comision_inmobiliaria = entrada.nextFloat();
-			   		repetir = false;
+		   try {	
+			   		comision_inmobiliaria = menuElegirComisionesAlquiler();
+				   	repetir = false;
 			   	}catch(InputMismatchException e){
 			       entrada.nextLine();
 			       System.out.println("Error, has introducido un valor incorrecto");
