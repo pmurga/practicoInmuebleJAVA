@@ -8,10 +8,10 @@ public class Alquiler extends Operacion {
 	private float porcentaje_ajuste;
 	private int meses_adelanto;
 	private int meses_duracion;
-	private Agente agente;
 	
-	public Alquiler(float monto, float comision_inmobiliaria, boolean periodicidad_ajuste, float porcentaje_ajuste, int meses_adelanto, int meses_duracion) {
-		super(monto, comision_inmobiliaria);
+	
+	public Alquiler(float monto, float comision_inmobiliaria, boolean periodicidad_ajuste, float porcentaje_ajuste, int meses_adelanto, int meses_duracion, Agente agente) {
+		super(monto, comision_inmobiliaria, agente);
 		setPeriodicidadAjuste(periodicidad_ajuste);
 		setPorcentajeAjuste(porcentaje_ajuste);
 		setMesesAdelanto(meses_adelanto);

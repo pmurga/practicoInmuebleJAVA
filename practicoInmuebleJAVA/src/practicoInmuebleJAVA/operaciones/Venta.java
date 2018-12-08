@@ -7,10 +7,10 @@ public class Venta extends Operacion {
 	private float comision_comprador;
 	private final float gastos_vendedor = 3.3f;
 	private final float gastos_comprador = 4.8f;
-	private Agente agente;
+	
 	
 	public Venta(float monto, float comision_comprador, float comision_inmobiliaria, Agente agente) {
-		super(monto, comision_inmobiliaria);
+		super(monto, comision_inmobiliaria, agente);
 		setComisionComprador(comision_comprador);
 	}
 	public void setComisionComprador(float comision_comprador) {
@@ -30,6 +30,7 @@ public class Venta extends Operacion {
 		// CONTROLAR COMISIONES - solo puede ser 1%, 1,5% o 2%
 		return (monto / 100) * comision_inmobiliaria;
 	}
+	
 	
 	public void CalcularMontoOperacion() {
 	    float montovendedor;

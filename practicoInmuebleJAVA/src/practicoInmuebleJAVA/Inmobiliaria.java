@@ -2,15 +2,13 @@ package practicoInmuebleJAVA;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.InputMismatchException;
 import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
 
 import practicoInmuebleJAVA.UI.Menues;
 import practicoInmuebleJAVA.operaciones.observer.ConfirmarOpObserver;
+import practicoInmuebleJAVA.operaciones.observer.Observer;
 
-public class Inmobiliaria implements ConfirmarOpObserver {
+public class Inmobiliaria  {
 	
 	private ArrayList<Inmueble> inmuebles;
 	private HashMap<Integer, Agente> agentes;
@@ -49,7 +47,7 @@ public class Inmobiliaria implements ConfirmarOpObserver {
 		return (this.comisiones_agentes.get(agente) + this.agentes.get(agente).getSueldobasico());
 	}
 	
-	@Override
+	
 	public void updateComisiones(float monto, Agente agente){
 		Double comision_actual = this.comisiones_agentes.get(agente);
 		Float monto_comision = monto*2/100;

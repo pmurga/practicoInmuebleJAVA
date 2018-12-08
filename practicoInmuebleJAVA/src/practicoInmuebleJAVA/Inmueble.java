@@ -464,9 +464,9 @@ public class Inmueble {
 		
 	}
 	
-	public void alquilar(float alq_mensual, float comision_inmobiliaria, boolean es_anual , float porc_ajuste , int meses_adelanto,  int meses_duracion) {
+	public void alquilar(float alq_mensual, float comision_inmobiliaria, boolean es_anual , float porc_ajuste , int meses_adelanto,  int meses_duracion, Agente agente) {
 		
-		this.op = new Alquiler(alq_mensual , comision_inmobiliaria , es_anual, porc_ajuste, meses_adelanto, meses_duracion);
+		this.op = new Alquiler(alq_mensual , comision_inmobiliaria , es_anual, porc_ajuste, meses_adelanto, meses_duracion, agente);
 		
 	}
 	

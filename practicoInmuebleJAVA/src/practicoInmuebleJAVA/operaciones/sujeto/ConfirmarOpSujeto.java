@@ -1,17 +1,16 @@
 package practicoInmuebleJAVA.operaciones.sujeto;
 
 import java.util.ArrayList;
-import java.util.Observer;
 
 import practicoInmuebleJAVA.Agente;
-import practicoInmuebleJAVA.operaciones.observer.ConfirmarOpObserver;
+import practicoInmuebleJAVA.operaciones.observer.Observer;
 
 
 public class ConfirmarOpSujeto implements Sujeto{
 
 	private float monto; 
 	private Agente agente;
-	private static ArrayList<ConfirmarOpObserver> arrObservadores;
+	private static ArrayList<Observer> arrObservadores;
 	
 	
 	
@@ -23,13 +22,13 @@ public class ConfirmarOpSujeto implements Sujeto{
 	}
 
 
-	public void attach(ConfirmarOpObserver obs) {
+	public void attach(Observer obs) {
 		
 		arrObservadores.add(obs);
 	}
 
 	
-	public void dettach(ConfirmarOpObserver obs) {
+	public void dettach(Observer obs) {
 		
 		arrObservadores.remove(obs);
 	}
@@ -37,8 +36,9 @@ public class ConfirmarOpSujeto implements Sujeto{
 	
 	public void notifyObservers() {
 		
-		for(ConfirmarOpObserver obs : arrObservadores)
+		for(Observer obs : arrObservadores){
 			obs.updateComisiones(monto, agente);
+		}
 	}
 
 }
