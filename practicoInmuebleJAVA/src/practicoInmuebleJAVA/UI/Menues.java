@@ -120,18 +120,23 @@ public class Menues {
 					if(inmuebles.size() > 0) {
 						System.out.println("\nElija el número de inmueble sobre el cuál desea confirmar la operación o presione 0 para volver atrás:");
 						String indice = entrada.nextLine();
-						if(esIndiceOpValido(indice, inmuebles)) {
-							
-								
-								//si el Índice del inmueble ingresado es correcto y corresponde 
-								//al Índice de un inmueble encontrado por la bÃºsqueda
-								//opero con el mismo a travÃ©s del menÃº para operar
-								im.Operar(inmuebles.get(Integer.parseInt(indice) -1).getId());
-								
-							break;
-						}else {
-							System.out.println("ERROR - inmueble seleccionado inválido");
-							break;
+						switch(indice){
+							case "0":
+								break;
+							default:
+								if(esIndiceOpValido(indice, inmuebles)) {
+									
+									
+									//si el Índice del inmueble ingresado es correcto y corresponde 
+									//al Índice de un inmueble encontrado por la búsqueda
+									//opero con el mismo a través del menú para operar
+									im.Operar(inmuebles.get(Integer.parseInt(indice) -1).getId());
+									
+									break;
+								}else {
+									System.out.println("ERROR - inmueble seleccionado inválido");
+									break;
+								}
 						}
 					}
 				case "2":
@@ -370,7 +375,7 @@ public class Menues {
 	public void menuOperar (Inmueble inmueble) {		
 		
 		System.out.println("\n____________________________________________________");
-		System.out.println("\nBienvenido! Usted se encuentra en nuestra Ã¡rea de operaciones.");
+		System.out.println("\nBienvenido! Usted se encuentra en nuestra Área de operaciones.");
 		boolean error = false;
 		try {
 			System.out.println("\nEl inmueble seleccionado es: \n" );
@@ -590,10 +595,10 @@ public class Menues {
 		}
 		
 		im.addInmueble(in);
-		System.out.println("\nSe agrego con exito una propiedad en la inmobiliaria\n");
+		System.out.println("\nSe agrego con éxito una propiedad en la inmobiliaria\n");
 		
 	}
-	public void MenuAgregarAgente (Inmobiliaria im) {//Permite agregar un agente en tiempo de ejecuciÃ³n
+	public void MenuAgregarAgente (Inmobiliaria im) {//Permite agregar un agente en tiempo de ejecución
 		Scanner entrada = new Scanner(System.in);
 		int valor2 = 0;
 		
@@ -781,7 +786,10 @@ public class Menues {
 			System.out.println("\nSeleccione el número de inmueble que quiere eliminar o presione 0 para volver atrás: ");
 			String indice = entrada.nextLine();
 			
-			
+			switch(indice){
+			case "0":
+				break;
+			default:
 				if(esIndiceOpValido(indice, all_inmuebles)) {
 					try {
 						
@@ -795,6 +803,7 @@ public class Menues {
 					}
 				
 				}	
+			}
 
 		}
 	}
