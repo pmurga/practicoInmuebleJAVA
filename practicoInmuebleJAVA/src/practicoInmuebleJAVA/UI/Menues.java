@@ -24,7 +24,7 @@ public class Menues {
 	
 	public void Menu1 (Inmobiliaria im) {
 		String valor = "0";
-		System.out.println("BIENVENIDOS A INMOBILIARIA CAECE 2018\n");
+		System.out.println("BIENVENIDOS A INMOBILIARIA QuieroVerPropiedades SRL\n");
 		System.out.println("Elija su perfil:\n");
 		entrada = new Scanner(System.in);
 		
@@ -578,12 +578,7 @@ public class Menues {
 		tipoProp = m.filtro_construir_inmueble();		
 		
 		Inmueble in = new Inmueble(pr, ag, calle, nroCalle, tipoProp);
-		
-		//FALTA AGREGAR ACÃ� UN MENU PARA SETTEAR SI EL INMUEBLE ESTA PARA ALQUILAR O PARA VENDER
-		//un case con "A" y "V"
-		//si es "A" entonces pedirle los datos que necesitas para construir alquiler y luego in.alquilar( ... )
-		//si es "V" entonces pedirle los datos que necesitas para construir venta y luego in.vender( ... )
-		
+			
 		System.out.println("\nIntroduzca A si el inmueble es para ALQUILER ó V si el inmueble es para VENTA: * ? A/V:" );
 		
 		op = entrada.nextLine();
@@ -887,7 +882,7 @@ public class Menues {
 		do{
 		   System.out.println("Ingrese la comision para el comprador: ");
 		   try {
-			   		comision_comprador = entrada.nextInt();
+			   		comision_comprador = entrada.nextFloat();
 			   		repetir = false;
 			   	}catch(InputMismatchException e){
 			       entrada.nextLine();
@@ -901,7 +896,7 @@ public class Menues {
 		do{
 		   System.out.println("Ingrese la comision de la inmobiliaria: ");
 		   try {
-			   		comision_inmobiliaria = entrada.nextInt();
+			   		comision_inmobiliaria = entrada.nextFloat();
 			   		repetir = false;
 			   	}catch(InputMismatchException e){
 			       entrada.nextLine();
@@ -946,7 +941,7 @@ public class Menues {
 		do{
 		   System.out.println("Ingrese comision de la inmobiliaria: ");
 		   try {
-			   		comision_inmobiliaria = entrada.nextInt();
+			   		comision_inmobiliaria = entrada.nextFloat();
 			   		repetir = false;
 			   	}catch(InputMismatchException e){
 			       entrada.nextLine();
@@ -983,7 +978,7 @@ public class Menues {
 		do{
 		   System.out.println("Ingrese el porcentaje de ajuste: ");
 		   try {
-			   		porc_ajuste = entrada.nextInt();
+			   		porc_ajuste = entrada.nextFloat();
 			   		repetir = false;
 			   	}catch(InputMismatchException e){
 			       entrada.nextLine();
@@ -1031,7 +1026,7 @@ public class Menues {
 		entrada = new Scanner(System.in);
 		
 		while (!(valor.equals("1") || valor.equals("2") || valor.equals("3") || valor.equals("4") || valor.equals("5") || valor.equals("6") || valor.equals("7") || valor.equals("8") || valor.equals("9") || valor.equals("10") || valor.equals("11") || valor.equals("12") || valor.equals("13"))) {
-			System.out.println("A - Tipo de propiedad:\n");   
+			System.out.println("Indique el tipo de propiedad:\n");   
 			System.out.println ( "1 - ESTUDIO");
 			System.out.println ( "2 - LOFT");
 			System.out.println ( "3 - DEPARTAMENTO");
